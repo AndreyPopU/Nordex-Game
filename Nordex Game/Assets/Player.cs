@@ -13,6 +13,11 @@ public class Player : MonoBehaviour
     //Other
     private Rigidbody rb;
 
+    public bool focused;
+    public Puzzle puzzleInRange;
+
+    #region Movement Variables
+
     //Rotation and look
     private float xRotation;
     private float sensitivity = 50f;
@@ -47,6 +52,8 @@ public class Player : MonoBehaviour
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
 
+    #endregion
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,25 +74,27 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        MyInput();
-        Look();
-    }
-
-    /// <summary>
-    /// Find user input. Should put this in its own class but im lazy
-    /// </summary>
-    private void MyInput()
-    {
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
         jumping = Input.GetButton("Jump");
         crouching = Input.GetKey(KeyCode.LeftControl);
 
         //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
+        if (Input.GetKeyDown(KeyCode.LeftControl)) StartCrouch();
+        if (Input.GetKeyUp(KeyCode.LeftControl)) StopCrouch();
+        Look();
+
+        if (Input.GetButtonDown("Interact")) FocusPuzzle();
+    }
+
+    public void FocusPuzzle()
+    {
+        if (puzzleInRange != null)
+        {
+            if (!focused) puzzleInRange.Focus(puzzleInRange.focusTransform);
+            else puzzleInRange.Focus(playerCam.transform);
+            focused = !focused;
+        }
     }
 
     private void StartCrouch()
@@ -93,12 +102,8 @@ public class Player : MonoBehaviour
         transform.localScale = crouchScale;
         transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         if (rb.velocity.magnitude > 0.5f)
-        {
             if (grounded)
-            {
                 rb.AddForce(orientation.transform.forward * slideForce);
-            }
-        }
     }
 
     private void StopCrouch()
@@ -109,6 +114,8 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
+        if (focused) return;
+
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
@@ -177,14 +184,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ResetJump()
-    {
-        readyToJump = true;
-    }
+    private void ResetJump() => readyToJump = true;
 
     private float desiredX;
     private void Look()
     {
+        if (focused) return;
+
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
 
@@ -231,11 +237,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Find the velocity relative to where the player is looking
-    /// Useful for vectors calculations regarding movement and limiting movement
-    /// </summary>
-    /// <returns></returns>
     public Vector2 FindVelRelativeToLook()
     {
         float lookAngle = orientation.transform.eulerAngles.y;
@@ -259,9 +260,6 @@ public class Player : MonoBehaviour
 
     private bool cancellingGrounded;
 
-    /// <summary>
-    /// Handle ground detection
-    /// </summary>
     private void OnCollisionStay(Collision other)
     {
         //Make sure we are only checking for walkable layers
@@ -291,8 +289,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void StopGrounded()
+    private void StopGrounded() => grounded = false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        grounded = false;
+        if (other.TryGetComponent(out Puzzle puzzle)) puzzleInRange = puzzle;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out Puzzle puzzle)) puzzleInRange = null;
     }
 }
+
