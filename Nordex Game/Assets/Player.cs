@@ -94,6 +94,8 @@ public class Player : MonoBehaviour
             if (!focused) puzzleInRange.Focus(puzzleInRange.focusTransform);
             else puzzleInRange.Focus(playerCam.transform);
             focused = !focused;
+            Cursor.lockState = focused ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = focused ? true : false;
         }
     }
 

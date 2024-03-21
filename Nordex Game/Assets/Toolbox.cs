@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Toolbox : Puzzle
 {
-    // Start is called before the first frame update
+    public GameObject[] tools;
+    public GameObject[] placements;
+
     void Start()
     {
         
