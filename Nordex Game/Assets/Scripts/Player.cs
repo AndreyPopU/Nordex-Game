@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
 
     public void FocusPuzzle()
     {
-        if (puzzleInRange != null)
+        if (puzzleInRange != null && puzzleInRange.finishedFocusing)
         {
             if (!focused) puzzleInRange.Focus(puzzleInRange.focusTransform);
             else puzzleInRange.Focus(playerCam.transform);

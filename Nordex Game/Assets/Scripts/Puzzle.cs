@@ -7,8 +7,10 @@ public class Puzzle : MonoBehaviour
     [Header("Camera Focus")]
     public Transform focusTransform;
     public float smoothing;
+    public bool finishedFocusing = true;
 
     private Camera cam;
+    private Vector3 velocity;
 
     private void Start()
     {
@@ -16,6 +18,7 @@ public class Puzzle : MonoBehaviour
 
     public void Focus(Transform focus)
     {
+        finishedFocusing = false;
         StartCoroutine(FocusCO(focus));
     }
 
@@ -30,10 +33,12 @@ public class Puzzle : MonoBehaviour
         while (focusTime > 0)
         {
             focusTime -= Time.deltaTime;
-            cam.transform.position = Vector3.Lerp(cam.transform.position, focus.position, smoothing);
+            cam.transform.position = Vector3.SmoothDamp(cam.transform.position, focus.position, ref velocity, smoothing);
             cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, focus.rotation, smoothing);
 
             yield return waitForFixedUpdate;
         }
+
+        finishedFocusing = true;
     }
 }
