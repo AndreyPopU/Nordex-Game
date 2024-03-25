@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 430459849}
   - component: {fileID: 430459848}
   m_Layer: 0
-  m_Name: PuzzleCamera
+  m_Name: PuzzleCameraObject
   m_TagString: PuzzleCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
