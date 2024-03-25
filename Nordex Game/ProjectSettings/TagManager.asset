@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ladder
+  - Panel
+  - FirstPersonCamera
+  - PuzzleCamera
   layers:
   - Default
   - TransparentFX
