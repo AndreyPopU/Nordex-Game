@@ -11,7 +11,7 @@ public class PlayerOpeningPanelScript : MonoBehaviour
 
     private Transform panelTransform;
 
-    private BoxCollider panelCollider; 
+    private BoxCollider panelCollider;
 
     private GameObject firstPersonCamera;
     private GameObject puzzleCamera;
@@ -84,5 +84,10 @@ public class PlayerOpeningPanelScript : MonoBehaviour
 
         firstPersonCamera.SetActive(false);
         puzzleCamera.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
+        transform.position += new Vector3(0f, 0f, -3f);
     }
 }

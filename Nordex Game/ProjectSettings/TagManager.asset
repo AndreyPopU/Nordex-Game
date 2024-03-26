@@ -11,6 +11,8 @@ TagManager:
   - Hexagon
   - Triangle
   - Quad
+  - Pentagon
+  - GameManager
   layers:
   - Default
   - TransparentFX
