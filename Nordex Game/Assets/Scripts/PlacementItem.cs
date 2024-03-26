@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlacementItem : MonoBehaviour
 {
     public int index;
     public bool interactable = true;
 
-    private float cameraZ;
+    private BoxCollider coreCollider;
     private Camera cam;
-    private Rigidbody rb;
+    public bool dragged;
+    public bool placed;
+    float yPos;
 
     private void Start()
     {
         cam = Camera.main;
-        rb = GetComponent<Rigidbody>();
-        cameraZ = cam.WorldToScreenPoint(transform.position).z;
+        coreCollider = GetComponent<BoxCollider>();
+        yPos = transform.position.y + .2f;
     }
 
     private void OnMouseDrag()
@@ -29,11 +33,33 @@ public class PlacementItem : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             // Calculate movement towards the mouse position
-            Vector3 targetPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            Vector3 movementDirection = (targetPosition - transform.position).normalized;
+            Vector3 targetPosition = new Vector3(hit.point.x, yPos, hit.point.z);
 
             // Move the object towards the mouse position
             transform.position = targetPosition;
+            dragged = true;
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        dragged = false;
+
+        Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].TryGetComponent(out PlacementBox box) && box.index == index)
+            {
+                // Snap
+                interactable = false;
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                transform.position = box.transform.position;
+                colliders[i].GetComponent<PlacementBox>().full = true;
+                placed = true;
+                Toolbox.instance.CheckComplete();
+            }
+            
         }
     }
 }

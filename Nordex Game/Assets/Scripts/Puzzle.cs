@@ -16,9 +16,12 @@ public class Puzzle : MonoBehaviour
     {
     }
 
-    public void Focus(Transform focus)
+    public virtual void Focus(Transform focus)
     {
         finishedFocusing = false;
+        Player.instance.focused = !Player.instance.focused;
+        Cursor.lockState = Player.instance.focused ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = Player.instance.focused ? true : false;
         StartCoroutine(FocusCO(focus));
     }
 

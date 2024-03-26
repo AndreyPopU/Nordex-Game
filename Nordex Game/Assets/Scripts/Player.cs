@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     //Assingables
     public Transform playerCam;
     public Transform orientation;
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -93,9 +96,6 @@ public class Player : MonoBehaviour
         {
             if (!focused) puzzleInRange.Focus(puzzleInRange.focusTransform);
             else puzzleInRange.Focus(playerCam.transform);
-            focused = !focused;
-            Cursor.lockState = focused ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = focused ? true : false;
         }
     }
 
