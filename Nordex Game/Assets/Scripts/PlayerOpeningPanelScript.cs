@@ -11,20 +11,15 @@ public class PlayerOpeningPanelScript : MonoBehaviour
 
     private Transform panelTransform;
 
-    private GameObject player;
+    private BoxCollider panelCollider; 
+
     private GameObject firstPersonCamera;
     private GameObject puzzleCamera;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         firstPersonCamera = GameObject.FindWithTag("FirstPersonCamera");
         puzzleCamera = GameObject.FindWithTag("PuzzleCamera");
-
-        if (player == null)
-        {
-            Debug.LogError("Player game object not found.");
-        }
 
         if (firstPersonCamera == null)
         {
@@ -64,6 +59,7 @@ public class PlayerOpeningPanelScript : MonoBehaviour
             isInTriggerZone = true;
 
             panelTransform = other.transform;
+            panelCollider = other.GetComponent<BoxCollider>(); 
         }
     }
 
@@ -74,14 +70,17 @@ public class PlayerOpeningPanelScript : MonoBehaviour
             isInTriggerZone = false;
 
             panelTransform = null;
+            panelCollider = null; 
         }
     }
 
     void OpenPanel()
     {
-        Rigidbody playerRigidbody = player.GetComponent<Rigidbody>();
-        playerRigidbody.velocity = Vector3.zero; 
-        playerRigidbody.constraints = RigidbodyConstraints.FreezeAll; 
+        panelCollider.enabled = false; 
+
+        Rigidbody playerRigidbody = GetComponent<Rigidbody>(); 
+        playerRigidbody.velocity = Vector3.zero;
+        playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
         firstPersonCamera.SetActive(false);
         puzzleCamera.SetActive(true);

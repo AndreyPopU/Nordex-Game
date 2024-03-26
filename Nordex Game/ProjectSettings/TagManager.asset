@@ -8,6 +8,7 @@ TagManager:
   - Panel
   - FirstPersonCamera
   - PuzzleCamera
+  - Cube
   layers:
   - Default
   - TransparentFX
