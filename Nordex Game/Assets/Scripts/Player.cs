@@ -11,8 +11,16 @@ public class Player : MonoBehaviour
     public Transform playerCam;
     public Transform orientation;
 
+    // Climbing
+    private float climbSpeed = 3f;
+    private float fallSpeed = 4f;
+    private bool isClimbing = false;
+    private Transform ladderTransform;
+    private Vector3 initialPosition;
+
     //Other
-    private Rigidbody rb;
+    [HideInInspector] public CapsuleCollider coreCollider;
+    [HideInInspector] public Rigidbody rb;
 
     public bool focused;
     public Puzzle puzzleInRange;
@@ -58,6 +66,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         instance = this;
+        coreCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -76,6 +85,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (focused) return;
+
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
         jumping = Input.GetButton("Jump");
@@ -87,6 +98,20 @@ public class Player : MonoBehaviour
         Look();
 
         if (Input.GetButtonDown("Interact")) FocusPuzzle();
+
+        if (isClimbing)
+        {
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 climbDirection = ladderTransform.up * verticalInput * climbSpeed * Time.deltaTime;
+
+            // Move the player up/down the ladder
+            transform.position += climbDirection;
+
+            if (verticalInput == 0f)
+            {
+                rb.AddForce(-ladderTransform.up * fallSpeed * Time.deltaTime, ForceMode.Acceleration);
+            }
+        }
     }
 
     public void FocusPuzzle()
@@ -295,11 +320,25 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Puzzle puzzle)) puzzleInRange = puzzle;
+
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = true;
+            ladderTransform = other.transform;
+            initialPosition = transform.position;
+            rb.useGravity = false;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out Puzzle puzzle)) puzzleInRange = null;
+
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = false;
+            rb.useGravity = true;
+        }
     }
 }
 

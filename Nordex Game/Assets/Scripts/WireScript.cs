@@ -13,8 +13,7 @@ public class WireScript : MonoBehaviour
     
     void Start()
     {
-        puzzleCamera = GameObject.FindGameObjectWithTag("PuzzleCamera").GetComponent<Camera>();
-
+        puzzleCamera = Camera.main;
         startPosition = transform.position;
     }
 
