@@ -185,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCam: {fileID: 321859646}
   orientation: {fileID: 1532614445}
+  focused: 0
+  puzzleInRange: {fileID: 0}
   moveSpeed: 4500
   maxSpeed: 20
   grounded: 1
