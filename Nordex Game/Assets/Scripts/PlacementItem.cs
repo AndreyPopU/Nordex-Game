@@ -19,7 +19,7 @@ public class PlacementItem : MonoBehaviour
     {
         cam = Camera.main;
         coreCollider = GetComponent<BoxCollider>();
-        yPos = transform.position.y + .2f;
+        yPos = transform.position.y + .1f;
     }
 
     private void OnMouseDrag()
