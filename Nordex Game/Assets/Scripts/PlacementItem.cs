@@ -46,8 +46,6 @@ public class PlacementItem : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                print(hit.collider.gameObject.name);
-
                 Vector3 targetPosition = hit.point;
 
                 // Calculate movement towards the mouse position
@@ -73,6 +71,8 @@ public class PlacementItem : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
+            print(colliders[i].gameObject.name);
+
             if (colliders[i].TryGetComponent(out PlacementBox box) && box.index == index)
             {
                 // Snap

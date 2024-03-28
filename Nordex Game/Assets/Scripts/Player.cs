@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("Interact")) FocusPuzzle();
+
         if (focused) return;
 
         x = Input.GetAxisRaw("Horizontal");
@@ -96,8 +98,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl)) StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl)) StopCrouch();
         Look();
-
-        if (Input.GetButtonDown("Interact")) FocusPuzzle();
 
         if (isClimbing)
         {
