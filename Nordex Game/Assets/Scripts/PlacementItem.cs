@@ -75,16 +75,14 @@ public class PlacementItem : MonoBehaviour
         {
             if (colliders[i].TryGetComponent(out PlacementBox box) && box.index == index)
             {
-                print(box.index + " " + index);
                 // Snap
                 interactable = false;
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 transform.position = box.transform.position;
                 colliders[i].GetComponent<PlacementBox>().full = true;
                 placed = true;
-                //Toolbox.instance.CheckComplete();
+                if (Toolbox.instance != null) Toolbox.instance.CheckComplete();
             }
-            
         }
     }
 }
