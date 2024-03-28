@@ -19,11 +19,13 @@ public class PlacementItem : MonoBehaviour
     public float bonusAxis;
 
     private Vector3 lockPos;
+    private Vector3 startPosition;
 
     private void Start()
     {
         cam = Camera.main;
         coreCollider = GetComponent<BoxCollider>();
+        startPosition = transform.position;
 
         switch (lockAxis)
         {
@@ -81,7 +83,9 @@ public class PlacementItem : MonoBehaviour
                 colliders[i].GetComponent<PlacementBox>().full = true;
                 placed = true;
                 if (Toolbox.instance != null) Toolbox.instance.CheckComplete();
+                return;
             }
+            else transform.position = startPosition;
         }
     }
 }
