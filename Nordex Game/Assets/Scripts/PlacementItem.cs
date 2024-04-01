@@ -37,30 +37,27 @@ public class PlacementItem : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        //if (!interactable) return;
+        if (!interactable) return;
 
-        if (Input.GetMouseButton(0))
+        // Convert mouse position to a world point
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
         {
-            // Convert mouse position to a world point
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            Vector3 targetPosition = hit.point;
 
-            if (Physics.Raycast(ray, out hit))
+            // Calculate movement towards the mouse position
+            switch (lockAxis)
             {
-                Vector3 targetPosition = hit.point;
-
-                // Calculate movement towards the mouse position
-                switch (lockAxis)
-                {
-                    case LockAxis.X: targetPosition = new Vector3(lockPos.x, hit.point.y, hit.point.z); break;
-                    case LockAxis.Y: targetPosition = new Vector3(hit.point.x, lockPos.y, hit.point.z); break;
-                    case LockAxis.Z: targetPosition = new Vector3(hit.point.x, hit.point.y, lockPos.z); break;
-                }
-
-                // Move the object towards the mouse position
-                transform.position = targetPosition;
-                dragged = true;
+                case LockAxis.X: targetPosition = new Vector3(lockPos.x, hit.point.y, hit.point.z); break;
+                case LockAxis.Y: targetPosition = new Vector3(hit.point.x, lockPos.y, hit.point.z); break;
+                case LockAxis.Z: targetPosition = new Vector3(hit.point.x, hit.point.y, lockPos.z); break;
             }
+
+            // Move the object towards the mouse position
+            transform.position = targetPosition;
+            dragged = true;
         }
     }
 
@@ -72,8 +69,6 @@ public class PlacementItem : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            print(colliders[i].gameObject.name);
-
             if (colliders[i].TryGetComponent(out PlacementBox box) && box.index == index)
             {
                 // Snap
