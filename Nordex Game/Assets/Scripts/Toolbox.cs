@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Toolbox : Puzzle
 {
     public static Toolbox instance;
+
+    public LayerMask mask;
     public PlacementItem[] tools;
     public PlacementBox[] placements;
     public Animator animator;
 
+    private BoxCollider coreCollider;
+    private BoxCollider completeCollider;
+
     void Awake()
     {
         instance = this;
+        coreCollider = GetComponent<BoxCollider>();
+        completeCollider = GetComponents<BoxCollider>()[1];
         tools = GetComponentsInChildren<PlacementItem>();
         placements = GetComponentsInChildren<PlacementBox>();
     }
@@ -24,8 +32,11 @@ public class Toolbox : Puzzle
 
     public void CheckComplete()
     {
-        for (int i = 0; i < placements.Length; i++)
-            if (!placements[i].full) return;
+        Collider[] overlapingColliders = Physics.OverlapBox(completeCollider.bounds.center, completeCollider.bounds.size / 2, Quaternion.identity, mask);
+
+        print("Overlapping colliders is " + overlapingColliders.Length);
+
+        if (overlapingColliders.Length != 29) return;
 
         // Completed
         animator.enabled = true;
@@ -36,8 +47,9 @@ public class Toolbox : Puzzle
     {
         base.Focus(focus);
 
+        coreCollider.enabled = !Player.instance.focused;
         for (int i = 0; i < tools.Length; i++)
             if (!tools[i].placed)
-                tools[i].interactable = Player.instance.focused ? true : false;
+                tools[i].interactable = Player.instance.focused;
     }
 }
