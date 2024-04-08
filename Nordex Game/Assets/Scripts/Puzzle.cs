@@ -6,8 +6,9 @@ public class Puzzle : MonoBehaviour
 {
     [Header("Camera Focus")]
     public Transform focusTransform;
-    public float smoothing;
+    public float smoothing = .1f;
     public bool finishedFocusing = true;
+    public bool interactable = true;
 
     private Camera cam;
     private Vector3 velocity;
@@ -18,8 +19,12 @@ public class Puzzle : MonoBehaviour
 
     public virtual void Focus(Transform focus)
     {
+        if (!interactable) return;
+
         finishedFocusing = false;
         Player.instance.focused = !Player.instance.focused;
+        Player.instance.coreCollider.enabled = !Player.instance.focused;
+        Player.instance.rb.isKinematic = Player.instance.focused;
         Cursor.lockState = Player.instance.focused ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = Player.instance.focused ? true : false;
         StartCoroutine(FocusCO(focus));

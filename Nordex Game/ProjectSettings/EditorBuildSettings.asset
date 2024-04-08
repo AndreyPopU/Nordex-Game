@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LadderPanel.unity
     guid: 3ca4dbbe838fd3c4b95addb79805dffd
+  - enabled: 1
+    path: Assets/Scenes/Captcha.unity
+    guid: bcb00c5f2c8f91f43b27d3a4bfd886d5
   m_configObjects: {}

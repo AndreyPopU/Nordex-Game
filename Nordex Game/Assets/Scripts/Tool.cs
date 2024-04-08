@@ -8,22 +8,20 @@ public class Tool : MonoBehaviour
 
     public LockAxis lockAxis;
     public LayerMask mask;
-    public int index;
     public bool interactable = true;
 
-    private Collider[] colliders;
+    private BoxCollider[] colliders;
     private Camera cam;
     public bool dragged;
     public bool placed;
     public float bonusAxis;
-
 
     private Vector3 lockPos;
     private Vector3 startPosition;
 
     private void Start()
     {
-        colliders = GetComponents<Collider>();
+        colliders = GetComponents<BoxCollider>();
         cam = Camera.main;
         startPosition = transform.position;
 
@@ -77,17 +75,15 @@ public class Tool : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++) // Loop though all colliders
         {
-            if (colliders[i] is BoxCollider) // If current collider is Box Collider
+            BoxCollider currentCollider = colliders[i];
+
+            // Check for collision with other tools only
+            Collider[] overlapingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
+
+            for(int j = 0; j < overlapingColliders.Length; j++) // If colliding with another tool, return
             {
-                // Cast
-                BoxCollider currentCollider = (BoxCollider)colliders[i];
-
-                // Check for collision with other tools only
-                Collider[] overlapingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
-
-                if (overlapingColliders.Length > colliders.Length) // It collides with it's own colliders too
+                if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this)
                 {
-                    print("Colliding with a tool");
                     transform.position = startPosition;
                     return;
                 }
@@ -95,23 +91,5 @@ public class Tool : MonoBehaviour
         }
 
         Toolbox.instance.CheckComplete();
-
-        //Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, 7);
-
-        //for (int i = 0; i < colliders.Length; i++)
-        //{
-        //    if (colliders[i].TryGetComponent(out Tool box) && box.index == index)
-        //    {
-        //        // Snap
-        //        interactable = false;
-        //        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        //        transform.position = box.transform.position;
-        //        colliders[i].GetComponent<PlacementBox>().full = true;
-        //        placed = true;
-        //        if (Toolbox.instance != null) Toolbox.instance.CheckComplete();
-        //        return;
-        //    }
-        //    else transform.position = startPosition;
-        //}
     }
 }

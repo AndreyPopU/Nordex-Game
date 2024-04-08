@@ -25,22 +25,16 @@ public class Toolbox : Puzzle
         placements = GetComponentsInChildren<PlacementBox>();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void CheckComplete()
     {
         Collider[] overlapingColliders = Physics.OverlapBox(completeCollider.bounds.center, completeCollider.bounds.size / 2, Quaternion.identity, mask);
 
-        print("Overlapping colliders is " + overlapingColliders.Length);
-
-        if (overlapingColliders.Length != 29) return;
+        if (overlapingColliders.Length != 28) return;
 
         // Completed
         animator.enabled = true;
         Focus(Player.instance.playerCam.transform);
+        interactable = false;
     }
 
     public override void Focus(Transform focus)

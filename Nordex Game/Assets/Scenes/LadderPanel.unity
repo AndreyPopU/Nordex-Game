@@ -348,13 +348,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133972387}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.497, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.91, z: -0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2033387369}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &133972389
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133972387}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -5801228030656462994, guid: ae1b74b548e2c034aa2a71855e77c0ee, type: 3}
 --- !u!1 &140295109
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +844,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockAxis: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   index: 3
+  connectedIndex: -1
   interactable: 1
   dragged: 0
   placed: 0
@@ -1099,7 +1103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockAxis: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   index: 4
+  connectedIndex: -1
   interactable: 1
   dragged: 0
   placed: 0
@@ -1320,7 +1328,7 @@ GameObject:
   - component: {fileID: 503270641}
   - component: {fileID: 503270644}
   - component: {fileID: 503270645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TriangleShape
   m_TagString: Triangle
   m_Icon: {fileID: 0}
@@ -1599,7 +1607,7 @@ GameObject:
   - component: {fileID: 551717514}
   - component: {fileID: 551717517}
   - component: {fileID: 551717518}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SquareShape
   m_TagString: Quad
   m_Icon: {fileID: 0}
@@ -2578,7 +2586,7 @@ GameObject:
   - component: {fileID: 884916881}
   - component: {fileID: 884916884}
   - component: {fileID: 884916885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PentagonObject
   m_TagString: Pentagon
   m_Icon: {fileID: 0}
@@ -2675,7 +2683,7 @@ GameObject:
   - component: {fileID: 925882111}
   - component: {fileID: 925882114}
   - component: {fileID: 925882115}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HexagonShape
   m_TagString: Hexagon
   m_Icon: {fileID: 0}
@@ -3639,7 +3647,7 @@ GameObject:
   - component: {fileID: 1368225733}
   - component: {fileID: 1368225732}
   - component: {fileID: 1368225731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CircleShape
   m_TagString: Quad
   m_Icon: {fileID: 0}
@@ -4025,7 +4033,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockAxis: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   index: 5
+  connectedIndex: -1
   interactable: 1
   dragged: 0
   placed: 0
@@ -4239,7 +4251,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockAxis: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   index: 0
+  connectedIndex: -1
   interactable: 1
   dragged: 0
   placed: 0
@@ -4339,7 +4355,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockAxis: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   index: 1
+  connectedIndex: -1
   interactable: 1
   dragged: 0
   placed: 0
@@ -5012,7 +5032,15 @@ MonoBehaviour:
   focusTransform: {fileID: 2039937808}
   smoothing: 0.1
   finishedFocusing: 1
+  interactable: 1
   panel: {fileID: 7074642586329490210}
+  placements:
+  - {fileID: 925882114}
+  - {fileID: 503270644}
+  - {fileID: 551717517}
+  - {fileID: 1368225732}
+  - {fileID: 2033387371}
+  - {fileID: 884916884}
   wires:
   - {fileID: 1511898605}
   - {fileID: 1437887458}
@@ -5231,7 +5259,7 @@ GameObject:
   - component: {fileID: 2033387372}
   - component: {fileID: 2033387371}
   - component: {fileID: 2033387370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StarShape
   m_TagString: Quad
   m_Icon: {fileID: 0}
@@ -5479,7 +5507,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockAxis: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   index: 2
+  connectedIndex: -1
   interactable: 1
   dragged: 0
   placed: 0

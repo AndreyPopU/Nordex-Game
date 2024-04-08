@@ -6,7 +6,10 @@ using UnityEngine.Device;
 
 public class PanelWires : Puzzle
 {
+    public static PanelWires instance;
+
     public GameObject panel;
+    public PlacementBox[] placements;
     public PlacementItem[] wires;
     public Screw[] screws;
 
@@ -16,6 +19,7 @@ public class PanelWires : Puzzle
 
     private void Start()
     {
+        instance = this;
         coreCollider = GetComponent<BoxCollider>();
         panelCollider = GetComponents<BoxCollider>()[1];
         panelPosition = panel.transform.position;
@@ -61,5 +65,18 @@ public class PanelWires : Puzzle
 
         panelPosition += -panel.transform.forward * 4 - panel.transform.right * .2f;
         panelCollider.enabled = false;
+    }
+
+    public void CheckComplete()
+    {
+        for (int i = 0; i < wires.Length; i++)
+        {
+            if (wires[i].connectedIndex != wires[i].index) return;
+        }
+
+        // Complete
+        print("Completed");
+        Focus(Player.instance.playerCam.transform);
+        interactable = false;
     }
 }

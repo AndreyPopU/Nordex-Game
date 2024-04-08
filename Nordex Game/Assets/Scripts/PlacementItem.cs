@@ -9,7 +9,9 @@ public class PlacementItem : MonoBehaviour
     public enum LockAxis { X, Y, Z }
 
     public LockAxis lockAxis;
+    public LayerMask mask;
     public int index;
+    public int connectedIndex;
     public bool interactable = true;
 
     private BoxCollider coreCollider;
@@ -65,22 +67,41 @@ public class PlacementItem : MonoBehaviour
     {
         dragged = false;
 
-        Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, 7);
+        Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, mask);
+
+        if (colliders.Length == 0)
+        {
+            transform.position = startPosition;
+            if (connectedIndex > -1)
+            {
+                PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = true;
+                connectedIndex = -1;
+            }
+            return;
+        }
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].TryGetComponent(out PlacementBox box) && box.index == index)
+            if (colliders[i].TryGetComponent(out PlacementBox box))
             {
                 // Snap
-                interactable = false;
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 transform.position = box.transform.position;
-                colliders[i].GetComponent<PlacementBox>().full = true;
+                connectedIndex = box.index;
+                PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = false;
+                PanelWires.instance.CheckComplete();
                 placed = true;
-                if (Toolbox.instance != null) Toolbox.instance.CheckComplete();
                 return;
             }
-            else transform.position = startPosition;
+            else
+            {
+                transform.position = startPosition;
+                if (connectedIndex > -1)
+                {
+                    PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = true;
+                    connectedIndex = -1;
+                }
+            }
         }
     }
 }
