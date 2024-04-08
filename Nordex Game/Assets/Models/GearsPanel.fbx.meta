@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 90cfcccb725894a41b0cdc0795586979
+guid: 4a8c227ef0f226242b3851a9c45bde4e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubber
+    second: {fileID: 2100000, guid: 20c6c729540c8784cbf9ead1904cfb8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steel
+    second: {fileID: 2100000, guid: 7215794f7e6bdbb4bbc3c94d9ca16fb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steel_Bolts
+    second: {fileID: 2100000, guid: 66d3683e520e91949980474c452c6c34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Timer
+    second: {fileID: 2100000, guid: 6e8c8ae8f0e7d154a99eda28698737a1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
