@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CaptchaNumber : MonoBehaviour
 {
@@ -10,11 +10,11 @@ public class CaptchaNumber : MonoBehaviour
     public List<CaptchaNumber> neighbours;
     public bool interactable;
 
-    private Text text;
+    private TextMeshProUGUI text;
 
     void Start()
     {
-        text = GetComponentInChildren<Text>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
         if (value>= 0) text.text = value.ToString();
     }
 
