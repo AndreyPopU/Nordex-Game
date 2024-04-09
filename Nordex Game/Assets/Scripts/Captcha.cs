@@ -56,33 +56,45 @@ public class Captcha : Puzzle
         // If last selected square doesn't contain the newly selected square as one of it's neighbours, return
         if (selected.Count > 0 && !selected[selected.Count - 1].neighbours.Contains(_number)) return;
 
+        if (selected.Count > 0) selected[selected.Count - 1].HighlightNeighbours(false);
+        _number.text.color = Color.black;
+        _number.desiredPosition = _number.startPos + _number.transform.forward * .1f;
         selected.Add(_number);
         current += _number.value;
         _number.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.blue;
+        _number.Highlight(true);
+        _number.HighlightNeighbours(true);
 
         if (current == target)
         {
             foreach (CaptchaNumber number in selected)
                 number.Lock();
 
-            selected.Clear();
-        }
-        else if (current > target)
-        {
-            foreach (CaptchaNumber number in selected)
-                number.ResetNumber();
-
             current = 0;
             selected.Clear();
 
             CheckComplete();
+        }
+        else if (current > target)
+        {
+            foreach (CaptchaNumber number in selected)
+            {
+                number.ResetNumber();
+                number.SmartCoroutine(number.ShakeCO());
+            }
+            current = 0;
+            selected.Clear();
         }
     }
 
     public void RestartMinigame()
     {
         foreach (CaptchaNumber number in numbers)
+        {
+            if (!number.interactable) number.SmartCoroutine(number.SpinCO());
             number.ResetNumber();
+            number.text.gameObject.SetActive(true);
+        }
 
         current = 0;
         selected.Clear();
@@ -95,7 +107,7 @@ public class Captcha : Puzzle
             if (number.interactable) return;
         }
 
-        Focus(Player.instance.playerCam);
+            Focus(Player.instance.playerCam);
         interactable = false;
     }
 }
