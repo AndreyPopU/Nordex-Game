@@ -86,6 +86,8 @@ public class PlacementItem : MonoBehaviour
             {
                 // Snap
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
+                // If you disconnect and reconnect with different shape - enable the last connected shape's collider
+                if (connectedIndex >= 0 && connectedIndex != box.index) PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = true;
                 transform.position = box.transform.position;
                 connectedIndex = box.index;
                 PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = false;
