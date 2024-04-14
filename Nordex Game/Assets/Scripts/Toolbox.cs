@@ -9,7 +9,7 @@ public class Toolbox : Puzzle
     public static Toolbox instance;
 
     public LayerMask mask;
-    public PlacementItem[] tools;
+    public Tool[] tools;
     public PlacementBox[] placements;
     public Animator animator;
 
@@ -21,7 +21,7 @@ public class Toolbox : Puzzle
         instance = this;
         coreCollider = GetComponent<BoxCollider>();
         completeCollider = GetComponents<BoxCollider>()[1];
-        tools = GetComponentsInChildren<PlacementItem>();
+        tools = GetComponentsInChildren<Tool>();
         placements = GetComponentsInChildren<PlacementBox>();
     }
 

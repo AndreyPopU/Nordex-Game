@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Device;
+using UnityEngine.UI;
 
-public class PanelWires : Puzzle
+public class Clockwork : Puzzle
 {
-    public static PanelWires instance;
+    public static Clockwork instance;
 
+    [Header("Time")]
+    public float timeLeft = 10;
+    public bool timeActive;
+    public Slider timeSlider;
+
+    [Header("Puzzle")]
     public GameObject panel;
-    public PlacementBox[] placements;
-    public Wire[] wires;
+    public PlacementBox[] sockets;
+    public Cog[] cogs;
     public Screw[] screws;
 
     private Vector3 panelPosition;
     private BoxCollider coreCollider;
+    private float baseTimeLeft;
     [HideInInspector] public BoxCollider panelCollider;
 
     private void Awake()
@@ -23,11 +29,28 @@ public class PanelWires : Puzzle
         coreCollider = GetComponent<BoxCollider>();
         panelCollider = GetComponents<BoxCollider>()[1];
         panelPosition = panel.transform.position;
+        baseTimeLeft = timeLeft;
     }
 
     private void Update()
     {
         panel.transform.position = Vector3.MoveTowards(panel.transform.position, panelPosition, 6 * Time.deltaTime);
+
+        if (!timeActive) return;
+
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            timeSlider.value = timeLeft;
+        }
+        else
+        {
+            print("Time ran out!");
+            foreach (Cog cog in cogs)
+                cog.ResetPos();
+
+            timeLeft = baseTimeLeft;
+        }
     }
 
     public override void Focus(Transform focus)
@@ -40,9 +63,11 @@ public class PanelWires : Puzzle
         Player.instance.rb.isKinematic = Player.instance.focused;
         Player.instance.rb.velocity = Vector3.zero;
 
-        for (int i = 0; i < wires.Length; i++)
-            if (!wires[i].placed)
-                wires[i].interactable = Player.instance.focused;
+        if (!timeActive) timeLeft = baseTimeLeft; // Reset time
+
+        for (int i = 0; i < cogs.Length; i++)
+            if (!cogs[i].placed)
+                cogs[i].interactable = Player.instance.focused;
 
         for (int i = 0; i < screws.Length; i++)
         {
@@ -55,7 +80,7 @@ public class PanelWires : Puzzle
             screws[i].interactable = Player.instance.focused;
         }
 
-        if (panel.transform.localPosition.y < 0) panelPosition += panel.transform.forward * 4 + panel.transform.right * .2f;
+        if (panel.transform.localPosition.x < -1) panelPosition += panel.transform.right * 4 + panel.transform.up * .2f;
     }
 
     private void OnMouseDown()
@@ -63,15 +88,16 @@ public class PanelWires : Puzzle
         for (int i = 0; i < screws.Length; i++)
             if (screws[i].screwed) return;
 
-        panelPosition += -panel.transform.forward * 4 - panel.transform.right * .2f;
+        timeActive = true;
+        panelPosition += -panel.transform.right * 4 - panel.transform.up * .2f;
         panelCollider.enabled = false;
     }
 
     public void CheckComplete()
     {
-        for (int i = 0; i < wires.Length; i++)
+        for (int i = 0; i < sockets.Length; i++)
         {
-            if (wires[i].connectedIndex != wires[i].index) return;
+            if (!sockets[i].full) return;
         }
 
         // Complete

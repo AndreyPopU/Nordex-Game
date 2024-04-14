@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Screw : MonoBehaviour
 {
+    public enum Puzzle { wires, clockwork }
+
+    public Puzzle puzzle;
     public bool screwed = true;
     public bool interactable;
     public float screwSpeed = 3;
@@ -11,12 +14,14 @@ public class Screw : MonoBehaviour
     [HideInInspector] public GameObject GFX;
     private Animator animator;
     private Vector3 desiredPosition;
+    private Clockwork clockwork;
     private PanelWires wires;
 
     void Start()
     {
         GFX = transform.GetChild(0).gameObject;
-        wires = GetComponentInParent<PanelWires>();
+        clockwork = Clockwork.instance;
+        wires = PanelWires.instance;
         animator = GetComponent<Animator>();
         desiredPosition = transform.position;
     }
@@ -42,16 +47,32 @@ public class Screw : MonoBehaviour
     {
         if (!interactable) return;
 
+        if (puzzle == Puzzle.clockwork && !Player.instance.hasToolbox) return;
+
         animator.SetTrigger("Screw");
         screwed = !screwed;
-        desiredPosition += screwed ? transform.right : -transform.right;
 
-        for (int i = 0; i < wires.screws.Length; i++)
+        if (puzzle == Puzzle.wires)
         {
-            if (wires.screws[i].screwed)
-                return;
-        }
-        wires.panelCollider.enabled = true;
+            desiredPosition += screwed ? transform.right : -transform.right;
 
+            for (int i = 0; i < wires.screws.Length; i++)
+            {
+                if (wires.screws[i].screwed)
+                    return;
+            }
+            wires.panelCollider.enabled = true;
+        }
+        else if (puzzle == Puzzle.clockwork)
+        {
+            desiredPosition += screwed ? -transform.forward : transform.forward;
+
+            for (int i = 0; i < clockwork.screws.Length; i++)
+            {
+                if (clockwork.screws[i].screwed)
+                    return;
+            }
+            clockwork.panelCollider.enabled = true;
+        }
     }
 }

@@ -4,21 +4,25 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlacementItem : MonoBehaviour
+public class Cog : MonoBehaviour
 {
     public enum LockAxis { X, Y, Z }
 
     public LockAxis lockAxis;
     public LayerMask mask;
     public int index;
-    public int connectedIndex;
     public bool interactable = true;
-
-    private BoxCollider coreCollider;
-    private Camera cam;
+    public PlacementBox socket;
     public bool dragged;
     public bool placed;
     public float bonusAxis;
+
+    [Header("Spinning")]
+    public bool clockwise = true;
+    public float spinningForce = 0;
+
+    private BoxCollider coreCollider;
+    private Camera cam;
 
     private Vector3 lockPos;
     private Vector3 startPosition;
@@ -37,9 +41,18 @@ public class PlacementItem : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        transform.Rotate(transform.forward, spinningForce * Time.fixedDeltaTime);
+    }
+
     private void OnMouseDrag()
     {
         if (!interactable) return;
+
+        // Stop spinning
+        spinningForce = 0;
+        transform.rotation = Quaternion.identity;
 
         // Convert mouse position to a world point
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -71,12 +84,7 @@ public class PlacementItem : MonoBehaviour
 
         if (colliders.Length == 0)
         {
-            transform.position = startPosition;
-            if (connectedIndex > -1)
-            {
-                PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = true;
-                connectedIndex = -1;
-            }
+            ResetPos();
             return;
         }
 
@@ -84,26 +92,36 @@ public class PlacementItem : MonoBehaviour
         {
             if (colliders[i].TryGetComponent(out PlacementBox box))
             {
+                if (box.index != index)
+                {
+                    ResetPos();
+                    return;
+                }
                 // Snap
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
-                // If you disconnect and reconnect with different shape - enable the last connected shape's collider
-                if (connectedIndex >= 0 && connectedIndex != box.index) PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = true;
                 transform.position = box.transform.position;
-                connectedIndex = box.index;
-                PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = false;
-                PanelWires.instance.CheckComplete();
+                colliders[i].GetComponent<BoxCollider>().enabled = false;
                 placed = true;
+                socket = box;
+                box.full = true;
+                spinningForce = clockwise ? -75 : 75;
+                Clockwork.instance.CheckComplete();
                 return;
             }
-            else
-            {
-                transform.position = startPosition;
-                if (connectedIndex > -1)
-                {
-                    PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = true;
-                    connectedIndex = -1;
-                }
-            }
+            else ResetPos();
         }
+    }
+
+    public void ResetPos()
+    {
+        transform.position = startPosition;
+        if (socket != null)
+        {
+            socket.GetComponent<BoxCollider>().enabled = true;
+            socket.full = false;
+        }
+        transform.rotation = Quaternion.identity;
+        placed = false;
+        socket = null;
     }
 }

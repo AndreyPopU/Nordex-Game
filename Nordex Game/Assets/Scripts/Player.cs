@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public CapsuleCollider coreCollider;
     [HideInInspector] public Rigidbody rb;
 
+    // Puzzles
+    public bool hasToolbox;
     public bool focused;
     public Puzzle puzzleInRange;
 
