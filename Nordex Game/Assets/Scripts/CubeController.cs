@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
+    public ParticleSystem particleSystemPrefab; // Reference to the particle system prefab
     private bool isDragging = false;
     private bool canDrag = true; // Variable to track whether the cube can be dragged
     private Vector3 initialPosition; // Store initial position before dragging
-
-    public Vector3 InitialPosition => initialPosition;
+    private List<ParticleSystem> particleSystems = new List<ParticleSystem>(); // List to store instantiated particle systems
 
     private void Start()
     {
@@ -43,6 +44,11 @@ public class CubeController : MonoBehaviour
         {
             Vector3 newPosition = GetMouseWorldPosition();
             newPosition.z = transform.position.z; // Keep the z-position unchanged
+
+            // Instantiate particles at the current position
+            ParticleSystem particleSystemInstance = Instantiate(particleSystemPrefab, newPosition, Quaternion.identity);
+            particleSystems.Add(particleSystemInstance);
+
             transform.position = newPosition;
 
             // Check for overlapping blockers while dragging
@@ -51,6 +57,7 @@ public class CubeController : MonoBehaviour
                 // Return to initial position if overlapping with a blocker
                 transform.position = initialPosition;
                 isDragging = false; // Reset dragging state
+                ClearParticleSystems(); // Clear the particle systems
                 return;
             }
         }
@@ -63,7 +70,6 @@ public class CubeController : MonoBehaviour
             }
         }
     }
-
 
     private void OnMouseUp()
     {
@@ -78,12 +84,23 @@ public class CubeController : MonoBehaviour
             {
                 // Snap to the overlapping cube's position
                 transform.position = cube.transform.position;
+                // Don't clear particle systems when snapping to another cube
                 return;
             }
         }
 
         // If no overlapping cube found, return to initial position
         transform.position = initialPosition;
+        ClearParticleSystems(); // Clear the particle systems
+    }
+
+    private void ClearParticleSystems()
+    {
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            Destroy(ps.gameObject); // Destroy each particle system instance
+        }
+        particleSystems.Clear(); // Clear the list
     }
 
     private Vector3 GetMouseWorldPosition()

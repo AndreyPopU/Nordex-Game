@@ -6468,6 +6468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d81f83d5149743a6e786dd874d54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 6948863630367700688, guid: b4da02e507d43d943a1138fb70cc9459, type: 3}
 --- !u!1 &1596462714
 GameObject:
   m_ObjectHideFlags: 0
@@ -8133,6 +8134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d81f83d5149743a6e786dd874d54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 6948863630367700688, guid: f5b9f6ce62b04b443bb7b2c9bc1b6b58, type: 3}
 --- !u!1001 &1864334077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9321,6 +9323,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1763499687}
     m_Modifications:
+    - target: {fileID: 2484785965063341921, guid: 267617de3335e0843800578b4fe5f60f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e9c8ab2a75d6f144ab33ee7b90a71d6, type: 2}
     - target: {fileID: 3006131308626267528, guid: 267617de3335e0843800578b4fe5f60f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9692,6 +9698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d81f83d5149743a6e786dd874d54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 6948863630367700688, guid: 6cba034ad721f4846b7910b84c32acc3, type: 3}
 --- !u!1001 &2123003418
 PrefabInstance:
   m_ObjectHideFlags: 0
