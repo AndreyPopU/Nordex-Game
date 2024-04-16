@@ -8,13 +8,13 @@ public class Clockwork : Puzzle
     public static Clockwork instance;
 
     [Header("Time")]
-    public float timeLeft = 10;
+    public float timeLeft = 30;
     public bool timeActive;
     public Slider timeSlider;
 
     [Header("Puzzle")]
     public GameObject panel;
-    public PlacementBox[] sockets;
+    public CogSocket[] sockets;
     public Cog[] cogs;
     public Screw[] screws;
 

@@ -41,14 +41,12 @@ public class Cog : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        transform.Rotate(transform.forward, spinningForce * Time.fixedDeltaTime);
-    }
-
     private void OnMouseDrag()
     {
         if (!interactable) return;
+
+        // Remove from parent socket
+        if (transform.parent != null) transform.SetParent(null);
 
         // Stop spinning
         spinningForce = 0;
@@ -104,7 +102,7 @@ public class Cog : MonoBehaviour
                 placed = true;
                 socket = box;
                 box.full = true;
-                spinningForce = clockwise ? -75 : 75;
+                transform.SetParent(box.transform);
                 Clockwork.instance.CheckComplete();
                 return;
             }
