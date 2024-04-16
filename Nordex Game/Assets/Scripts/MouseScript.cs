@@ -4,10 +4,10 @@ public class MouseScript : MonoBehaviour
 {
     void Start()
     {
-        // Lock the cursor to the game window center
-        Cursor.lockState = CursorLockMode.Locked;
+        //// Lock the cursor to the game window center
+        //Cursor.lockState = CursorLockMode.Locked;
 
-        // Hide the cursor
-        Cursor.visible = false;
+        //// Hide the cursor
+        //Cursor.visible = false;
     }
 }
