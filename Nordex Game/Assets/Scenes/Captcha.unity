@@ -1500,6 +1500,7 @@ MonoBehaviour:
   orientation: {fileID: 1840172949}
   coreCollider: {fileID: 0}
   rb: {fileID: 0}
+  hasToolbox: 0
   focused: 0
   puzzleInRange: {fileID: 0}
   moveSpeed: 4500
