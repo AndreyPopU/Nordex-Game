@@ -210,4 +210,14 @@ public class CubeControllerScript : MonoBehaviour
         }
         return false;
     }
+
+    // Method for other CS
+    public void ResetCube()
+    {
+        // Reset cube to initial position
+        transform.position = initialPosition;
+
+        // Clear particle systems
+        ClearParticleSystems();
+    }
 }
