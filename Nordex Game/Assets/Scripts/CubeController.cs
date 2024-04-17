@@ -45,16 +45,45 @@ public class CubeController : MonoBehaviour
             Vector3 newPosition = GetMouseWorldPosition();
             newPosition.z = transform.position.z; // Keep the z-position unchanged
 
-            // Instantiate particles at the current position
-            ParticleSystem particleSystemInstance = Instantiate(particleSystemPrefab, newPosition, Quaternion.identity);
-            particleSystems.Add(particleSystemInstance);
-
-            transform.position = newPosition;
-
-            // Check for overlapping blockers while dragging
-            if (IsOverlappingWithBlocker())
+            // Check if the cube can cross particle systems of different colors
+            bool canCrossParticleSystems = true;
+            if (gameObject.CompareTag("Red"))
             {
-                // Return to initial position if overlapping with a blocker
+                canCrossParticleSystems = !IsOverlappingWithParticleSystems("YellowCubeParticles") &&
+                                          !IsOverlappingWithParticleSystems("BlueCubeParticles");
+            }
+            else if (gameObject.CompareTag("Yellow"))
+            {
+                canCrossParticleSystems = !IsOverlappingWithParticleSystems("RedCubeParticles") &&
+                                          !IsOverlappingWithParticleSystems("BlueCubeParticles");
+            }
+            else if (gameObject.CompareTag("Blue"))
+            {
+                canCrossParticleSystems = !IsOverlappingWithParticleSystems("RedCubeParticles") &&
+                                          !IsOverlappingWithParticleSystems("YellowCubeParticles");
+            }
+
+            if (canCrossParticleSystems)
+            {
+                // Instantiate particles at the current position
+                ParticleSystem particleSystemInstance = Instantiate(particleSystemPrefab, newPosition, Quaternion.identity);
+                particleSystems.Add(particleSystemInstance);
+
+                transform.position = newPosition;
+
+                // Check for overlapping blockers while dragging
+                if (IsOverlappingWithBlocker())
+                {
+                    // Return to initial position if overlapping with a blocker
+                    transform.position = initialPosition;
+                    isDragging = false; // Reset dragging state
+                    ClearParticleSystems(); // Clear the particle systems
+                    return;
+                }
+            }
+            else
+            {
+                // Cube cannot cross particle systems of different colors, return to initial position
                 transform.position = initialPosition;
                 isDragging = false; // Reset dragging state
                 ClearParticleSystems(); // Clear the particle systems
@@ -132,6 +161,22 @@ public class CubeController : MonoBehaviour
         Bounds bounds1 = GetComponent<Renderer>().bounds;
         Bounds bounds2 = otherCube.GetComponent<Renderer>().bounds;
         return bounds1.Intersects(bounds2);
+    }
+
+    private bool IsOverlappingWithParticleSystems(string particleSystemTag)
+    {
+        GameObject[] particleSystems = GameObject.FindGameObjectsWithTag(particleSystemTag);
+        foreach (GameObject ps in particleSystems)
+        {
+            Bounds bounds1 = GetComponent<Renderer>().bounds;
+            Bounds bounds2 = ps.GetComponent<Renderer>().bounds;
+            if (bounds1.Intersects(bounds2))
+            {
+                Debug.Log("Overlap detected with particle system: " + ps.name);
+                return true; // Cube is overlapping with a particle system of the specified color
+            }
+        }
+        return false; // Cube is not overlapping with any particle system of the specified color
     }
 
     private bool IsOverlappingWithBlocker()
