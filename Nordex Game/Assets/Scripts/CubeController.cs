@@ -50,17 +50,23 @@ public class CubeController : MonoBehaviour
             if (gameObject.CompareTag("Red"))
             {
                 canCrossParticleSystems = !IsOverlappingWithParticleSystems("YellowCubeParticles") &&
-                                          !IsOverlappingWithParticleSystems("BlueCubeParticles");
+                                          !IsOverlappingWithParticleSystems("BlueCubeParticles") &&
+                                          !IsOverlappingWithParticleSystems("Yellow") &&
+                                          !IsOverlappingWithParticleSystems("Blue");
             }
             else if (gameObject.CompareTag("Yellow"))
             {
                 canCrossParticleSystems = !IsOverlappingWithParticleSystems("RedCubeParticles") &&
-                                          !IsOverlappingWithParticleSystems("BlueCubeParticles");
+                                          !IsOverlappingWithParticleSystems("BlueCubeParticles") &&
+                                          !IsOverlappingWithParticleSystems("Red") &&
+                                          !IsOverlappingWithParticleSystems("Blue");
             }
             else if (gameObject.CompareTag("Blue"))
             {
                 canCrossParticleSystems = !IsOverlappingWithParticleSystems("RedCubeParticles") &&
-                                          !IsOverlappingWithParticleSystems("YellowCubeParticles");
+                                          !IsOverlappingWithParticleSystems("YellowCubeParticles") &&
+                                          !IsOverlappingWithParticleSystems("Red") &&
+                                          !IsOverlappingWithParticleSystems("Yellow");
             }
 
             if (canCrossParticleSystems)
