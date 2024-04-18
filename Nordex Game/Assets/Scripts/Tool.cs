@@ -18,6 +18,8 @@ public class Tool : MonoBehaviour
 
     private Vector3 lockPos;
     private Vector3 startPosition;
+    public Material Overlay;
+    public MeshRenderer meshRenderer;
 
     private void Start()
     {
@@ -31,18 +33,28 @@ public class Tool : MonoBehaviour
             case LockAxis.Y: lockPos = transform.position + Vector3.up * bonusAxis; break;
             case LockAxis.Z: lockPos = transform.position + Vector3.forward * bonusAxis; break;
         }
+
+       meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
 
     private void OnMouseDown()
     {
         if (!interactable) return;
-
+        meshRenderer.materials[meshRenderer.materials.Length - 1].color = new Color(1, 0, 0, 1);
         // Save start Pos
         startPosition = transform.position;
     }
 
+    float rotationSpeed = 10f;
     private void OnMouseDrag()
     {
+        {
+            float XaxisRotation = Input.mouseScrollDelta.y * rotationSpeed;
+           
+
+            transform.Rotate(Vector3.forward, XaxisRotation);
+          
+        }
         if (!interactable) return;
 
         // Convert mouse position to a world point
@@ -64,6 +76,25 @@ public class Tool : MonoBehaviour
             // Move the object towards the mouse position
             transform.position = targetPosition;
             dragged = true;
+            
+             
+            for (int i = 0; i < colliders.Length; i++) // Loop though all colliders
+            {
+                BoxCollider currentCollider = colliders[i];
+
+                // Check for collision with other tools only
+                Collider[] overlapingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
+
+                for (int j = 0; j < overlapingColliders.Length; j++) // If colliding with another tool, return
+                {
+                    if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this)
+                    {
+                        meshRenderer.materials[meshRenderer.materials.Length - 1].color = Color.red;
+                        return;
+                    }
+                }
+                meshRenderer.materials[meshRenderer.materials.Length - 1].color = Color.green;
+            }
         }
     }
 
@@ -72,7 +103,7 @@ public class Tool : MonoBehaviour
         if (!interactable) return;
 
         dragged = false;
-
+        meshRenderer.materials[meshRenderer.materials.Length - 1].color = new Color(1, 0, 0, 0);
         for (int i = 0; i < colliders.Length; i++) // Loop though all colliders
         {
             BoxCollider currentCollider = colliders[i];
