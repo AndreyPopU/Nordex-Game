@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 34a1efb80aced0c40a51a8d17f0f42a4
-  - enabled: 1
     path: Assets/Scenes/ToolBox.unity
     guid: a8ed151f90e46254d8a48b614c8d2673
+  - enabled: 1
+    path: Assets/Scenes/Wires.unity
+    guid: 3ca4dbbe838fd3c4b95addb79805dffd
+  - enabled: 1
+    path: Assets/Scenes/Captcha.unity
+    guid: bcb00c5f2c8f91f43b27d3a4bfd886d5
+  - enabled: 1
+    path: Assets/Scenes/Frequency.unity
+    guid: 5789420949a2fba49b7579ff2c9a04db
+  - enabled: 1
+    path: Assets/Scenes/Clockwork.unity
+    guid: c733d3fd0ef288d4ab810a9bba8b8e9a
   m_configObjects: {}
