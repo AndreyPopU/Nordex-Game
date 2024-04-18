@@ -13,6 +13,15 @@ TagManager:
   - Quad
   - Pentagon
   - GameManager
+  - Red
+  - Blue
+  - Yellow
+  - Blocker
+  - RedCubeParticles
+  - BlueCubeParticles
+  - YellowCubeParticles
+  - Green
+  - GreenCubeParticles
   layers:
   - Default
   - TransparentFX
