@@ -112,6 +112,7 @@ public class Cog : MonoBehaviour
 
     public void ResetPos()
     {
+        if (transform.parent != null) transform.SetParent(null);
         transform.position = startPosition;
         if (socket != null)
         {

@@ -1,14 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Keypad : Puzzle
 {
     public static Keypad instance;
+    public TextMeshProUGUI timerText;
+    public Button[] hintButtons;
     public float time = 0f;
-    public TextMeshProUGUI text;
+    public int hintIndex;
+
+    [Header("UI")]
+    public InputField guessField;
 
     private Vector3 startPos;
 
@@ -21,16 +28,35 @@ public class Keypad : Puzzle
 
     public void Update()
     {
-        if (time > 0f)
+        if (Player.instance.focused && Player.instance.puzzleInRange == this)
         {
-            time -= Time.deltaTime;
+            if (time > 0f)
+            {
+                time -= Time.deltaTime;
 
+                TimeSpan timeSpan = TimeSpan.FromSeconds(time);
+                timerText.text = timeSpan.ToString(@"mm\:ss");
+            }
+            else
+            {
+                if (hintIndex < 3)
+                {
+                    hintButtons[hintIndex++].interactable = true;
 
+                    if (hintIndex < 3) time = 300f;
+                    else
+                    {
+                        time = 0f;
+                        timerText.text = "00:00";
+                    }
+                }
+            }
         }
-        else
-        {
-            time = 0f;
-        }
+    }
+
+    public override void Focus(Transform focus)
+    {
+        base.Focus(focus);
     }
 
     public void Shake()
@@ -48,7 +74,7 @@ public class Keypad : Puzzle
         while (elapsed < duration)
         {
 
-            shakePos = new Vector3(startPos.x + Random.Range(-.01f, .01f), startPos.y + Random.Range(-.01f, .01f), startPos.z);
+            shakePos = new Vector3(startPos.x + UnityEngine.Random.Range(-.01f, .01f), startPos.y + UnityEngine.Random.Range(-.01f, .01f), startPos.z);
             transform.position = shakePos;
             elapsed += Time.fixedDeltaTime;
             yield return waitForFixedUpdate;
