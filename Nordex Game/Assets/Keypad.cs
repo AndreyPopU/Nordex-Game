@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,13 +8,11 @@ public class Keypad : Puzzle
 {
     public static Keypad instance;
     public float time = 0f;
+    public TextMeshProUGUI text;
 
     private Vector3 startPos;
 
-    private void Awake()
-    {
-        instance = this; 
-    }
+    private void Awake() => instance = this; 
 
     private void Start()
     {
@@ -25,6 +24,12 @@ public class Keypad : Puzzle
         if (time > 0f)
         {
             time -= Time.deltaTime;
+
+
+        }
+        else
+        {
+            time = 0f;
         }
     }
 

@@ -18,8 +18,8 @@ public class Tool : MonoBehaviour
 
     private Vector3 lockPos;
     private Vector3 startPosition;
-    public Material Overlay;
-    public MeshRenderer meshRenderer;
+    private GameObject overlay;
+    private GameObject GFX;
 
     private void Start()
     {
@@ -34,27 +34,29 @@ public class Tool : MonoBehaviour
             case LockAxis.Z: lockPos = transform.position + Vector3.forward * bonusAxis; break;
         }
 
-       meshRenderer = GetComponentInChildren<MeshRenderer>();
+        GFX = transform.GetChild(0).gameObject;
+        overlay = transform.GetChild(1).gameObject;
     }
 
     private void OnMouseDown()
     {
         if (!interactable) return;
-        meshRenderer.materials[meshRenderer.materials.Length - 1].color = new Color(1, 0, 0, 1);
+
         // Save start Pos
         startPosition = transform.position;
+
+        // Enable Overlay
+        //GFX.SetActive(false);
+        overlay.SetActive(true);
     }
 
     float rotationSpeed = 10f;
     private void OnMouseDrag()
     {
-        {
-            float XaxisRotation = Input.mouseScrollDelta.y * rotationSpeed;
-           
-
-            transform.Rotate(Vector3.forward, XaxisRotation);
+        // Mouse Rotation
+        float XaxisRotation = Input.mouseScrollDelta.y * rotationSpeed;
+        transform.Rotate(Vector3.forward, XaxisRotation);
           
-        }
         if (!interactable) return;
 
         // Convert mouse position to a world point
@@ -87,13 +89,20 @@ public class Tool : MonoBehaviour
 
                 for (int j = 0; j < overlapingColliders.Length; j++) // If colliding with another tool, return
                 {
+                    // Check if colliding with another tool
                     if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this)
                     {
-                        meshRenderer.materials[meshRenderer.materials.Length - 1].color = Color.red;
+                        // Red Overlay
+                        foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)
+                            mat.color = new Color(1, 0, 0, .3f);
+
                         return;
                     }
                 }
-                meshRenderer.materials[meshRenderer.materials.Length - 1].color = Color.green;
+
+                // Green Overlay
+                foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)
+                    mat.color = new Color(0, 1, 0, .3f);
             }
         }
     }
@@ -103,7 +112,12 @@ public class Tool : MonoBehaviour
         if (!interactable) return;
 
         dragged = false;
-        meshRenderer.materials[meshRenderer.materials.Length - 1].color = new Color(1, 0, 0, 0);
+
+        // Enable Overlay
+        GFX.SetActive(true);
+        overlay.SetActive(false);
+
+
         for (int i = 0; i < colliders.Length; i++) // Loop though all colliders
         {
             BoxCollider currentCollider = colliders[i];
