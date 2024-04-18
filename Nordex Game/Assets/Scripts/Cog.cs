@@ -17,10 +17,6 @@ public class Cog : MonoBehaviour
     public bool placed;
     public float bonusAxis;
 
-    [Header("Spinning")]
-    public bool clockwise = true;
-    public float spinningForce = 0;
-
     private BoxCollider coreCollider;
     private Camera cam;
 
@@ -49,7 +45,6 @@ public class Cog : MonoBehaviour
         if (transform.parent != null) transform.SetParent(null);
 
         // Stop spinning
-        spinningForce = 0;
         transform.rotation = Quaternion.identity;
 
         // Convert mouse position to a world point
@@ -88,12 +83,14 @@ public class Cog : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
+            print(colliders[i].gameObject.name);
+
             if (colliders[i].TryGetComponent(out PlacementBox box))
             {
                 if (box.index != index)
                 {
                     ResetPos();
-                    return;
+                    continue;
                 }
                 // Snap
                 GetComponent<Rigidbody>().velocity = Vector3.zero;

@@ -14,8 +14,10 @@ public class Keypad : Puzzle
     public Button[] hintButtons;
     public float time = 0f;
     public int hintIndex;
+    public HintManager hintInstance;
 
     [Header("UI")]
+    public CanvasGroup canvas;
     public TextMeshProUGUI guessField;
 
     private Vector3 startPos;
@@ -25,6 +27,7 @@ public class Keypad : Puzzle
     private void Start()
     {
         startPos = transform.position;
+        canvas.alpha = 0;
     }
 
     public void Update()
@@ -43,6 +46,7 @@ public class Keypad : Puzzle
                 if (hintIndex < 3)
                 {
                     hintButtons[hintIndex++].interactable = true;
+                    
 
                     if (hintIndex < 3) time = 300f;
                     else
@@ -63,6 +67,9 @@ public class Keypad : Puzzle
         //if (Player.instance.focused && selectedGameObject == guessField.gameObject) return; 
 
         base.Focus(focus);
+
+        if (Player.instance.focused) StartCoroutine(FadeCanvas(1));
+        else StartCoroutine(FadeCanvas(0));
     }
 
     public void Shake()
@@ -87,5 +94,32 @@ public class Keypad : Puzzle
         }
 
         transform.position = startPos;
+    }
+
+    private IEnumerator FadeCanvas(float desire)
+    {
+        YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
+
+        if (canvas.alpha > desire)
+        {
+            while (canvas.alpha > desire)
+            {
+                canvas.alpha -= 2 * Time.fixedDeltaTime;
+                yield return waitForFixedUpdate;
+            }
+        } 
+        else
+        {
+            if (canvas.alpha < desire)
+            {
+                while (canvas.alpha < desire)
+                {
+                    canvas.alpha += 2 * Time.fixedDeltaTime;
+                    yield return waitForFixedUpdate;
+                }
+            }
+        }
+
+        canvas.alpha = desire;
     }
 }

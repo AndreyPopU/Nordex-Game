@@ -1,60 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HintManager : MonoBehaviour
 {
-    public GameObject hintDescription;
-    public bool descriptionVisible;
+    public string description;
+    public Color active, inactive;
+    public TextMeshProUGUI buttonText;
+    public TextMeshProUGUI descriptionText;
+    public Image hintTab;
+    public Sprite activeUI; 
 
-    private Coroutine runningCo;
-
-    public void SmartCoroutine(IEnumerator coroutine)
+    public void EnableHint()
     {
-        if (runningCo == null) runningCo = StartCoroutine(coroutine);
-        else
-        {
-            StopCoroutine(runningCo);
-            runningCo = StartCoroutine(coroutine);
-        }
-    }
+        transform.parent.parent.GetComponent<Animator>().SetTrigger("activate");
+        if (Keypad.instance.hintInstance != null) buttonText.color = inactive;
 
-    public void RevealHint()
-    {
-        if (!descriptionVisible) SmartCoroutine(RevealHintCO());
-        else SmartCoroutine(HideHintCO());
-        descriptionVisible = !descriptionVisible;
-    }
+        Keypad.instance.hintInstance = this;
 
-    private IEnumerator RevealHintCO()
-    {
-        YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
-        float currentY = hintDescription.transform.localScale.y;
-
-        while (hintDescription.transform.localScale.y < 1)
-        {
-            currentY += .1f;
-            hintDescription.transform.localScale = new Vector3(1, currentY, 1);
-            yield return waitForFixedUpdate;
-        }
-
-        hintDescription.transform.localScale = Vector3.one;
-        runningCo = null;
-    }
-
-    private IEnumerator HideHintCO()
-    {
-        YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
-        float currentY = hintDescription.transform.localScale.y;
-
-        while (hintDescription.transform.localScale.y > 0)
-        {
-            currentY -= .1f;
-            hintDescription.transform.localScale = new Vector3(1, currentY, 1);
-            yield return waitForFixedUpdate;
-        }
-
-        hintDescription.transform.localScale = new Vector3(1, 0, 1);
-        runningCo = null;
-    }
+        descriptionText.text = description;
+        hintTab.sprite = activeUI;
+        buttonText.color = active;
+}
 }
