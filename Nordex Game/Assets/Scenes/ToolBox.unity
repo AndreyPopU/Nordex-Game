@@ -180,6 +180,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: acca5440f69d95246b002b642841fe75, type: 2}
   - {fileID: 2100000, guid: efc09e570640b58458684f6191994c99, type: 2}
   - {fileID: 2100000, guid: ecb385d15ca586c4d8cbae6b7459e2b4, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -515,6 +516,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 65034d850a5e5ed42bcff070167dfa29, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -647,6 +649,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!1 &666831507
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +728,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &666831511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -927,6 +933,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 4de6f6b6578bea8459f545616746bb74, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4de6f6b6578bea8459f545616746bb74, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9105bc9483f139a45b2dd72b7fa7670a, type: 2}
@@ -950,6 +960,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[5]
       value: 
       objectReference: {fileID: 2100000, guid: 46c1799faba8fb249a23eba8df2e9059, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 4de6f6b6578bea8459f545616746bb74, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
     - target: {fileID: 919132149155446097, guid: 4de6f6b6578bea8459f545616746bb74, type: 3}
       propertyPath: m_Name
       value: Drill
@@ -1018,6 +1032,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d6670916a13dbc440b68350f69e5dc9c, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1536,6 +1551,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &979971529
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1638,6 +1655,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d6670916a13dbc440b68350f69e5dc9c, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1721,6 +1739,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 65034d850a5e5ed42bcff070167dfa29, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1853,6 +1872,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 4b6994e960ae253439863d06b2ebb81f, type: 2}
   - {fileID: 2100000, guid: e61057556c1381e4fa0b3800d51947bc, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1937,6 +1957,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: bbeb62699b75d6b479762bedc4a9e0d9, type: 2}
   - {fileID: 2100000, guid: 39ecbc99e562e3e40a2218722abe24d2, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2077,6 +2098,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 65034d850a5e5ed42bcff070167dfa29, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2160,6 +2182,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: fce98ec9449d496408d66a3cd161078c, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2243,6 +2266,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: fce98ec9449d496408d66a3cd161078c, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2388,6 +2412,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 65034d850a5e5ed42bcff070167dfa29, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2552,6 +2577,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 4b6994e960ae253439863d06b2ebb81f, type: 2}
   - {fileID: 2100000, guid: e61057556c1381e4fa0b3800d51947bc, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3130,6 +3156,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!54 &919132147738657249
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3236,6 +3264,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 32024453}
 --- !u!54 &919132148478312081
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3378,6 +3408,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!54 &919132149553663065
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3724,6 +3756,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: 4f54a6be21929ce4b9630728d2d69778, type: 2}
   - {fileID: 2100000, guid: 931ea4af83d0cab4dba9379f263ff50e, type: 2}
   - {fileID: 2100000, guid: 6e1241bbe1a982c42b9788149726f27b, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3768,6 +3801,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: 74550a30228d0f7488ddcda3a127494b, type: 2}
   - {fileID: 2100000, guid: 3b60de9791b1f9b4683463293ca4366f, type: 2}
   - {fileID: 2100000, guid: 4743d278660663b4693571af1b8e61d9, type: 2}
+  - {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4143,6 +4177,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &2823050983315109658
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4799,6 +4835,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!1 &5692861757841128888
 GameObject:
   m_ObjectHideFlags: 0
@@ -5104,6 +5142,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &7184678873608003751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5276,6 +5316,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &7223760529437613439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5391,6 +5433,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!1 &7456726943449316462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5484,6 +5528,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &7456726943449316468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5699,6 +5745,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!1 &7742901318135177083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5765,6 +5813,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &7774736306328747096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5982,6 +6032,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &8390415995653339574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6095,6 +6147,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!54 &8927203779322088806
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6163,6 +6217,8 @@ MonoBehaviour:
   dragged: 0
   placed: 0
   bonusAxis: 0
+  Overlay: {fileID: 2100000, guid: 91e11e03a5da9804483f78c76ca3e1c3, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &8927203779322088811
 BoxCollider:
   m_ObjectHideFlags: 0
