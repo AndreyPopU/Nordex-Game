@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Keypad : Puzzle
@@ -15,7 +16,7 @@ public class Keypad : Puzzle
     public int hintIndex;
 
     [Header("UI")]
-    public InputField guessField;
+    public TextMeshProUGUI guessField;
 
     private Vector3 startPos;
 
@@ -56,6 +57,11 @@ public class Keypad : Puzzle
 
     public override void Focus(Transform focus)
     {
+        //EventSystem eventSystem = EventSystem.current;
+        //GameObject selectedGameObject = eventSystem.currentSelectedGameObject;
+
+        //if (Player.instance.focused && selectedGameObject == guessField.gameObject) return; 
+
         base.Focus(focus);
     }
 
