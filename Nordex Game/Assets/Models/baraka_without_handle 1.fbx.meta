@@ -1,49 +1,9 @@
 fileFormatVersion: 2
-guid: 9e38d83b295d50944abe76615fa6d841
+guid: 3a839363c29b1864fa2dcecf6d9b8750
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Communicator
-    second: {fileID: 2100000, guid: 5754198f8a4f1614bbebe582dee37cce, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Door
-    second: {fileID: 2100000, guid: bddf0256a2627624aa3b7e52b7d9abfb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: f8dd730c4c3ffcf47a646940a3724687, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: 6664364b7e85c714281d869c4d30e392, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mice
-    second: {fileID: 2100000, guid: 2dcc9dcf3f6079d418b9598d0e80ee3d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plate
-    second: {fileID: 2100000, guid: 3b31b0c659b49cf4d9ed8c82d57239fd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Windows
-    second: {fileID: 2100000, guid: 444a677bc6641ec4b8bd5dd32cb15934, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wire
-    second: {fileID: 2100000, guid: 3339bf3deb17204468e78cbe4d00ece1, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
