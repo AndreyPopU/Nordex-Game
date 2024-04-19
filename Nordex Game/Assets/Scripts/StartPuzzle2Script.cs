@@ -1,13 +1,20 @@
 using UnityEngine;
 
-public class StartPuzzle2Script : MonoBehaviour
+public class StartPuzzle2Script : Puzzle
 {
     public GameObject puzzle2; 
     public GameObject player; 
-    public GameObject restartButton; 
+    public GameObject restartButton;
+
+    private void Start()
+    {
+        OnButtonClick();
+    }
 
     public void OnButtonClick()
     {
+        Focus(focusTransform);
+
         if ((puzzle2 != null) & (restartButton != null))
         {
             puzzle2.SetActive(true); // Activate the puzzle

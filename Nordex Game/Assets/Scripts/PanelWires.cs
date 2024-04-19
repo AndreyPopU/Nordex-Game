@@ -16,6 +16,7 @@ public class PanelWires : Puzzle
     private Vector3 panelPosition;
     private BoxCollider coreCollider;
     [HideInInspector] public BoxCollider panelCollider;
+    public CanvasGroup canvas;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class PanelWires : Puzzle
         coreCollider = GetComponent<BoxCollider>();
         panelCollider = GetComponents<BoxCollider>()[1];
         panelPosition = panel.transform.position;
+        canvas.alpha = 0;
     }
 
     private void Update()
@@ -33,6 +35,9 @@ public class PanelWires : Puzzle
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
+
+        if (Player.instance.focused) StartCoroutine(FadeCanvas(1));
+        else StartCoroutine(FadeCanvas(0));
 
         coreCollider.enabled = !Player.instance.focused;
         Player.instance.coreCollider.enabled = !Player.instance.focused;
@@ -78,5 +83,32 @@ public class PanelWires : Puzzle
         print("Completed");
         Focus(Player.instance.playerCam.transform);
         interactable = false;
+    }
+
+    private IEnumerator FadeCanvas(float desire)
+    {
+        YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
+
+        if (canvas.alpha > desire)
+        {
+            while (canvas.alpha > desire)
+            {
+                canvas.alpha -= 2 * Time.fixedDeltaTime;
+                yield return waitForFixedUpdate;
+            }
+        }
+        else
+        {
+            if (canvas.alpha < desire)
+            {
+                while (canvas.alpha < desire)
+                {
+                    canvas.alpha += 2 * Time.fixedDeltaTime;
+                    yield return waitForFixedUpdate;
+                }
+            }
+        }
+
+        canvas.alpha = desire;
     }
 }

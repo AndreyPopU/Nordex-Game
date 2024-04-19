@@ -12,6 +12,7 @@ public class Keypad : Puzzle
     public static Keypad instance;
     public TextMeshProUGUI timerText;
     public Button[] hintButtons;
+    public GameObject[] lockIcons;
     public float time = 0f;
     public int hintIndex;
     public HintManager hintInstance;
@@ -45,8 +46,10 @@ public class Keypad : Puzzle
             {
                 if (hintIndex < 3)
                 {
-                    hintButtons[hintIndex++].interactable = true;
-                    
+                    hintButtons[hintIndex].interactable = true;
+                    hintButtons[hintIndex].transform.GetChild(0).gameObject.SetActive(true);
+                    lockIcons[hintIndex].SetActive(false);
+                    hintIndex++;
 
                     if (hintIndex < 3) time = 300f;
                     else

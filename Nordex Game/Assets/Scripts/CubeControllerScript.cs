@@ -168,7 +168,7 @@ public class CubeControllerScript : MonoBehaviour
     {
         // Get the mouse position in the world
         Vector3 mousePosition = Input.mousePosition;
-        Camera firstPersonCamera = GameObject.FindGameObjectWithTag("FirstPersonCamera").GetComponent<Camera>();
+        Camera firstPersonCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         if (firstPersonCamera != null)
         {
             Ray ray = firstPersonCamera.ScreenPointToRay(mousePosition);
