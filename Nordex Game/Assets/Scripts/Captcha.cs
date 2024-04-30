@@ -107,7 +107,7 @@ public class Captcha : Puzzle
             if (number.interactable) return;
         }
 
-            Focus(Player.instance.playerCam);
+        Focus(Player.instance.playerCam);
         interactable = false;
     }
 }

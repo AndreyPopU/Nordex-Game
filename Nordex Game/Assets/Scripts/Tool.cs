@@ -85,16 +85,24 @@ public class Tool : MonoBehaviour
                 BoxCollider currentCollider = colliders[i];
 
                 // Check for collision with other tools only
-                Collider[] overlapingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
+                Collider[] overlappingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
 
-                for (int j = 0; j < overlapingColliders.Length; j++) // If colliding with another tool, return
+                for (int j = 0; j < overlappingColliders.Length; j++) // If colliding with another tool, return
                 {
                     // Check if colliding with another tool
-                    if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this)
+                    if (overlappingColliders[j].TryGetComponent(out Tool tool) && tool != this)
                     {
                         // Red Overlay
                         foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)
-                            mat.color = new Color(1, 0, 0, .3f);
+                            mat.color = new Color(1, 0, 0, .3f); // Red
+
+                        return;
+                    }
+                    else if (overlappingColliders[j].gameObject.name == "OutsideCollider")
+                    {
+                        // Red Overlay
+                        foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)
+                            mat.color = new Color(1, 0, 0, .3f); // Red
 
                         return;
                     }
@@ -102,7 +110,7 @@ public class Tool : MonoBehaviour
 
                 // Green Overlay
                 foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)
-                    mat.color = new Color(0, 1, 0, .3f);
+                    mat.color = new Color(0, 1, 0, .3f); // Green
             }
         }
     }
@@ -128,6 +136,11 @@ public class Tool : MonoBehaviour
             for(int j = 0; j < overlapingColliders.Length; j++) // If colliding with another tool, return
             {
                 if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this)
+                {
+                    transform.position = startPosition;
+                    return;
+                }
+                else if (overlapingColliders[j].gameObject.name == "OutsideCollider")
                 {
                     transform.position = startPosition;
                     return;

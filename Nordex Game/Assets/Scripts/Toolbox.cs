@@ -29,9 +29,7 @@ public class Toolbox : Puzzle
     {
         Collider[] overlapingColliders = Physics.OverlapBox(completeCollider.bounds.center, completeCollider.bounds.size / 2, Quaternion.identity, mask);
 
-        print(overlapingColliders.Length);
-
-        if (overlapingColliders.Length != 32) return;
+        if (overlapingColliders.Length != 38) return;
 
         // Completed
         animator.enabled = true;
