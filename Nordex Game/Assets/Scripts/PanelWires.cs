@@ -60,7 +60,8 @@ public class PanelWires : Puzzle
             screws[i].interactable = Player.instance.focused;
         }
 
-        if (panel.transform.localPosition.y < 0) panelPosition += panel.transform.forward * 4 + panel.transform.right * .2f;
+        // Close panel when unfocusing
+        if (panel.transform.localPosition.x < 0) panelPosition += panel.transform.forward * 4 + panel.transform.right * .2f;
     }
 
     private void OnMouseDown()
