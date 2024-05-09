@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public Transform target;
     void Update()
     {
-        
+        // Calculate Rotation
+        Vector3 direction = transform.position - target.position;
+
+        //Quaternion currentRotation = Quaternion.Euler(0, 0, transform.localEulerAngles.z);
+        //Quaternion desiredRotation = Quaternion.LookRotation(direction, transform.up);
+        //desiredRotation = Quaternion.Euler(0, 0, desiredRotation.eulerAngles.z);
+
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction, transform.forward), 2 * Time.deltaTime);
+
+        transform.LookAt(target);
     }
 }

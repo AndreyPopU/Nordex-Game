@@ -100,6 +100,7 @@ public class Cog : MonoBehaviour
                 socket = box;
                 box.full = true;
                 transform.SetParent(box.transform);
+                transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                 Clockwork.instance.CheckComplete();
                 return;
             }
