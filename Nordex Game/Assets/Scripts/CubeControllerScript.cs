@@ -55,43 +55,63 @@ public class CubeControllerScript : MonoBehaviour
             bool canCrossParticleSystemsOrOtherCubes = true;
             if (gameObject.CompareTag("Red"))
             {
-                // Check overlapping with yellow and blue and green cubes and their particle systems
+                // Check overlapping with yellow and blue and green and purple cubes and their particle systems
                 canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green");
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
             }
             else if (gameObject.CompareTag("Yellow"))
             {
-                // Check overlapping with red and blue and green cubes and their particle systems
+                // Check overlapping with red and blue and green and purple cubes and their particle systems
                 canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green");
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
             }
             else if (gameObject.CompareTag("Blue"))
             {
-                // Check overlapping with red and yellow and green cubes and their particle systems
+                // Check overlapping with red and yellow and green and purple cubes and their particle systems
                 canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green");
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
             }
             else if (gameObject.CompareTag("Green"))
             {
-                // Check overlapping with red and blue and yellow cubes and their particle systems
+                // Check overlapping with red and blue and yellow and purple cubes and their particle systems
                 canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
                                           !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow");
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
+            }
+            else if (gameObject.CompareTag("Purple"))
+            {
+                // Check overlapping with red and blue and yellow and green cubes and their particle systems
+                canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
+                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green");
             }
 
             // If cube can cross, instantiate a particle system at the new position

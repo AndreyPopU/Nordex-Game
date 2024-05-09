@@ -22,6 +22,8 @@ TagManager:
   - YellowCubeParticles
   - Green
   - GreenCubeParticles
+  - Purple
+  - PurpleCubeParticles
   layers:
   - Default
   - TransparentFX
