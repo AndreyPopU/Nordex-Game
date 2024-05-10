@@ -1,21 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraShake : MonoBehaviour
+public class CameraShakeScript : MonoBehaviour
 {
-    // Duration of the shake effect
     public float shakeDuration = 1.5f;
-
-    // Magnitude of the shake effect
     public float shakeMagnitude = 0.02f;
-
-    // Time interval between shakes
     public float shakeInterval = 5f;
 
-    // Reference to the camera that will shake
     public Camera cameraToShake;
 
-    // Original position of the camera
     private Vector3 originalPosition;
 
     void OnEnable()
@@ -26,10 +19,8 @@ public class CameraShake : MonoBehaviour
             return;
         }
 
-        // Store the original position of the camera
         originalPosition = cameraToShake.transform.localPosition;
 
-        // Start the shake effect immediately
         StartCoroutine(Shake());
 
         // Schedule repeated shakes
