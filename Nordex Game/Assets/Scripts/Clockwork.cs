@@ -18,6 +18,10 @@ public class Clockwork : Puzzle
     public Cog[] cogs;
     public Screw[] screws;
 
+    [Header("Variants")]
+    public SocketVariant[] variants;
+    public int index;
+
     private Vector3 panelPosition;
     private BoxCollider coreCollider;
     private float baseTimeLeft;
@@ -30,6 +34,8 @@ public class Clockwork : Puzzle
         panelCollider = GetComponents<BoxCollider>()[1];
         panelPosition = panel.transform.position;
         baseTimeLeft = timeLeft;
+
+        ActivateVariant();
     }
 
     private void Update()
@@ -50,6 +56,8 @@ public class Clockwork : Puzzle
                 cog.ResetPos();
 
             timeLeft = baseTimeLeft;
+            ActivateVariant();
+            CameraManager.instance.Shake(.2f, .1f);
         }
     }
 
@@ -97,12 +105,23 @@ public class Clockwork : Puzzle
     {
         for (int i = 0; i < sockets.Length; i++)
         {
-            if (!sockets[i].full) return;
+            if (!sockets[i].full || !sockets[i].running) return;
         }
 
         // Complete
         print("Completed");
         Focus(Player.instance.playerCam.transform);
         interactable = false;
+    }
+
+    public void ActivateVariant()
+    {
+        variants[index].gameObject.SetActive(false);
+
+        index++;
+        if (index >= variants.Length) index = 0;
+
+        variants[index].gameObject.SetActive(true);
+        sockets = variants[index].correctSockets;
     }
 }

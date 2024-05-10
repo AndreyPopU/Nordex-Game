@@ -125,6 +125,15 @@ public class Cog : MonoBehaviour
         {
             socket.GetComponent<BoxCollider>().enabled = true;
             socket.full = false;
+
+            // If head is removed
+            if (socket == socket.head)
+            {
+                socket.frontNeighbours[0].running = false;
+                socket.frontNeighbours[0].CheckFront();
+                return;
+            }
+
             socket.running = false;
             socket.Run();
 
@@ -158,7 +167,9 @@ public class Cog : MonoBehaviour
 
             socket.head.running = true;
             socket.head.CheckFront();
+            Clockwork.instance.CheckComplete();
         }
+
         transform.rotation = Quaternion.identity;
         placed = false;
         socket = null;

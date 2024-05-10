@@ -15,15 +15,21 @@ public class ChainLink : MonoBehaviour
     private Vector3 direction;
     public Vector3 current;
     public int index;
+    public CogSocket socket;
 
     private void Start()
     {
         current = path[index].position;
         transform.position = current;
+
+        direction = next.position - transform.position;
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.forward);
     }
 
     void Update()
     {
+        if (!socket.running) return;
+
         // Calculate Rotation
         direction = next.position - transform.position;
         transform.rotation = Quaternion.LookRotation(direction, Vector3.forward);
