@@ -3,7 +3,27 @@ guid: c2722f1a28e730d4d8e28d915a70e5ed
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: METAL
+    second: {fileID: 2100000, guid: b240efe80a4ad464bbd45f84bc16ea74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SCREW METAL
+    second: {fileID: 2100000, guid: f7794e2048c1f084390604166f33d4d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nEW METAL
+    second: {fileID: 2100000, guid: 4f27cad13c661d14d9da985ffd7bc766, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wOOOD
+    second: {fileID: 2100000, guid: 62b800eb2d1a8bb4ca2e7a6e288ad4d3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
