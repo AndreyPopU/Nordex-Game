@@ -12,7 +12,7 @@ public class Cog : MonoBehaviour
     public LayerMask mask;
     public int index;
     public bool interactable = true;
-    public PlacementBox socket;
+    public CogSocket socket;
     public bool dragged;
     public bool placed;
     public float bonusAxis;
@@ -71,6 +71,8 @@ public class Cog : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (!interactable) return;
+
         dragged = false;
 
         Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, mask);
@@ -83,24 +85,26 @@ public class Cog : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            print(colliders[i].gameObject.name);
-
-            if (colliders[i].TryGetComponent(out PlacementBox box))
+            if (colliders[i].TryGetComponent(out CogSocket socket))
             {
-                if (box.index != index)
+                if (socket.index != index || socket.full)
                 {
                     ResetPos();
                     continue;
                 }
+
+                ResetSocket();
+
                 // Snap
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
-                transform.position = box.transform.position;
+                transform.position = socket.transform.position;
                 colliders[i].GetComponent<BoxCollider>().enabled = false;
                 placed = true;
-                socket = box;
-                box.full = true;
-                transform.SetParent(box.transform);
+                this.socket = socket;
+                socket.full = true;
+                transform.SetParent(socket.transform);
                 transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+                socket.Run();
                 Clockwork.instance.CheckComplete();
                 return;
             }
@@ -112,10 +116,48 @@ public class Cog : MonoBehaviour
     {
         if (transform.parent != null) transform.SetParent(null);
         transform.position = startPosition;
+        ResetSocket();
+    }
+
+    public void ResetSocket()
+    {
         if (socket != null)
         {
             socket.GetComponent<BoxCollider>().enabled = true;
             socket.full = false;
+            socket.running = false;
+            socket.Run();
+
+            // Check if any of the neighbours were rusted
+            foreach (CogSocket socket in socket.backNeighbours)
+            {
+                if (socket.rusted)
+                {
+                    socket.head.running = true;
+                    socket.head.CheckFront();
+                }
+            }
+
+            foreach (CogSocket socket in socket.frontNeighbours)
+            {
+                if (socket.rusted)
+                {
+                    socket.head.running = true;
+                    socket.head.CheckFront();
+                }
+            }
+
+            // Check if the whole chain leads to a rusted chain
+            CogSocket currentSocket = socket.head;
+            while (currentSocket != null && currentSocket.full)
+            {
+                currentSocket = currentSocket.frontNeighbours[0];
+
+                if (currentSocket.rusted) return;
+            }
+
+            socket.head.running = true;
+            socket.head.CheckFront();
         }
         transform.rotation = Quaternion.identity;
         placed = false;
