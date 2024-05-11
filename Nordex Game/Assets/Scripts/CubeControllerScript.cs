@@ -25,6 +25,12 @@ public class CubeControllerScript : MonoBehaviour
             // Coroutine used to enable dragging after a delay
             StartCoroutine(EnableDraggingAfterDelay(0.1f));
         }
+
+        // Check if any particle system is colliding with a blocker
+        if (IsParticleSystemCollidingWithBlocker())
+        {
+            ResetCube();
+        }
     }
 
     // Coroutine to enable dragging after a delay
@@ -126,18 +132,14 @@ public class CubeControllerScript : MonoBehaviour
                 // If overlapping with a blocker, reset cube position and clear particle systems
                 if (IsOverlappingWithBlocker())
                 {
-                    transform.position = initialPosition;
-                    isDragging = false;
-                    ClearParticleSystems();
+                    ResetCube();
                     return;
                 }
             }
             else
             {
                 // If cube cannot cross, reset cube position and clear particle systems
-                transform.position = initialPosition;
-                isDragging = false;
-                ClearParticleSystems();
+                ResetCube();
                 return;
             }
         }
@@ -164,7 +166,6 @@ public class CubeControllerScript : MonoBehaviour
             if (cube != gameObject && IsOverlapping(cube))
             {
                 transform.position = cube.transform.position;
-
                 return;
             }
         }
@@ -247,13 +248,34 @@ public class CubeControllerScript : MonoBehaviour
         return false;
     }
 
-    // Method for other CS
+    // Method to check if any particle system is colliding with a blocker
+    private bool IsParticleSystemCollidingWithBlocker()
+    {
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            Bounds psBounds = ps.GetComponent<Renderer>().bounds;
+            GameObject[] blockers = GameObject.FindGameObjectsWithTag("Blocker");
+            foreach (GameObject blocker in blockers)
+            {
+                Bounds blockerBounds = blocker.GetComponent<Renderer>().bounds;
+                if (psBounds.Intersects(blockerBounds))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Method to reset the cube to its initial position and clear particle systems
     public void ResetCube()
     {
-        // Reset cube to initial position
+        isDragging = false;
+        canDrag = false;
         transform.position = initialPosition;
-
-        // Clear particle systems
         ClearParticleSystems();
+
+        // Restart dragging enable delay
+        StartCoroutine(EnableDraggingAfterDelay(0.1f));
     }
 }
