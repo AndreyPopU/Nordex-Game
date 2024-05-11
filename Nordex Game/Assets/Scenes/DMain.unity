@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 4
+  waitTime: 6
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1001 &110994937
@@ -2945,7 +2945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7f464633de5fe4893087c0b496ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 40
+  waitTime: 60
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1001 &365038897
@@ -6194,7 +6194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7f464633de5fe4893087c0b496ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 32
+  waitTime: 48
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1 &719484516 stripped
@@ -7444,7 +7444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7f464633de5fe4893087c0b496ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 48
+  waitTime: 72
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1 &915158012
@@ -7898,7 +7898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7f464633de5fe4893087c0b496ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 24
+  waitTime: 36
   scalingDuration: 1
   scaleFactor: 8
 --- !u!224 &974413165 stripped
@@ -10686,7 +10686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 8
+  waitTime: 12
   scalingDuration: 1
   scaleFactor: 8
 --- !u!224 &1254062343 stripped
@@ -11609,7 +11609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 16
+  waitTime: 24
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1 &1328135219 stripped
@@ -13299,7 +13299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7f464633de5fe4893087c0b496ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 4
+  waitTime: 6
   scalingDuration: 1
   scaleFactor: 8
 --- !u!224 &1504865477 stripped
@@ -13799,7 +13799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 12
+  waitTime: 18
   scalingDuration: 1
   scaleFactor: 8
 --- !u!224 &1593999486 stripped
@@ -15889,7 +15889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 52
+  waitTime: 78
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1 &1838132797 stripped
@@ -15927,7 +15927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 36
+  waitTime: 54
   scalingDuration: 1
   scaleFactor: 8
 --- !u!224 &1844837158 stripped
@@ -15952,7 +15952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7f464633de5fe4893087c0b496ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 44
+  waitTime: 66
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1001 &1861955884
@@ -16299,7 +16299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 36
+  waitTime: 54
   scalingDuration: 1
   scaleFactor: 8
 --- !u!224 &1897634333 stripped
@@ -16319,7 +16319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7f464633de5fe4893087c0b496ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 28
+  waitTime: 42
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1001 &1898932026
@@ -18288,7 +18288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b04ac9c3e32d7439355ae8753ec6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 20
+  waitTime: 30
   scalingDuration: 1
   scaleFactor: 8
 --- !u!1001 &2130545513
