@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public bool hasToolbox;
     public bool focused;
     public Puzzle puzzleInRange;
+    public bool turbineSpin;
 
     #region Movement Variables
 
