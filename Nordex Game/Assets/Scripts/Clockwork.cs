@@ -112,6 +112,7 @@ public class Clockwork : Puzzle
         print("Completed");
         Focus(Player.instance.playerCam.transform);
         interactable = false;
+        Player.instance.turbineSpin = true;
     }
 
     public void ActivateVariant()
