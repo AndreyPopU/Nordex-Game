@@ -607,13 +607,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901964728447406798}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000020010832, y: 0.42001918, z: 0.9075152, w: 0.00000023934297}
+  m_LocalRotation: {x: 0, y: 0.12706456, z: 0.9918945, w: 0}
   m_LocalPosition: {x: -0, y: -0.274, z: -0.695}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 480501503954714016}
-  m_LocalEulerAnglesHint: {x: -49.671593, y: -0.000014355238, z: 179.99997}
+  m_LocalEulerAnglesHint: {x: -14.6, y: -0.000014355238, z: 179.99997}
 --- !u!33 &8294115416197922505
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5656,8 +5656,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.43, y: 0.43, z: 0.43}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4249836237736778561}
   - {fileID: 2877466393813581791}
@@ -5690,6 +5690,8 @@ MonoBehaviour:
   smoothing: 0.1
   finishedFocusing: 1
   interactable: 1
+  coreCollider: {fileID: 0}
+  collision: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 128
@@ -5732,7 +5734,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

@@ -6838,6 +6838,8 @@ MonoBehaviour:
   smoothing: 0.1
   finishedFocusing: 1
   interactable: 1
+  coreCollider: {fileID: 0}
+  collision: {fileID: 0}
   timeLeft: 20
   timeActive: 0
   timeSlider: {fileID: 6498727010255326203}
@@ -6889,7 +6891,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 2, z: 3}
+  m_Size: {x: 4, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &107363508262765297
 BoxCollider:
@@ -6906,12 +6908,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.8116636, y: 2, z: 1.9999998}
-  m_Center: {x: 0.007582426, y: 0, z: 0}
+  m_Size: {x: 3.8116632, y: 1.9999996, z: 0.63618267}
+  m_Center: {x: 0.0075823795, y: 0, z: 0.034577683}
 --- !u!1 &5856917728294526053
 GameObject:
   m_ObjectHideFlags: 0

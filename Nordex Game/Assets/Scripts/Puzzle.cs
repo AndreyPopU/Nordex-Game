@@ -12,9 +12,13 @@ public class Puzzle : MonoBehaviour
 
     private Camera cam;
     private Vector3 velocity;
+    [HideInInspector] public BoxCollider coreCollider;
+    [HideInInspector] public BoxCollider collision;
 
-    private void Start()
+    public virtual void Start()
     {
+        coreCollider = GetComponent<BoxCollider>();
+        collision = GetComponents<BoxCollider>()[1];
     }
 
     public virtual void Focus(Transform focus)
@@ -23,6 +27,8 @@ public class Puzzle : MonoBehaviour
 
         finishedFocusing = false;
         Player.instance.focused = !Player.instance.focused;
+        coreCollider.enabled = !Player.instance.focused;
+        collision.enabled = !Player.instance.focused;
         Player.instance.coreCollider.enabled = !Player.instance.focused;
         Player.instance.rb.isKinematic = Player.instance.focused;
         Cursor.lockState = Player.instance.focused ? CursorLockMode.None : CursorLockMode.Locked;
