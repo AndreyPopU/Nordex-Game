@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 123255068}
   - component: {fileID: 123255071}
   m_Layer: 5
-  m_Name: RestartPuzzle2Button
+  m_Name: Puzzle2RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6731,7 +6731,7 @@ GameObject:
   - component: {fileID: 773713205}
   - component: {fileID: 773713204}
   m_Layer: 5
-  m_Name: StartPuzzle2Text
+  m_Name: Puzzle2StartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15486,7 +15486,7 @@ GameObject:
   - component: {fileID: 1763499685}
   - component: {fileID: 1763499684}
   m_Layer: 5
-  m_Name: WorldCanvas
+  m_Name: Puzzle2WorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15969,7 +15969,7 @@ GameObject:
   - component: {fileID: 1785579841}
   - component: {fileID: 1785579840}
   m_Layer: 5
-  m_Name: StartPuzzle2Object
+  m_Name: Puzzle2StartObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17466,7 +17466,7 @@ GameObject:
   - component: {fileID: 2017463464}
   - component: {fileID: 2017463463}
   m_Layer: 5
-  m_Name: RestartPuzzle2Text
+  m_Name: Puzzle2RestartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

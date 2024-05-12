@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RestartPuzzle2Script : MonoBehaviour
+public class Puzzle2ReStarterScript : MonoBehaviour
 {
     public GameObject puzzle2;
     public GameObject parentGameObject;
@@ -15,25 +15,25 @@ public class RestartPuzzle2Script : MonoBehaviour
 
         if (parentGameObject != null)
         {
-            CubeControllerScript[] cubeControllers = parentGameObject.GetComponentsInChildren<CubeControllerScript>();
+            Puzzle2FormsControllerScript[] cubeControllers = parentGameObject.GetComponentsInChildren<Puzzle2FormsControllerScript>();
 
-            foreach (CubeControllerScript cubeController in cubeControllers)
+            foreach (Puzzle2FormsControllerScript cubeController in cubeControllers)
             {
                 cubeController.ResetCube();
             }
 
-            ScaleObjectSmoothlyXScript[] scaleObjectsX = parentGameObject.GetComponentsInChildren<ScaleObjectSmoothlyXScript>();
+            Puzzle2ScaleObjectSmoothlyXScript[] scaleObjectsX = parentGameObject.GetComponentsInChildren<Puzzle2ScaleObjectSmoothlyXScript>();
 
-            foreach (ScaleObjectSmoothlyXScript scaleObjectX in scaleObjectsX)
+            foreach (Puzzle2ScaleObjectSmoothlyXScript scaleObjectX in scaleObjectsX)
             {
                 scaleObjectX.StopAllCoroutines();
                 scaleObjectX.ResetToOriginalScale(); 
                 scaleObjectX.StartCoroutine(scaleObjectX.ScaleAfterDelay());
             }
 
-            ScaleObjectSmoothlyYScript[] scaleObjectsY = parentGameObject.GetComponentsInChildren<ScaleObjectSmoothlyYScript>();
+            Puzzle2ScaleObjectSmoothlyYScript[] scaleObjectsY = parentGameObject.GetComponentsInChildren<Puzzle2ScaleObjectSmoothlyYScript>();
 
-            foreach (ScaleObjectSmoothlyYScript scaleObjectY in scaleObjectsY)
+            foreach (Puzzle2ScaleObjectSmoothlyYScript scaleObjectY in scaleObjectsY)
             {
                 scaleObjectY.StopAllCoroutines();
                 scaleObjectY.ResetToOriginalScale();

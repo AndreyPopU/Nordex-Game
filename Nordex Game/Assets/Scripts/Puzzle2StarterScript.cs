@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Puzzle2Manager : MonoBehaviour
+public class Puzzle2StarterScript : MonoBehaviour
 {
     public GameObject puzzle2;
     public GameObject player;

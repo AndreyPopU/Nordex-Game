@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraShakeScript : MonoBehaviour
+public class Puzzle2CameraShakeScript : MonoBehaviour
 {
     public float shakeDuration = 1f;
     public float shakeMagnitude = 0.01f;

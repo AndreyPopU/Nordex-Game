@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ScaleObjectSmoothlyYScript : MonoBehaviour
+public class Puzzle2ScaleObjectSmoothlyXScript : MonoBehaviour
 {
     public float waitTime = 5.0f;
     public float scalingDuration = 2.0f;
@@ -19,7 +19,7 @@ public class ScaleObjectSmoothlyYScript : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * scaleFactor, originalScale.z);
+        Vector3 targetScale = new Vector3(originalScale.x * scaleFactor, originalScale.y, originalScale.z);
         float elapsedTime = 0.0f;
 
         while (elapsedTime < scalingDuration)
@@ -34,6 +34,6 @@ public class ScaleObjectSmoothlyYScript : MonoBehaviour
 
     public void ResetToOriginalScale()
     {
-        transform.localScale = originalScale; 
+        transform.localScale = originalScale;
     }
 }

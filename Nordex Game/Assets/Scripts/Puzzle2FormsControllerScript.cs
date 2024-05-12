@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeControllerScript : MonoBehaviour
+public class Puzzle2FormsControllerScript : MonoBehaviour
 {
     public ParticleSystem particleSystemPrefab;
 
@@ -14,7 +14,6 @@ public class CubeControllerScript : MonoBehaviour
 
     private void Start()
     {
-        // Store the initial position of the cube
         initialPosition = transform.position;
     }
 
@@ -42,7 +41,6 @@ public class CubeControllerScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Check if dragging is allowed
         if (canDrag)
         {
             isDragging = true;
