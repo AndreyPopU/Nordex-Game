@@ -13,16 +13,13 @@ public class Captcha : Puzzle
     public List<CaptchaNumber> selected;
 
     private BoxCollider coreCollider;
+    private BoxCollider secondCollider;
 
     void Start()
     {
         instance = this;
         coreCollider = GetComponent<BoxCollider>();
-    }
-
-    void Update()
-    {
-        
+        secondCollider = GetComponents<BoxCollider>()[1];
     }
 
     public override void Focus(Transform focus)
@@ -30,6 +27,7 @@ public class Captcha : Puzzle
         base.Focus(focus);
 
         coreCollider.enabled = !Player.instance.focused;
+        secondCollider.enabled = !Player.instance.focused;
 
         foreach (CaptchaNumber number in numbers)
             number.interactable = Player.instance.focused;
@@ -58,7 +56,7 @@ public class Captcha : Puzzle
 
         if (selected.Count > 0) selected[selected.Count - 1].HighlightNeighbours(false);
         _number.text.color = Color.black;
-        _number.desiredPosition = _number.startPos + _number.transform.forward * .1f;
+        _number.desiredPosition = _number.startPos + _number.transform.forward * .05f;
         selected.Add(_number);
         current += _number.value;
         _number.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.blue;

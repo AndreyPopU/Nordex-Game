@@ -22,7 +22,7 @@ public class WireStretch : MonoBehaviour
     void UpdateScale()
     {
         float distance = Vector3.Distance(startPivot.position, endPivot.position); 
-        transform.localScale = new Vector3(initialScale.x, distance, initialScale.z);
+        transform.localScale = new Vector3(initialScale.x, distance * 2, initialScale.z);
 
         Vector3 middlePoint = (startPivot.position + endPivot.position) / 2;
         transform.position = middlePoint;

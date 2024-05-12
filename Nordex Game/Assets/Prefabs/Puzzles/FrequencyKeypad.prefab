@@ -4814,7 +4814,8 @@ MonoBehaviour:
   - {fileID: 621597796444880040}
   - {fileID: 8207418975499268951}
   - {fileID: 1367746599051322130}
-  time: 300
+  time: 0
+  hintTime: 300
   hintIndex: 0
   hintInstance: {fileID: 0}
   canvas: {fileID: 5375472061684744227}

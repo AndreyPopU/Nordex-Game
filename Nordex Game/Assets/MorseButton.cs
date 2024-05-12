@@ -76,11 +76,14 @@ public class MorseButton : MonoBehaviour
 
     public void CheckIfComplete()
     {
-        if (morseInput.Length == 19)
+        if (morseInput.Length >= 24)
         {
             // If correct solution
-            if (morseInput == "_ . _ . . . _ . _ .") morseText.text = "Correct";
+            if (morseInput == "_ . _ . . . _ . _ . . . ") morseText.text = "Correct";
             else morseText.text = "Wrong";
+
+            print(morseInput);
+            print("_ . _ . . . _ . _ . . . ");
 
             morseInput = "";
         }

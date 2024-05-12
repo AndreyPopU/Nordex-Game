@@ -14,6 +14,7 @@ public class Keypad : Puzzle
     public Button[] hintButtons;
     public GameObject[] lockIcons;
     public float time = 0f;
+    public float hintTime = 0f;
     public int hintIndex;
     public HintManager hintInstance;
 
@@ -35,11 +36,13 @@ public class Keypad : Puzzle
     {
         if (Player.instance.focused && Player.instance.puzzleInRange == this)
         {
-            if (time > 0f)
-            {
-                time -= Time.deltaTime;
+            if (time > 0f) time -= Time.deltaTime;
 
-                TimeSpan timeSpan = TimeSpan.FromSeconds(time);
+            if (hintTime > 0f)
+            {
+                hintTime -= Time.deltaTime;
+
+                TimeSpan timeSpan = TimeSpan.FromSeconds(hintTime);
                 timerText.text = timeSpan.ToString(@"mm\:ss");
             }
             else
@@ -51,10 +54,10 @@ public class Keypad : Puzzle
                     lockIcons[hintIndex].SetActive(false);
                     hintIndex++;
 
-                    if (hintIndex < 3) time = 300f;
+                    if (hintIndex < 3) hintTime = 300f;
                     else
                     {
-                        time = 0f;
+                        hintTime = 0f;
                         timerText.text = "00:00";
                     }
                 }
@@ -89,7 +92,6 @@ public class Keypad : Puzzle
 
         while (elapsed < duration)
         {
-
             shakePos = new Vector3(startPos.x + UnityEngine.Random.Range(-.01f, .01f), startPos.y + UnityEngine.Random.Range(-.01f, .01f), startPos.z);
             transform.position = shakePos;
             elapsed += Time.fixedDeltaTime;

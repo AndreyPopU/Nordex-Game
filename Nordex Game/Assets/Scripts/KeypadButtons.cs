@@ -8,11 +8,10 @@ public class KeypadButtons : MonoBehaviour
     [SerializeField] public TextMeshProUGUI Textbox;
     [SerializeField] public int number;
 
-
     public void GetPressedNumber()
     {
         if (Player.instance.focused == false) return;
-        
+
         if (Keypad.instance.time > 0) return;
 
         GetComponent<Animator>().SetTrigger("Pressed");
@@ -23,18 +22,14 @@ public class KeypadButtons : MonoBehaviour
             Textbox.text = "";
             return;
         }
-
         //11 = Enter
         else if (number == 11)
         {
-            if (Textbox.text == "34")
-            {
-                Textbox.text = "Correct";
-            }
-
+            if (Textbox.text == "34") Textbox.text = "Correct";
             else 
             {
                 Textbox.text = "Wrong";
+                Invoke("ResetField", 5);
                 Keypad.instance.time = 3f;
                 Keypad.instance.Shake();
             }
@@ -52,5 +47,8 @@ public class KeypadButtons : MonoBehaviour
         GetPressedNumber();
     }
 
-    
+    private void ResetField()
+    {
+        Textbox.text = string.Empty;
+    }
 }
