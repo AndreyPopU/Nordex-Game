@@ -24,6 +24,11 @@ public class Keypad : Puzzle
 
     private Vector3 startPos;
 
+    //adding sound and light
+    public lamp light1, light2;
+    public AudioSource sound1, sound2;
+
+
     private void Awake() => instance = this; 
 
     private void Start()

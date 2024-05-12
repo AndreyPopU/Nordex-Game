@@ -25,7 +25,16 @@ public class KeypadButtons : MonoBehaviour
         //11 = Enter
         else if (number == 11)
         {
-            if (Textbox.text == "34") Textbox.text = "Correct";
+            if (Textbox.text == "34")
+            {
+                Textbox.text = "Correct";
+                //making sounds and lights play
+                Keypad.instance.light1.enabled = true;
+                Keypad.instance.light2.enabled = true;
+
+                Keypad.instance.sound1.Play();
+                Keypad.instance.sound2.Play();
+            }
             else 
             {
                 Textbox.text = "Wrong";
