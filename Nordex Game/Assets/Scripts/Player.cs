@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     //Assingables
     public Transform playerCam;
     public Transform orientation;
+    public bool haskey;
 
     // Climbing
     private float climbSpeed = 3f;
