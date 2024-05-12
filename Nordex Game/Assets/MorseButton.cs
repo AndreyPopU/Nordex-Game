@@ -48,7 +48,7 @@ public class MorseButton : MonoBehaviour
         resetTime = 5;
 
         // Go back
-        desiredPos += transform.forward * .1f;
+        desiredPos -= transform.forward * .1f;
 
         // Start timer
         holding = true;
@@ -59,7 +59,7 @@ public class MorseButton : MonoBehaviour
         if (!Player.instance.focused) return;
 
         // Go front
-        desiredPos -= transform.forward * .1f;
+        desiredPos += transform.forward * .1f;
 
         // Check for timer
         holding = false;
