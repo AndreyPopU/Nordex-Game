@@ -4741,6 +4741,7 @@ GameObject:
   - component: {fileID: 8357146964963861956}
   - component: {fileID: 3271894125262143189}
   - component: {fileID: 96259454686148381}
+  - component: {fileID: 6243755347681741042}
   m_Layer: 0
   m_Name: FrequencyKeypad
   m_TagString: Untagged
@@ -4756,7 +4757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3530088880611409226}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000058114523}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 1.2500002, z: 2.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4805,6 +4806,8 @@ MonoBehaviour:
   smoothing: 0.1
   finishedFocusing: 1
   interactable: 1
+  coreCollider: {fileID: 0}
+  collision: {fileID: 0}
   timerText: {fileID: 4260751651762002821}
   hintButtons:
   - {fileID: 3999428618991162707}
@@ -4820,6 +4823,31 @@ MonoBehaviour:
   hintInstance: {fileID: 0}
   canvas: {fileID: 5375472061684744227}
   guessField: {fileID: 0}
+  light1: {fileID: 0}
+  light2: {fileID: 0}
+  sound1: {fileID: 0}
+  sound2: {fileID: 0}
+--- !u!65 &6243755347681741042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530088880611409226}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.41388458, y: 1, z: 0.23348926}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3673586506850943421
 GameObject:
   m_ObjectHideFlags: 0

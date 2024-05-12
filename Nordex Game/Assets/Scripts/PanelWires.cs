@@ -14,15 +14,12 @@ public class PanelWires : Puzzle
     public Screw[] screws;
 
     private Vector3 panelPosition;
-    private BoxCollider coreCollider;
-    [HideInInspector] public BoxCollider panelCollider;
+    public BoxCollider panelCollider;
     public CanvasGroup canvas;
 
     private void Awake()
     {
         instance = this;
-        coreCollider = GetComponent<BoxCollider>();
-        panelCollider = GetComponents<BoxCollider>()[1];
         panelPosition = panel.transform.position;
         canvas.alpha = 0;
     }
@@ -39,7 +36,6 @@ public class PanelWires : Puzzle
         if (Player.instance.focused) StartCoroutine(FadeCanvas(1));
         else StartCoroutine(FadeCanvas(0));
 
-        coreCollider.enabled = !Player.instance.focused;
         Player.instance.coreCollider.enabled = !Player.instance.focused;
         Player.instance.rb.useGravity = !Player.instance.focused;
         Player.instance.rb.isKinematic = Player.instance.focused;

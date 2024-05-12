@@ -12,22 +12,11 @@ public class Captcha : Puzzle
     public CaptchaNumber[] numbers;
     public List<CaptchaNumber> selected;
 
-    private BoxCollider coreCollider;
-    private BoxCollider secondCollider;
-
-    void Start()
-    {
-        instance = this;
-        coreCollider = GetComponent<BoxCollider>();
-        secondCollider = GetComponents<BoxCollider>()[1];
-    }
+    void Awake() => instance = this;
 
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
-
-        coreCollider.enabled = !Player.instance.focused;
-        secondCollider.enabled = !Player.instance.focused;
 
         foreach (CaptchaNumber number in numbers)
             number.interactable = Player.instance.focused;
