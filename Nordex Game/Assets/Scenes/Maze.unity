@@ -430,10 +430,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCam: {fileID: 1286242969}
   orientation: {fileID: 1840172949}
+  haskey: 0
   coreCollider: {fileID: 0}
   rb: {fileID: 0}
+  hasToolbox: 0
   focused: 0
   puzzleInRange: {fileID: 0}
+  turbineSpin: 0
   moveSpeed: 4500
   maxSpeed: 20
   grounded: 1
