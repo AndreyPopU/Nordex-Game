@@ -23,15 +23,12 @@ public class Clockwork : Puzzle
     public int index;
 
     private Vector3 panelPosition;
-    private BoxCollider coreCollider;
     private float baseTimeLeft;
-    [HideInInspector] public BoxCollider panelCollider;
+    public BoxCollider panelCollider;
 
     private void Awake()
     {
         instance = this;
-        coreCollider = GetComponent<BoxCollider>();
-        panelCollider = GetComponents<BoxCollider>()[1];
         panelPosition = panel.transform.position;
         baseTimeLeft = timeLeft;
 

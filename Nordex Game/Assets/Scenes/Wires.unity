@@ -188,6 +188,7 @@ MonoBehaviour:
   hasToolbox: 0
   focused: 0
   puzzleInRange: {fileID: 0}
+  turbineSpin: 0
   moveSpeed: 4500
   maxSpeed: 20
   grounded: 1
@@ -1132,7 +1133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1140,23 +1141,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.79
+      value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710784
+      value: 0.50000155
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.70710576
+      value: -0.49999994
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.49999848
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1168,7 +1169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5018348727954773785, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5199927830947823690, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: m_Name

@@ -31,8 +31,9 @@ public class Keypad : Puzzle
 
     private void Awake() => instance = this; 
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         startPos = transform.position;
         canvas.alpha = 0;
     }
