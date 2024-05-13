@@ -221,38 +221,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_Size.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_Size.y
-      value: 20.197926
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_Size.z
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_Center.x
-      value: -1.5196313e-14
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_Center.y
-      value: 2.1342535
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_Center.z
-      value: 3.8684218
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717494439397730787, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7782069251981274556, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
       propertyPath: m_Name
       value: DoorOpenerCubeBlue1
@@ -261,7 +229,6 @@ PrefabInstance:
       propertyPath: key
       value: 
       objectReference: {fileID: 1572986956}
-<<<<<<< Updated upstream
     - target: {fileID: 8971713316715374076, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.110999994
@@ -274,8 +241,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.110999994
       objectReference: {fileID: 0}
-=======
->>>>>>> Stashed changes
     - target: {fileID: 8971713316715374076, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.416941
@@ -322,7 +287,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7782069251981274556, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 403391267}
+      addedObject: {fileID: 403391260}
+    - targetCorrespondingSourceObject: {fileID: 7782069251981274556, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 403391266}
   m_SourcePrefab: {fileID: 100100000, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
 --- !u!1 &355648605
 GameObject:
@@ -423,7 +391,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7782069251981274556, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
   m_PrefabInstance: {fileID: 258099786}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &403391267
+--- !u!114 &403391260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403391259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd40370027d83ed40b5d8649da34cdff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opened: 0
+  inrange: 0
+  locked: 1
+  key: {fileID: 1572986956}
+  animator: {fileID: 0}
+--- !u!65 &403391266
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -438,35 +423,13 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< Updated upstream
   m_Size: {x: 15, y: 15, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &470054780 stripped
-=======
-  m_Size: {x: 1, y: 20.197926, z: 8.15248}
-  m_Center: {x: -1.5196313e-14, y: 2.1342535, z: 3.8684218}
---- !u!1 &439884686
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 439884687}
-  m_Layer: 0
-  m_Name: holdtransform
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &439884687
->>>>>>> Stashed changes
 Transform:
   m_CorrespondingSourceObject: {fileID: 9105058698517461785, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
   m_PrefabInstance: {fileID: 1912048652}
