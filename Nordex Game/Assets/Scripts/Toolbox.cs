@@ -13,13 +13,11 @@ public class Toolbox : Puzzle
     public PlacementBox[] placements;
     public Animator animator;
 
-    private BoxCollider coreCollider;
     private BoxCollider completeCollider;
 
     void Awake()
     {
         instance = this;
-        coreCollider = GetComponent<BoxCollider>();
         completeCollider = GetComponents<BoxCollider>()[1];
         tools = GetComponentsInChildren<Tool>();
         placements = GetComponentsInChildren<PlacementBox>();

@@ -35,17 +35,8 @@ public class Clockwork : Puzzle
         ActivateVariant();
     }
 
-    Ray ray;
-    RaycastHit hit;
-
     private void Update()
     {
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
-        {
-            print(hit.collider.name);
-        }
-
         panel.transform.position = Vector3.MoveTowards(panel.transform.position, panelPosition, 6 * Time.deltaTime);
 
         if (!timeActive) return;

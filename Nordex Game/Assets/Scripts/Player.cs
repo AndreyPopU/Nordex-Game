@@ -41,15 +41,19 @@ public class Player : MonoBehaviour
     //Input
     float x, y;
 
-    //Sliding
-    private Vector3 normalVector = Vector3.up;
-    private Vector3 wallNormalVector;
-
     #endregion
 
     void Awake()
     {
-        instance = this;
+        if (instance == null) instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
         coreCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
     }
@@ -59,7 +63,6 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
 
     private void FixedUpdate()
     {
@@ -176,31 +179,11 @@ public class Player : MonoBehaviour
         return new Vector2(xMag, yMag);
     }
 
-    private bool IsFloor(Vector3 v)
-    {
-        float angle = Vector3.Angle(Vector3.up, v);
-        return angle < maxSlopeAngle;
-    }
-
-    private bool cancellingGrounded;
-
     private void OnCollisionStay(Collision other)
     {
         //Make sure we are only checking for walkable layers
         int layer = other.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;
-
-        //Iterate through every collision in a physics update
-        for (int i = 0; i < other.contactCount; i++)
-        {
-            Vector3 normal = other.contacts[i].normal;
-            //FLOOR
-            if (IsFloor(normal))
-            {
-                cancellingGrounded = false;
-                normalVector = normal;
-            }
-        }
     }
 
     private void OnTriggerEnter(Collider other)
