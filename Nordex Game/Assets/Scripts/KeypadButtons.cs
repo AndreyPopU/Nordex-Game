@@ -8,6 +8,9 @@ public class KeypadButtons : MonoBehaviour
     [SerializeField] public TextMeshProUGUI Textbox;
     [SerializeField] public int number;
 
+    [SerializeField] 
+    private float anthenaSoundDelay = 2f;
+
     public void GetPressedNumber()
     {
         if (Player.instance.focused == false) return;
@@ -32,8 +35,7 @@ public class KeypadButtons : MonoBehaviour
                 Keypad.instance.light1.enabled = true;
                 Keypad.instance.light2.enabled = true;
 
-                Keypad.instance.sound1.Play();
-                Keypad.instance.sound2.Play();
+                StartCoroutine(AnthenaSoundsPlay());
             }
             else 
             {
@@ -49,6 +51,21 @@ public class KeypadButtons : MonoBehaviour
         if (Textbox.text.Length >= 4) return;
 
         Textbox.text = Textbox.text + number;
+    }
+
+    private IEnumerator AnthenaSoundsPlay()
+    {
+        while (true)
+        {
+            Keypad.instance.sound1.Play();
+            yield return new WaitForSeconds(Keypad.instance.sound1.clip.length);
+            Keypad.instance.sound1.Stop();
+
+
+            Keypad.instance.sound2.Play();
+            yield return new WaitForSeconds(anthenaSoundDelay);
+            Keypad.instance.sound1.Stop();
+        }
     }
 
     void OnMouseDown()
