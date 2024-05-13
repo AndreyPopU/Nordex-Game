@@ -61,10 +61,13 @@ public class KeypadButtons : MonoBehaviour
             yield return new WaitForSeconds(Keypad.instance.sound1.clip.length);
             Keypad.instance.sound1.Stop();
 
+            yield return new WaitForSeconds(anthenaSoundDelay);
 
             Keypad.instance.sound2.Play();
+            yield return new WaitForSeconds(Keypad.instance.sound2.clip.length);
+            Keypad.instance.sound2.Stop();
+
             yield return new WaitForSeconds(anthenaSoundDelay);
-            Keypad.instance.sound1.Stop();
         }
     }
 
