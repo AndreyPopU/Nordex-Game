@@ -3,6 +3,7 @@ using UnityEngine;
 public class Puzzle2StarterScript : MonoBehaviour
 {
     public GameObject puzzle2;
+    public GameObject puzzle2FAKE;
     public GameObject player;
     public GameObject restartButton;
 
@@ -51,6 +52,7 @@ public class Puzzle2StarterScript : MonoBehaviour
         if (isPlayerInArea && Input.GetKeyUp(KeyCode.E) && !isPuzzleActive)
         {
             StartPuzzle();
+            puzzle2FAKE.SetActive(false);
         }
 
         if (isPuzzleActive && mainCamera != null)
