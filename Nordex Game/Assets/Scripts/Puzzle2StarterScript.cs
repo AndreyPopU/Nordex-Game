@@ -14,13 +14,17 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     public Camera mainCamera;
 
-    private Puzzle2StarterScript puzzle2StarterScript;
-
     private bool isPlayerInArea = false;
     private bool isPuzzleActive = false;
 
+    private Puzzle2StarterScript puzzle2StarterScript;
+
     private Vector3 originalCameraPosition;
     private Quaternion originalCameraRotation;
+
+    private Vector3 storedCameraPosition;
+    private Quaternion storedCameraRotation;
+    private Vector3 storedPlayerPosition;
 
     private RigidbodyConstraints originalConstraints;
     private Player playerScript;
@@ -52,6 +56,11 @@ public class Puzzle2StarterScript : MonoBehaviour
     {
         if (isPlayerInArea && Input.GetKeyUp(KeyCode.E) && !isPuzzleActive)
         {
+            // Store the current positions before starting the puzzle
+            storedCameraPosition = mainCamera.transform.position;
+            storedCameraRotation = mainCamera.transform.rotation;
+            storedPlayerPosition = player.transform.position;
+
             StartPuzzle();
             puzzle2FAKE.SetActive(false);
         }
@@ -117,12 +126,31 @@ public class Puzzle2StarterScript : MonoBehaviour
         mainCamera.transform.rotation = endRot;
     }
 
+    private System.Collections.IEnumerator SmoothTransitionPlayer(Vector3 startPos, Vector3 endPos)
+    {
+        float elapsedTime = 0f;
+        float duration = 1f;
+
+        while (elapsedTime < duration)
+        {
+            player.transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        player.transform.position = endPos;
+    }
+
     public void ResetCameraAndPlayer()
     {
         if (mainCamera != null)
         {
-            mainCamera.transform.position = originalCameraPosition;
-            mainCamera.transform.rotation = originalCameraRotation;
+            StartCoroutine(SmoothTransitionCamera(mainCamera.transform.position, mainCamera.transform.rotation, storedCameraPosition, storedCameraRotation));
+        }
+
+        if (player != null)
+        {
+            StartCoroutine(SmoothTransitionPlayer(player.transform.position, storedPlayerPosition));
         }
 
         if (playerRigidbody != null)
