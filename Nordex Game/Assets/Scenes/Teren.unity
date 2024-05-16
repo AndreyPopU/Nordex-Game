@@ -33001,6 +33001,41 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.42107904
       objectReference: {fileID: 0}
+    - target: {fileID: 8624989068867287116, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
+      propertyPath: m_text
+      value: 'Red Wire (6): Connect to the shape that is the farthest left or right
+        and must be either a triangle or a hexagon.
+
+        
+
+        Blue Wire
+        (3): Connect to the circular shape, but what if many other wires cross it?
+
+        
+
+        Yellow
+        Wire (1): Connect to a shape to the left of the one the orange wire is connected
+        to, and there should not be any shapes between the yellow and red wires.
+
+        
+
+        Orange
+        Wire (5): Connect to a shape adjacent to the triangle.
+
+        
+
+        Purple
+        Wire (2): Unknown.
+
+        
+
+        Green Wire (4): Connect to the square
+        and should be either the second or second last wire.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624989068867287116, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
+      propertyPath: m_fontSize
+      value: 20.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
