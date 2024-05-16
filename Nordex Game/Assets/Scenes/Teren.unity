@@ -37368,6 +37368,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60692004db628424480fa12daaf7912b, type: 3}
+--- !u!65 &1249613630 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 262574276596849795, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+  m_PrefabInstance: {fileID: 1705166709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1252971712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60692004db628424480fa12daaf7912b, type: 3}
@@ -50242,11 +50247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.344
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalRotation.x
@@ -50254,7 +50259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalRotation.z
@@ -50262,11 +50267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -10.044
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.301
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -50274,7 +50279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -50313,12 +50318,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1245354384}
     - target: {fileID: 6291056256184360667, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: puzzle2Collider
+      value: 
+      objectReference: {fileID: 1249613630}
+    - target: {fileID: 6291056256184360667, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: cameraZoomOutPosition
       value: 
       objectReference: {fileID: 1016429568}
     - target: {fileID: 6348872420909631521, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_Name
       value: Puzzle2WorldCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348872420909631521, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7993792628052577292, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: cameraToShake

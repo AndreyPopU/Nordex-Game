@@ -8,7 +8,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
     private bool isDragging = false;
     private bool canDrag = true;
 
-    // Cl
+    // Flags to indicate completion of each color
     private bool isYellowDone = false;
     private bool isGreenDone = false;
     private bool isBlueDone = false;
@@ -19,9 +19,12 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
 
     private List<ParticleSystem> particleSystems = new List<ParticleSystem>();
 
+    private Puzzle2StarterScript puzzleStarterScript;
+
     private void Start()
     {
         initialPosition = transform.position;
+        puzzleStarterScript = FindObjectOfType<Puzzle2StarterScript>();
     }
 
     private void Update()
@@ -37,6 +40,9 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         {
             ResetCube();
         }
+
+        // Check if all cubes of each color are connected
+        CheckAllCubesConnected();
     }
 
     // Coroutine to enable dragging after a delay
@@ -66,63 +72,23 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
             bool canCrossParticleSystemsOrOtherCubes = true;
             if (gameObject.CompareTag("Red"))
             {
-                // Check overlapping with yellow and blue and green and purple cubes and their particle systems
-                canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
+                canCrossParticleSystemsOrOtherCubes = CanCross("Yellow", "Blue", "Green", "Purple");
             }
             else if (gameObject.CompareTag("Yellow"))
             {
-                // Check overlapping with red and blue and green and purple cubes and their particle systems
-                canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
+                canCrossParticleSystemsOrOtherCubes = CanCross("Red", "Blue", "Green", "Purple");
             }
             else if (gameObject.CompareTag("Blue"))
             {
-                // Check overlapping with red and yellow and green and purple cubes and their particle systems
-                canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
+                canCrossParticleSystemsOrOtherCubes = CanCross("Red", "Yellow", "Green", "Purple");
             }
             else if (gameObject.CompareTag("Green"))
             {
-                // Check overlapping with red and blue and yellow and purple cubes and their particle systems
-                canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("PurpleCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Purple");
+                canCrossParticleSystemsOrOtherCubes = CanCross("Red", "Blue", "Yellow", "Purple");
             }
             else if (gameObject.CompareTag("Purple"))
             {
-                // Check overlapping with red and blue and yellow and green cubes and their particle systems
-                canCrossParticleSystemsOrOtherCubes = !IsOverlappingWithParticleSystemsOrOtherCubes("RedCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("BlueCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Red") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Blue") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("YellowCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Yellow") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("GreenCubeParticles") &&
-                                          !IsOverlappingWithParticleSystemsOrOtherCubes("Green");
+                canCrossParticleSystemsOrOtherCubes = CanCross("Red", "Blue", "Yellow", "Green");
             }
 
             // If cube can cross, instantiate a particle system at the new position
@@ -221,14 +187,14 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         return bounds1.Intersects(bounds2);
     }
 
-    private bool IsOverlappingWithParticleSystemsOrOtherCubes(string particleSystemTag)
+    private bool IsOverlappingWithParticleSystemsOrOtherCubes(string tag)
     {
         // Check if this cube is overlapping with any particle systems or cubes with a specific tag
-        GameObject[] particleSystems = GameObject.FindGameObjectsWithTag(particleSystemTag);
-        foreach (GameObject ps in particleSystems)
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in objectsWithTag)
         {
             Bounds bounds1 = GetComponent<Renderer>().bounds;
-            Bounds bounds2 = ps.GetComponent<Renderer>().bounds;
+            Bounds bounds2 = obj.GetComponent<Renderer>().bounds;
             if (bounds1.Intersects(bounds2))
             {
                 return true;
@@ -282,5 +248,78 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
 
         // Restart dragging enable delay
         StartCoroutine(EnableDraggingAfterDelay(0.1f));
+    }
+
+    // Method to check if a cube can cross specific tagged particle systems or cubes
+    private bool CanCross(params string[] tags)
+    {
+        foreach (string tag in tags)
+        {
+            if (IsOverlappingWithParticleSystemsOrOtherCubes(tag + "CubeParticles") ||
+                IsOverlappingWithParticleSystemsOrOtherCubes(tag))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Method to check if all cubes of each color are connected
+    private void CheckAllCubesConnected()
+    {
+        isRedDone = AreCubesConnected("Red");
+        isYellowDone = AreCubesConnected("Yellow");
+        isBlueDone = AreCubesConnected("Blue");
+        isGreenDone = AreCubesConnected("Green");
+        isPurpleDone = AreCubesConnected("Purple");
+
+        if (isRedDone && isYellowDone && isBlueDone && isGreenDone && isPurpleDone)
+        {
+            Debug.Log("All cubes are connected");
+
+            // Reverse the E press camera logic here
+            if (puzzleStarterScript != null)
+            {
+                puzzleStarterScript.ResetCameraAndPlayer();
+            }
+        }
+    }
+
+    // Method to check if all cubes with a specific tag are connected
+    private bool AreCubesConnected(string tag)
+    {
+        GameObject[] cubes = GameObject.FindGameObjectsWithTag(tag);
+        if (cubes.Length < 2)
+        {
+            return false; // Not enough cubes to form a connection
+        }
+
+        HashSet<GameObject> visited = new HashSet<GameObject>();
+        Queue<GameObject> queue = new Queue<GameObject>();
+        queue.Enqueue(cubes[0]);
+        visited.Add(cubes[0]);
+
+        while (queue.Count > 0)
+        {
+            GameObject current = queue.Dequeue();
+            foreach (GameObject cube in cubes)
+            {
+                if (cube != current && !visited.Contains(cube) && IsOverlapping(current, cube))
+                {
+                    visited.Add(cube);
+                    queue.Enqueue(cube);
+                }
+            }
+        }
+
+        return visited.Count == cubes.Length;
+    }
+
+    // Overloaded method to check if two cubes are overlapping
+    private bool IsOverlapping(GameObject cube1, GameObject cube2)
+    {
+        Bounds bounds1 = cube1.GetComponent<Renderer>().bounds;
+        Bounds bounds2 = cube2.GetComponent<Renderer>().bounds;
+        return bounds1.Intersects(bounds2);
     }
 }

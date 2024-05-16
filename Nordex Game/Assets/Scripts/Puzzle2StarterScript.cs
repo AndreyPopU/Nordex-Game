@@ -8,27 +8,28 @@ public class Puzzle2StarterScript : MonoBehaviour
     public GameObject restartButton;
 
     public Transform puzzleCenter;
-    public Transform cameraTargetPosition; 
+    public Transform cameraTargetPosition;
 
-    public float cameraTransitionSpeed = 2.0f; 
+    public float cameraTransitionSpeed = 2.0f;
 
     public Camera mainCamera;
+
+    private Puzzle2StarterScript puzzle2StarterScript;
 
     private bool isPlayerInArea = false;
     private bool isPuzzleActive = false;
 
     private Vector3 originalCameraPosition;
-
     private Quaternion originalCameraRotation;
 
     private RigidbodyConstraints originalConstraints;
-
     private Player playerScript;
-
     private Rigidbody playerRigidbody;
 
     void Start()
     {
+        puzzle2StarterScript = GetComponent<Puzzle2StarterScript>();
+
         if (mainCamera != null)
         {
             originalCameraPosition = mainCamera.transform.position;
@@ -102,7 +103,7 @@ public class Puzzle2StarterScript : MonoBehaviour
     private System.Collections.IEnumerator SmoothTransitionCamera(Vector3 startPos, Quaternion startRot, Vector3 endPos, Quaternion endRot)
     {
         float elapsedTime = 0f;
-        float duration = 1f; 
+        float duration = 1f;
 
         while (elapsedTime < duration)
         {
@@ -114,6 +115,47 @@ public class Puzzle2StarterScript : MonoBehaviour
 
         mainCamera.transform.position = endPos;
         mainCamera.transform.rotation = endRot;
+    }
+
+    public void ResetCameraAndPlayer()
+    {
+        if (mainCamera != null)
+        {
+            mainCamera.transform.position = originalCameraPosition;
+            mainCamera.transform.rotation = originalCameraRotation;
+        }
+
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.constraints = originalConstraints;
+        }
+
+        if (playerScript != null)
+        {
+            playerScript.focused = false;
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        isPuzzleActive = false;
+
+        if (puzzle2 != null)
+        {
+            puzzle2.SetActive(false);
+        }
+
+        if (restartButton != null)
+        {
+            restartButton.SetActive(false);
+        }
+
+        if (puzzle2FAKE != null)
+        {
+            puzzle2FAKE.SetActive(true);
+        }
+
+        puzzle2StarterScript.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
