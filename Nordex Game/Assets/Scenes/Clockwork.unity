@@ -330,37 +330,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &428346983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5766494063458036373, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
-  m_PrefabInstance: {fileID: 3064178932078695243}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &428346984 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 107363508262765297, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
   m_PrefabInstance: {fileID: 3064178932078695243}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &428346988
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428346983}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.8173113, y: 0.9999998, z: 0.5900631}
-  m_Center: {x: 0, y: 0, z: 0.024002664}
 --- !u!1 &483510276
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +899,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
+      propertyPath: hasToolbox
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7637790959645374788, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.16923273
@@ -1252,10 +1230,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5766494063458036373, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 428346988}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
