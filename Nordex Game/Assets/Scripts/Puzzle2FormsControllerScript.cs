@@ -8,6 +8,13 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
     private bool isDragging = false;
     private bool canDrag = true;
 
+    // Cl
+    private bool isYellowDone = false;
+    private bool isGreenDone = false;
+    private bool isBlueDone = false;
+    private bool isRedDone = false;
+    private bool isPurpleDone = false;
+
     private Vector3 initialPosition;
 
     private List<ParticleSystem> particleSystems = new List<ParticleSystem>();
