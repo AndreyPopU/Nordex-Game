@@ -5,7 +5,7 @@ public class Puzzle2CameraShakeScript : MonoBehaviour
 {
     public float shakeDuration = 1f;
     public float shakeMagnitude = 0.01f;
-    public float shakeInterval = 6f;
+    public float shakeInterval = 12f;
 
     public Camera cameraToShake;
 
