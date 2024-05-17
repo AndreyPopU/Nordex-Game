@@ -8,7 +8,6 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
     private bool isDragging = false;
     private bool canDrag = true;
 
-    // Flags to indicate completion of each color
     private bool isYellowDone = false;
     private bool isGreenDone = false;
     private bool isBlueDone = false;
@@ -31,7 +30,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
     {
         if (!canDrag)
         {
-            // Coroutine used to enable dragging after a delay
+            // Coroutine - enable dragging after a delay
             StartCoroutine(EnableDraggingAfterDelay(0.1f));
         }
 
@@ -45,7 +44,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         CheckAllCubesConnected();
     }
 
-    // Coroutine to enable dragging after a delay
+    // Coroutine - enable dragging after a delay
     private System.Collections.IEnumerator EnableDraggingAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -116,7 +115,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0))
         {
-            // If mouse is clicked and cube is at initial position, start dragging
+            // If mouse is clicked and cube is at initial position - start dragging
             if (transform.position == initialPosition)
             {
                 isDragging = true;
@@ -126,14 +125,12 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
 
     private void OnMouseUp()
     {
-        // Dragging ends
         isDragging = false;
 
-        // Find all cubes with the same tag
         GameObject[] cubes = GameObject.FindGameObjectsWithTag(gameObject.tag);
         foreach (GameObject cube in cubes)
         {
-            // If overlapping with another cube, snap to its position
+            // If overlapping with another cube - snap to its position
             if (cube != gameObject && IsOverlapping(cube))
             {
                 transform.position = cube.transform.position;
@@ -141,7 +138,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
             }
         }
 
-        // If not overlapping with any other cube, snap back to initial position and clear particle systems
+        // If not overlapping with any other cube - snap back to initial position and clear particle systems
         transform.position = initialPosition;
         ClearParticleSystems();
     }

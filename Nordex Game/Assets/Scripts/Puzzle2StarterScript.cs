@@ -10,6 +10,8 @@ public class Puzzle2StarterScript : MonoBehaviour
     public Transform puzzleCenter;
     public Transform cameraTargetPosition;
 
+    public Collider playerCollider;
+
     public float cameraTransitionSpeed = 2.0f;
 
     public Camera mainCamera;
@@ -106,6 +108,8 @@ public class Puzzle2StarterScript : MonoBehaviour
             playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
         }
 
+        playerCollider.enabled = false;
+
         isPuzzleActive = true;
     }
 
@@ -182,6 +186,8 @@ public class Puzzle2StarterScript : MonoBehaviour
         {
             puzzle2FAKE.SetActive(true);
         }
+
+        playerCollider.enabled = true;
 
         puzzle2StarterScript.enabled = false;
     }
