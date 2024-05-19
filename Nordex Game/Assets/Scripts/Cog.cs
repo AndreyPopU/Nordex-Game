@@ -140,6 +140,8 @@ public class Cog : MonoBehaviour
             }
         }
 
+        if (socket != null) ResetSocket();
+
         // Snap
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = closestSocket.transform.position;
