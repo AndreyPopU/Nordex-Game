@@ -779,6 +779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 4
+  anthenaSoundDelay: 2
 --- !u!65 &2555988222471092611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -983,6 +984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 2
+  anthenaSoundDelay: 2
 --- !u!65 &6258976182535881249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1729,6 +1731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 11
+  anthenaSoundDelay: 2
 --- !u!65 &3564290282154225260
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2761,6 +2764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 3
+  anthenaSoundDelay: 2
 --- !u!65 &7509178515397233025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3016,6 +3020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 10
+  anthenaSoundDelay: 2
 --- !u!65 &726687761422294067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4900,6 +4905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 5
+  anthenaSoundDelay: 2
 --- !u!65 &5434965363386216223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5157,6 +5163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 7
+  anthenaSoundDelay: 2
 --- !u!65 &3958471681817547439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5278,6 +5285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 8
+  anthenaSoundDelay: 2
 --- !u!65 &2736689381105509301
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5477,6 +5485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 9
+  anthenaSoundDelay: 2
 --- !u!65 &905378659564534197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5598,6 +5607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 6
+  anthenaSoundDelay: 2
 --- !u!65 &6837879301341459824
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5996,6 +6006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 0
+  anthenaSoundDelay: 2
 --- !u!65 &233556965114735165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7177,6 +7188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textbox: {fileID: 4221039651485228839}
   number: 1
+  anthenaSoundDelay: 2
 --- !u!65 &3654516641586548635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9301,6 +9313,7 @@ GameObject:
   - component: {fileID: 7854044115957800179}
   - component: {fileID: 2671193749409949596}
   - component: {fileID: 7702387777587750836}
+  - component: {fileID: 3458217640555180156}
   m_Layer: 5
   m_Name: GuessField
   m_TagString: Untagged
@@ -9433,7 +9446,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3458217640555180156}
+        m_TargetAssemblyTypeName: DeselectField, Assembly-CSharp
+        m_MethodName: OnFocusInTextField
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -9451,7 +9476,7 @@ MonoBehaviour:
       m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
-  m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
+  m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0}
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
@@ -9464,6 +9489,20 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 10
   m_InputValidator: {fileID: 0}
+--- !u!114 &3458217640555180156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858917717921420579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b2f2dfa68bc9745b707e1211177a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 7702387777587750836}
+  text: {fileID: 3960037374534328705}
 --- !u!1 &8875638875060178419
 GameObject:
   m_ObjectHideFlags: 0
