@@ -37,15 +37,27 @@ public class Cog : MonoBehaviour
         }
     }
 
-    private void OnMouseDrag()
+    private void OnMouseDown()
     {
         if (!interactable) return;
 
         // Remove from parent socket
-        if (transform.parent != null) transform.SetParent(null);
+        transform.SetParent(Clockwork.instance.transform);
+
+        if (socket != null)
+        {
+            // Enable socket logic
+            socket.GetComponent<BoxCollider>().enabled = true;
+            socket.full = false;
+        }
 
         // Stop spinning
         transform.rotation = Quaternion.identity;
+    }
+
+    private void OnMouseDrag()
+    {
+        if (!interactable) return;
 
         // Convert mouse position to a world point
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -72,44 +84,74 @@ public class Cog : MonoBehaviour
     private void OnMouseUp()
     {
         if (!interactable) return;
-
         dragged = false;
 
         Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, mask);
 
+        // If no sockets were in range, reset the position
         if (colliders.Length == 0)
         {
             ResetPos();
             return;
         }
 
+        // Find all Possible sockets
+        List<CogSocket> possibleSockets = new List<CogSocket>();
+
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].TryGetComponent(out CogSocket socket))
             {
-                if (socket.index != index || socket.full)
-                {
-                    ResetPos();
-                    continue;
-                }
+                // If socket isn't matching or is full
+                if (socket.index != index || socket.full) continue;
 
-                ResetSocket();
-
-                // Snap
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-                transform.position = socket.transform.position;
-                colliders[i].GetComponent<BoxCollider>().enabled = false;
-                placed = true;
-                this.socket = socket;
-                socket.full = true;
-                transform.SetParent(socket.transform);
-                transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
-                socket.Run();
-                Clockwork.instance.CheckComplete();
-                return;
+                possibleSockets.Add(socket);
             }
-            else ResetPos();
         }
+
+        // If no sockets, reset & return
+        if (possibleSockets.Count <= 0)
+        {
+            ResetPos();
+            return;
+        }
+
+        Vector3 targetPosition = Vector3.zero;
+
+        // Convert mouse position to a world point
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            targetPosition = hit.point;
+        }
+
+        // Find the closest socket
+        CogSocket closestSocket = possibleSockets[0];
+        float closestDistance = Vector3.Distance(targetPosition, closestSocket.transform.position);
+
+        for (int f = 1; f < possibleSockets.Count; f++)
+        {
+            if (Vector3.Distance(targetPosition, possibleSockets[f].transform.position) < closestDistance)
+            {
+                closestDistance = Vector3.Distance(targetPosition, closestSocket.transform.position);
+                closestSocket = possibleSockets[f];
+            }
+        }
+
+        // Snap
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        transform.position = closestSocket.transform.position;
+        closestSocket.GetComponent<BoxCollider>().enabled = false;
+        placed = true;
+        this.socket = closestSocket;
+        closestSocket.full = true;
+        transform.SetParent(closestSocket.transform);
+        transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+        closestSocket.Run();
+        Clockwork.instance.CheckComplete();
+        return;
     }
 
     public void ResetPos()

@@ -12,7 +12,7 @@ public class CogSocket : PlacementBox
     public CogSocket[] frontNeighbours;
     public CogSocket[] backNeighbours;
     private float spinningForce;
-    
+
     private void Start()
     {
         spinningForce = clockwise ? -75 : 75;
