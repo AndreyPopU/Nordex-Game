@@ -35,7 +35,23 @@ public class Toolbox : Puzzle
         Focus(Player.instance.playerCam.transform);
         interactable = false;
     }
-
+    public void PickUp()
+    {
+        if (!interactable)
+        {
+            if (Input.GetButtonDown("Interact"))
+            {
+                Player.instance.hasToolbox = true;
+                transform.SetParent(Camera.main.transform);
+                transform.localPosition = new Vector3(0.4f, -0.3f, 0.3f);
+                transform.localRotation = Quaternion.Euler(new Vector3(-90,0,0));
+            }
+        }
+    }
+    private void Update()
+    {
+        PickUp();
+    }
     public override void Focus(Transform focus)
     {
         base.Focus(focus);

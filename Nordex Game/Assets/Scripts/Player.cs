@@ -79,6 +79,11 @@ public class Player : MonoBehaviour
         y = Input.GetAxisRaw("Vertical");
 
         Look();
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            transform.position = new Vector3(0, 2, -2);
+        }
     }
 
     public void FocusPuzzle()
