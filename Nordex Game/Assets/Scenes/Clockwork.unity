@@ -961,6 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene: Teren
   spawnPosition: {x: -5.77, y: 124.98, z: -17.22}
+  inrange: 0
 --- !u!1001 &1432391490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,6 +1023,87 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
+--- !u!1001 &1477179568
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2626785101245811342, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.239
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.442
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.091
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073818487248982383, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625208521199232643, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223598370348050083, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_Name
+      value: KeyCabinet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894636923009354448, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a98b6cc9c5000474bad33e90c29737f0, type: 3}
 --- !u!1 &1596462714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene: Teren
   spawnPosition: {x: -7.924855, y: 4.508827, z: -15.44843}
+  inrange: 0
 --- !u!65 &2002062021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1348,3 +1431,4 @@ SceneRoots:
   - {fileID: 1432391490}
   - {fileID: 483510278}
   - {fileID: 992453419}
+  - {fileID: 1477179568}

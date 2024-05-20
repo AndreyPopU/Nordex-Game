@@ -16,6 +16,7 @@ public class PanelWires : Puzzle
     private Vector3 panelPosition;
     public BoxCollider panelCollider;
     public CanvasGroup canvas;
+    public Lever lever;
 
     private void Awake()
     {
@@ -81,6 +82,7 @@ public class PanelWires : Puzzle
         print("Completed");
         Focus(Player.instance.playerCam.transform);
         interactable = false;
+        lever.boxCollider.enabled = true;
     }
 
     private IEnumerator FadeCanvas(float desire)

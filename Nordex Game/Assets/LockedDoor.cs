@@ -7,32 +7,26 @@ public class LockedDoor : MonoBehaviour
     public bool opened;
     public bool inrange;
     public bool locked;
-    private Player player;
-    public GameObject key;
     public  Animator animator;
     private void Start()
     {
-        player = FindObjectOfType<Player>();
         animator = GetComponent<Animator>();
     }
     private void Update()
     {
         if (inrange)
         {
-
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (!locked || locked && player.haskey) //key = open door
+                if (!locked || locked && Player.instance.haskey) //key = open door
                 {
+                    if(GameObject.Find("HoldTransform")) GameObject.Find("HoldTransform").SetActive(false);
                     animator.SetBool("Open", opened);
                     animator.SetTrigger("Trigger");
                     opened = !opened;
+                    locked = false;
+                    Player.instance.haskey = false;
 
-                    if (locked)
-                    {
-                        key.SetActive(false);
-                        locked = false;
-                    }
                 }
             }
         }
@@ -41,9 +35,6 @@ public class LockedDoor : MonoBehaviour
     {
         if (other.GetComponent<Player>())
         {
-            if (locked && !player.haskey)
-            {
-            }
             inrange = true;
         }
     }

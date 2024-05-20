@@ -11,6 +11,7 @@ public class Captcha : Puzzle
     public int current;
     public CaptchaNumber[] numbers;
     public List<CaptchaNumber> selected;
+    public LockedDoor door;
 
     void Awake()
     {
@@ -100,5 +101,6 @@ public override void Focus(Transform focus)
 
         Focus(Player.instance.playerCam);
         interactable = false;
+        door.locked = false;
     }
 }

@@ -6,18 +6,18 @@ public class Lever : MonoBehaviour
 {
     public ladder ladder;
     private Animator animator;
+    public bool inrange;
+    public BoxCollider boxCollider;
+
     void Start()
     {
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
     {
-
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.GetComponent<Player>())
+        if (inrange)
         {
             if (Input.GetButtonDown("Interact"))
             {
@@ -25,5 +25,17 @@ public class Lever : MonoBehaviour
                 ladder.GetComponent<Animator>().SetTrigger("GoDown");
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Player>())
+            inrange = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Player>())
+            inrange = false;
     }
 }

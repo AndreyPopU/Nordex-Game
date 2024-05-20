@@ -24,7 +24,7 @@ public class Flashlight : MonoBehaviour
     }
     void Start()
     {
-
+        holdtransform = GameObject.Find("HoldTransform").transform;
     }
 
     void Update()

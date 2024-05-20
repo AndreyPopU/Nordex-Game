@@ -8,14 +8,17 @@ public class ladder : MonoBehaviour
     private Animator animator;
     public string scene;
     public Vector3 spawnPosition;
+    public bool inrange;
     
     void Start()
     {
         animator = GetComponent<Animator>();
     }
-    private void OnTriggerStay (Collider other)    
+    
+
+    void Update()
     {
-     if (other.GetComponent<Player>())
+        if (inrange)
         {
             if (Input.GetButtonDown("Interact"))
             {
@@ -23,5 +26,17 @@ public class ladder : MonoBehaviour
                 Player.instance.transform.position = spawnPosition;
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Player>())
+            inrange = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Player>())
+            inrange = false;
     }
 }
