@@ -32,7 +32,7 @@ public class Clockwork : Puzzle
         panelPosition = panel.transform.position;
         baseTimeLeft = timeLeft;
 
-        ActivateVariant();
+        variants[index].gameObject.SetActive(true);
     }
 
     private void Update()
@@ -119,8 +119,8 @@ public class Clockwork : Puzzle
 
         index++;
         if (index >= variants.Length) index = 0;
-
         variants[index].gameObject.SetActive(true);
+
         sockets = variants[index].correctSockets;
     }
 }

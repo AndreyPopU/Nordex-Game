@@ -45,6 +45,10 @@ public class CogSocket : PlacementBox
                     {
                         head.running = false;
                         head.CheckFront();
+
+                        foreach (Cog cog in Clockwork.instance.cogs)
+                            cog.Shake();
+
                         return;
                     }
 
@@ -71,6 +75,10 @@ public class CogSocket : PlacementBox
             {
                 head.running = false;
                 head.CheckFront();
+
+                foreach (Cog cog in Clockwork.instance.cogs)
+                    cog.Shake();
+
                 return;
             }
 

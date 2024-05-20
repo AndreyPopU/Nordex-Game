@@ -12,9 +12,13 @@ public class Captcha : Puzzle
     public CaptchaNumber[] numbers;
     public List<CaptchaNumber> selected;
 
-    void Awake() => instance = this;
+    void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
-    public override void Focus(Transform focus)
+public override void Focus(Transform focus)
     {
         base.Focus(focus);
 

@@ -18,6 +18,7 @@ public class Toolbox : Puzzle
     void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
         completeCollider = GetComponents<BoxCollider>()[1];
         tools = GetComponentsInChildren<Tool>();
         placements = GetComponentsInChildren<PlacementBox>();

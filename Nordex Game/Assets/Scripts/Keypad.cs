@@ -27,7 +27,11 @@ public class Keypad : Puzzle
     public AudioSource sound1, sound2;
 
 
-    private void Awake() => instance = this; 
+    private void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public override void Start()
     {
