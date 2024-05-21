@@ -107,7 +107,6 @@ public class Clockwork : Puzzle
 
         // Complete
         print("Completed");
-        Chronometer.instance.loop();
         timeLeft = 999999;
         Focus(Player.instance.playerCam.transform);
         interactable = false;
