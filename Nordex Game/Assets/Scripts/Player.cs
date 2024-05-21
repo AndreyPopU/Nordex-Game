@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
+    public bool grounded;
+    public float Jumpforce;
+    public bool jumping;
+
     //Assingables
     public Transform playerCam;
     public Transform orientation;
@@ -67,6 +71,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+
+        Jump();
     }
 
     private void Update()
@@ -83,6 +89,23 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             transform.position = new Vector3(0, 2, -2);
+        }
+
+
+        if (Input.GetButtonDown("Jump") && grounded)
+        {
+            grounded = false;
+            jumping = true;
+        }
+    }
+
+     public void Jump()
+    {
+        if (jumping)
+        {
+            grounded = false;
+            rb.AddForce(Vector3.up* Jumpforce * Time.fixedDeltaTime, ForceMode.Impulse);
+            jumping = false;
         }
     }
 
@@ -182,6 +205,14 @@ public class Player : MonoBehaviour
         float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
 
         return new Vector2(xMag, yMag);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = true;
+        }
     }
 
     private void OnCollisionStay(Collision other)

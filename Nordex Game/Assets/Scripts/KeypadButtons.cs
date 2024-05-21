@@ -34,6 +34,7 @@ public class KeypadButtons : MonoBehaviour
                 //making sounds and lights play
                 Keypad.instance.light1.enabled = true;
                 Keypad.instance.light2.enabled = true;
+                Chronometer.instance.loop();
 
                 StartCoroutine(AnthenaSoundsPlay());
             }

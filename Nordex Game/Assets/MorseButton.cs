@@ -79,7 +79,12 @@ public class MorseButton : MonoBehaviour
         if (morseInput.Length >= 24)
         {
             // If correct solution
-            if (morseInput == "_ . _ . . . _ . _ . . . ") morseText.text = "Correct";
+            if (morseInput == "_ . _ . . . _ . _ . . . ")
+            {
+                morseText.text = "Correct";
+                Chronometer.instance.loop();
+
+            }
             else morseText.text = "Wrong";
 
             print(morseInput);
