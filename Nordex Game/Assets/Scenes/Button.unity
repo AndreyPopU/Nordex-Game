@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCam: {fileID: 1286242969}
   orientation: {fileID: 1840172949}
+  haskey: 0
   coreCollider: {fileID: 0}
   rb: {fileID: 0}
   hasToolbox: 0
@@ -191,15 +192,11 @@ MonoBehaviour:
   turbineSpin: 0
   moveSpeed: 4500
   maxSpeed: 20
-  grounded: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   counterMovement: 0.175
   maxSlopeAngle: 35
-  slideForce: 400
-  slideCounterMovement: 0.2
-  jumpForce: 350
 --- !u!136 &219033351
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -673,7 +670,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 49580182537458403, guid: 10e17c2968753df42b53b20ca3c3a90c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 49580182537458403, guid: 10e17c2968753df42b53b20ca3c3a90c, type: 3}
       propertyPath: m_LocalPosition.y
