@@ -80,6 +80,7 @@ public class PanelWires : Puzzle
 
         // Complete
         print("Completed");
+        Chronometer.instance.loop();
         Focus(Player.instance.playerCam.transform);
         interactable = false;
         lever.boxCollider.enabled = true;
