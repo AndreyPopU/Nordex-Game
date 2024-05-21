@@ -31,7 +31,6 @@ public class Toolbox : Puzzle
         if (overlapingColliders.Length != 38) return;
 
         // Completed
-        Chronometer.instance.loop();
         animator.enabled = true;
         Focus(Player.instance.playerCam.transform);
         interactable = false;

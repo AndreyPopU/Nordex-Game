@@ -98,7 +98,6 @@ public override void Focus(Transform focus)
         {
             if (number.interactable) return;
         }
-        Chronometer.instance.loop();
 
         Focus(Player.instance.playerCam);
         interactable = false;
