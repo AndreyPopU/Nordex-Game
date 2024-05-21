@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b26d2f3f633476d439b2ac8b374aa2fc
+guid: cfc12b39fe5fd064d935553b94481613
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,28 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: White
-    second: {fileID: 2100000, guid: 337db97ec58d8c142ada7b7980d2f6aa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: early
-    second: {fileID: 2100000, guid: 8d71a5c57844a17439d13808f6ed8c9a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: grass
-    second: {fileID: 2100000, guid: 00d6b92c61352244b9c3310aba32a02d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: leef
-    second: {fileID: 2100000, guid: 51ef9d9ab928131468d6ea4c07432135, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: yellow
-    second: {fileID: 2100000, guid: 6fb59c7e772ceb14195fdc9197aef7ab, type: 2}
+    second: {fileID: 2100000, guid: 1f899f4acc855b744925ecd72d6e0c25, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

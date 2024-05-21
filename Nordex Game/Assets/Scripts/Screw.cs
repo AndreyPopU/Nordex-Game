@@ -36,6 +36,30 @@ public class Screw : MonoBehaviour
         }
     }
 
+    public void Shake() => StartCoroutine(ShakeCO());
+
+    private IEnumerator ShakeCO()
+    {
+        YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
+
+        float duration = .1f;
+        float force = .01f;
+        Vector3 originalPos = transform.position;
+        Vector3 shakePos;
+
+        while (duration > 0)
+        {
+            duration -= Time.deltaTime;
+            float randomX = Random.Range(originalPos.x - 1 * force, originalPos.x + 1 * force);
+            float randomY = Random.Range(originalPos.y - 1 * force, originalPos.y + 1 * force);
+            shakePos = new Vector3(randomX, randomY, transform.position.z);
+            transform.position = shakePos;
+            yield return waitForFixedUpdate;
+        }
+
+        transform.position = originalPos;
+    }
+
     private void OnMouseDown()
     {
         if (!screwed) return;
@@ -47,7 +71,11 @@ public class Screw : MonoBehaviour
     {
         if (!interactable) return;
 
-        if (puzzle == Puzzle.clockwork && !Player.instance.hasToolbox) return;
+        if (puzzle == Puzzle.clockwork && !Player.instance.hasToolbox) 
+        {
+            Shake();
+            return;
+        }
 
         animator.SetTrigger("Screw");
         screwed = !screwed;
