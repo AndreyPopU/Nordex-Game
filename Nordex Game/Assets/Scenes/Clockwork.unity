@@ -1547,6 +1547,7 @@ MonoBehaviour:
   scene: Teren
   spawnPosition: {x: -5.77, y: 124.98, z: -17.22}
   inrange: 0
+  interacted: 0
 --- !u!65 &1427451462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1579,6 +1580,10 @@ PrefabInstance:
     - target: {fileID: 635890467238926563, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
+      propertyPath: hasToolbox
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7637790959645374788, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2208,6 +2213,7 @@ MonoBehaviour:
   scene: Teren
   spawnPosition: {x: -7.924855, y: 4.508827, z: -15.44843}
   inrange: 0
+  interacted: 0
 --- !u!65 &2002062021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2356,6 +2362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SocketHexagon2
       objectReference: {fileID: 0}
+    - target: {fileID: 1685534188720171726, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1747395710746543353, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: m_Name
       value: CogPentagon1
@@ -2376,10 +2386,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: GearsPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6107993429700883849, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9308176
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107993429700883849, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107993429700883849, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_Color.r
+      value: 0.95283014
+      objectReference: {fileID: 0}
     - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: panelCollider
       value: 
       objectReference: {fileID: 428346984}
+    - target: {fileID: 6831918325676369541, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_Color.b
+      value: 0.61960787
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831918325676369541, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_Color.g
+      value: 0.67058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831918325676369541, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_Color.r
+      value: 0.63529414
+      objectReference: {fileID: 0}
     - target: {fileID: 7201374786866398822, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: m_Size.z
       value: 0.2
@@ -2391,6 +2425,10 @@ PrefabInstance:
     - target: {fileID: 7564133634663555221, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: m_Name
       value: CogPentagon0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708683076229658073, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7848546528320033654, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: m_IsActive
