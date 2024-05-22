@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadePanel : MonoBehaviour
 {
@@ -16,20 +17,42 @@ public class FadePanel : MonoBehaviour
 
         group = GetComponent<CanvasGroup>();
     }
-    public IEnumerator FadeOut()
+
+    public void LoadScene(string scene, Vector3 spawnPos)
     {
-        // Wait for scene activation
-        yield return new WaitForSeconds(1);
+        StartCoroutine(LoadSceneAsync(scene, spawnPos));
+    }
 
-        Player.instance.rb.isKinematic = false;
-
+    private IEnumerator LoadSceneAsync(string scene, Vector3 spawnPos)
+    {
         YieldInstruction wait = new WaitForFixedUpdate();
+
+        Player.instance.rb.isKinematic = true;
+
+        // Fade out
+        while (group.alpha < 1)
+        {
+            group.alpha += .1f;
+            yield return wait;
+        }
+
+        // Start loading scene
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+
+        // If fully faded out && scene is ready to be activated
+        while (group.alpha < 1 || !operation.isDone)
+        {
+            yield return null;
+        }
+
+        // Setup player
+        Player.instance.transform.position = spawnPos;
+        Player.instance.rb.isKinematic = false;
 
         while (group.alpha > 0)
         {
             group.alpha -= .1f;
             yield return wait;
         }
-
     }
 }

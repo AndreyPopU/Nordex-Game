@@ -16213,7 +16213,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.62, y: 0.2426486, z: 1.2388821}
+  m_Size: {x: 2.62, y: 0.2426486, z: 1.6369448}
   m_Center: {x: 0.12, y: 0.10071421, z: -0.11944103}
 --- !u!1001 &858618108
 PrefabInstance:
@@ -24804,8 +24804,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.184686, y: 0.2426486, z: 1.2388821}
-  m_Center: {x: 1.2759376, y: 0.10071513, z: -0.11944103}
+  m_Size: {x: 4.184686, y: 0.2426486, z: 1.6534997}
+  m_Center: {x: 1.2759376, y: 0.10071518, z: -0.11944103}
 --- !u!4 &1328360265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60692004db628424480fa12daaf7912b, type: 3}
@@ -34196,6 +34196,7 @@ MonoBehaviour:
   scene: Clockwork
   spawnPosition: {x: 0, y: 1, z: -2}
   inrange: 0
+  interacted: 0
 --- !u!95 &1820110374
 Animator:
   serializedVersion: 5
@@ -39729,7 +39730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7782069251981274556, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8971713316715374076, guid: 3bde8b5e0373e6048a6721a7e0c231d7, type: 3}
       propertyPath: m_LocalScale.x
@@ -40335,7 +40336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 422798729459618127, guid: bbc802dd039b51c488d5e35176cdd46a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2469799856824452555, guid: bbc802dd039b51c488d5e35176cdd46a, type: 3}
       propertyPath: m_Enabled
@@ -41181,6 +41182,7 @@ MonoBehaviour:
   scene: Clockwork
   spawnPosition: {x: 0, y: 1, z: -2}
   inrange: 0
+  interacted: 0
 --- !u!95 &3469287837657870024
 Animator:
   serializedVersion: 5
