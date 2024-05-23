@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Puzzle2StarterScript : MonoBehaviour
 {
+    public PuzzleTrackerAnalytics puzzleTrackerAnalytics;
+
     public GameObject puzzle2;
     public GameObject puzzle2FAKE;
     public GameObject player;
@@ -34,6 +36,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     void Start()
     {
+        puzzleTrackerAnalytics = FindObjectOfType<PuzzleTrackerAnalytics>();
+
         puzzle2StarterScript = GetComponent<Puzzle2StarterScript>();
 
         if (mainCamera != null)
@@ -76,6 +80,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     private void StartPuzzle()
     {
+        puzzleTrackerAnalytics.AnalyticsStartPuzzle("Puzzle 2");
+
         if (puzzleCenter != null && mainCamera != null)
         {
             // Move and rotate the camera
@@ -147,6 +153,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     public void ResetCameraAndPlayer()
     {
+        puzzleTrackerAnalytics.AnalyticsEndPuzzle();
+
         if (mainCamera != null)
         {
             StartCoroutine(SmoothTransitionCamera(mainCamera.transform.position, mainCamera.transform.rotation, storedCameraPosition, storedCameraRotation));
