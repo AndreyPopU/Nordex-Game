@@ -2,46 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flashlight : MonoBehaviour
+public class Key: MonoBehaviour
 {
     public Transform holdtransform;
-    public bool inrange;
-    public bool key;
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Player>() != null)
-        {
-            inrange = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<Player>() != null)
-        {
-            inrange = false;
-        }
-
-    }
-    void Start()
+    
+    public void PickUp()
     {
         holdtransform = GameObject.Find("HoldTransform").transform;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && inrange)
-        {
-
-            transform.parent = holdtransform;
-            transform.localRotation = Quaternion.Euler(0, 90, 90);
-            transform.localPosition = Vector3.zero;
-
-            if (key)
-            {
-                FindObjectOfType<Player>().haskey = true;
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-
-            }
-        }
+        transform.parent = holdtransform;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        Player.instance.haskey = true;
     }
 }

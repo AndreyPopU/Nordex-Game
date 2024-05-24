@@ -31,13 +31,15 @@ public class Toolbox : Puzzle
 
         print(overlapingColliders.Length);
 
-        if (overlapingColliders.Length != 60) return;
+        if (overlapingColliders.Length != 61) return;
 
         // Completed
         Chronometer.instance.loop();
         animator.enabled = true;
         Focus(Player.instance.playerCam.transform);
         interactable = false;
+        completeCollider.enabled = false;
+
 
     }
     public void PickUp()

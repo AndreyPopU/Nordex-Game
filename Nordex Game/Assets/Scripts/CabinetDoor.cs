@@ -2,51 +2,44 @@ using UnityEngine;
 
 public class CabinetDoor : MonoBehaviour
 {
-    public bool opened;
-    public bool inrange;
-    public Animator animator;
-    public BoxCollider corecollider;
-    public BoxCollider keycollider;
+    public bool inRange;
+    public Key keyCollider;
+
+    private BoxCollider coreCollider;
+    private Animator animator;
+    private bool opened;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
-        corecollider = GetComponent<BoxCollider>();
+        coreCollider = GetComponent<BoxCollider>();
     }
+
     private void Update()
     {
-        if (inrange)
+        if (inRange && Input.GetButtonDown("Interact"))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            //if key hasn't been picked up and door is open
+            if (keyCollider != null && opened)
             {
-                if (keycollider.enabled && !opened)
-                {
-                    corecollider.enabled = true;
-                    keycollider.enabled = false;
-                    return;
-                }
-
-                animator.SetBool("Open", opened);
-                animator.SetTrigger("Trigger");
-
-                //if doesn't have key and closed
-                if (!keycollider.enabled && !opened)
-                {
-                    corecollider.enabled = false;
-                    keycollider.enabled = true;
-                    return;
-                }
+                keyCollider.PickUp();
+                keyCollider = null;
                 opened = !opened;
+                return;
             }
+
+            opened = !opened;
+            animator.SetTrigger("Trigger");
         }
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
-            inrange = true;
+            inRange = true;
     }
     void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<Player>())
-            inrange = false;
+            inRange = false;
     }
 }
