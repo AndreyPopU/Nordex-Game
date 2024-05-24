@@ -1,10 +1,11 @@
 using UnityEngine;
-using Unity.Services.Analytics;
+using UnityEngine.Analytics;
 using System.Collections.Generic;
 
 public class PuzzleTrackerAnalytics : MonoBehaviour
 {
     private float startTime;
+
     private string currentPuzzle;
 
     // Call when a player starts a puzzle
@@ -29,14 +30,12 @@ public class PuzzleTrackerAnalytics : MonoBehaviour
 
         Debug.Log($"Finished puzzle: {currentPuzzle} at time: {endTime}, duration: {duration} seconds");
 
-        // Create and record the custom event
-        PuzzleCompletedEvent puzzleCompletedEvent = new PuzzleCompletedEvent
+        // Send the custom event to Unity Analytics
+        Analytics.CustomEvent("PuzzleCompleted", new Dictionary<string, object>
         {
-            PuzzleName = currentPuzzle,
-            Duration = duration
-        };
-
-        AnalyticsService.Instance.RecordEvent(puzzleCompletedEvent);
+            { "puzzleName", currentPuzzle },
+            { "duration", duration }
+        });
 
         // Reset the current puzzle
         currentPuzzle = null;
