@@ -22,7 +22,7 @@ public class LockedDoor : MonoBehaviour
                 {
                     if(GameObject.Find("HoldTransform")) GameObject.Find("HoldTransform").SetActive(false);
                     animator.SetBool("Open", opened);
-                    animator.SetTrigger("Trigger");
+                    animator.SetTrigger("Open");
                     opened = !opened;
                     locked = false;
                     Player.instance.haskey = false;

@@ -26,7 +26,10 @@ public class Toolbox : Puzzle
 
     public void CheckComplete()
     {
+        completeCollider.enabled = true;
         Collider[] overlapingColliders = Physics.OverlapBox(completeCollider.bounds.center, completeCollider.bounds.size / 2, Quaternion.identity, mask);
+
+        print(overlapingColliders.Length);
 
         if (overlapingColliders.Length != 38) return;
 
@@ -35,6 +38,7 @@ public class Toolbox : Puzzle
         animator.enabled = true;
         Focus(Player.instance.playerCam.transform);
         interactable = false;
+
     }
     public void PickUp()
     {
