@@ -31,7 +31,7 @@ public class Toolbox : Puzzle
 
         print(overlapingColliders.Length);
 
-        if (overlapingColliders.Length != 38) return;
+        if (overlapingColliders.Length != 60) return;
 
         // Completed
         Chronometer.instance.loop();

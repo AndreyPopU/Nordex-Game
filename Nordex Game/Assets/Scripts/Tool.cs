@@ -10,7 +10,7 @@ public class Tool : MonoBehaviour
     public LayerMask mask;
     public bool interactable = true;
 
-    private BoxCollider[] colliders;
+    private Collider[] colliders;
     private Camera cam;
     public bool dragged;
     public bool placed;
@@ -21,9 +21,12 @@ public class Tool : MonoBehaviour
     private GameObject overlay;
     private GameObject GFX;
 
+    Vector3 dir;
+    float dist;
+
     private void Start()
     {
-        colliders = GetComponents<BoxCollider>();
+        colliders = GetComponents<Collider>();
         cam = Camera.main;
         startPosition = transform.position;
 
@@ -82,15 +85,17 @@ public class Tool : MonoBehaviour
              
             for (int i = 0; i < colliders.Length; i++) // Loop though all colliders
             {
-                BoxCollider currentCollider = colliders[i];
+                Collider currentCollider = colliders[i];
 
                 // Check for collision with other tools only
-                Collider[] overlappingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
+                Collider[] overlapingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
 
-                for (int j = 0; j < overlappingColliders.Length; j++) // If colliding with another tool, return
+                for (int j = 0; j < overlapingColliders.Length; j++) // If colliding with another tool, return
                 {
-                    // Check if colliding with another tool
-                    if (overlappingColliders[j].TryGetComponent(out Tool tool) && tool != this)
+                    // Use Physics.ComputePenetration to check if the actual mesh colliders are colliding
+                    if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this &&
+                        Physics.ComputePenetration(currentCollider, currentCollider.transform.position, currentCollider.transform.rotation,
+                        overlapingColliders[j], overlapingColliders[j].transform.position, overlapingColliders[j].transform.rotation, out dir, out dist))
                     {
                         // Red Overlay
                         foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)
@@ -98,7 +103,7 @@ public class Tool : MonoBehaviour
 
                         return;
                     }
-                    else if (overlappingColliders[j].gameObject.name == "OutsideCollider")
+                    else if (overlapingColliders[j].gameObject.name == "OutsideCollider")
                     {
                         // Red Overlay
                         foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)
@@ -128,14 +133,17 @@ public class Tool : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++) // Loop though all colliders
         {
-            BoxCollider currentCollider = colliders[i];
+            Collider currentCollider = colliders[i];
 
             // Check for collision with other tools only
             Collider[] overlapingColliders = Physics.OverlapBox(currentCollider.bounds.center, currentCollider.bounds.size / 2, Quaternion.identity, mask);
 
             for(int j = 0; j < overlapingColliders.Length; j++) // If colliding with another tool, return
             {
-                if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this)
+                // Use Physics.ComputePenetration to check if the actual mesh colliders are colliding
+                if (overlapingColliders[j].TryGetComponent(out Tool tool) && tool != this &&
+                    Physics.ComputePenetration(currentCollider, currentCollider.transform.position, currentCollider.transform.rotation,
+                    overlapingColliders[j], overlapingColliders[j].transform.position, overlapingColliders[j].transform.rotation, out dir, out dist))
                 {
                     transform.position = startPosition;
                     return;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -764,13 +764,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1732756554865950233, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 6890757847832849490, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890757847832849490, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890757847832849490, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1802564082256752390, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
-      propertyPath: interactable
-      value: 1
+    - target: {fileID: 6890757847832849490, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890757847832849490, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890757847832849490, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890757847832849490, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9080456189368270537, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
       propertyPath: m_Name
