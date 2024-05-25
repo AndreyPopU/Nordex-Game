@@ -32256,7 +32256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.418
+      value: -15.347
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalRotation.w
@@ -32276,11 +32276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.15
+      value: -9.884
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.98
+      value: 5.153
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -41337,6 +41337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 543450653228080816}
     m_Modifications:
+    - target: {fileID: 756661827857340364, guid: e2d6c3ad51c35ea4d9c7e027d106550b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1647205902225507623, guid: e2d6c3ad51c35ea4d9c7e027d106550b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
