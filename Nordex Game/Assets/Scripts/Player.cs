@@ -25,9 +25,9 @@ public class Player : MonoBehaviour
     public bool focused;
     public Puzzle puzzleInRange;
     public bool turbineSpin;
-
     #region Movement
 
+    private float baseSpeed;
     //Rotation and look
     private float xRotation;
     private float sensitivity = 50f;
@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    private CharacterController controller;
+
     void Awake()
     {
         if (instance == null) instance = this;
@@ -60,6 +62,8 @@ public class Player : MonoBehaviour
 
         coreCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
+        baseSpeed = moveSpeed;
     }
 
     void Start()
@@ -100,11 +104,11 @@ public class Player : MonoBehaviour
     }
 
      public void Jump()
-    {
+     {
         if (jumping)
         {
             grounded = false;
-            rb.AddForce(Vector3.up* Jumpforce * Time.fixedDeltaTime, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * Jumpforce * Time.fixedDeltaTime, ForceMode.Impulse);
             jumping = false;
         }
     }
@@ -143,6 +147,9 @@ public class Player : MonoBehaviour
 
         //Some multipliers
         float multiplier = 1f, multiplierV = 1f;
+
+        if (!grounded) moveSpeed = baseSpeed / 4;
+        else moveSpeed = baseSpeed;
 
         //Apply forces to move player
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
@@ -215,13 +222,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        //Make sure we are only checking for walkable layers
-        int layer = other.gameObject.layer;
-        if (whatIsGround != (whatIsGround | (1 << layer))) return;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Puzzle puzzle)) puzzleInRange = puzzle;
@@ -229,7 +229,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Puzzle puzzle)) puzzleInRange = null;
+        if (other.TryGetComponent(out Puzzle puzzle) && puzzleInRange == puzzle) puzzleInRange = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position - Vector3.up * .85f, .2f);
     }
 }
 

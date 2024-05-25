@@ -75,7 +75,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635890467238926563}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 643b1ea6a1300ea478db883a24b9619f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -90,7 +90,7 @@ CapsuleCollider:
   m_Radius: 0.28938675
   m_Height: 1.8883963
   m_Direction: 1
-  m_Center: {x: 0, y: -0.055801872, z: 0.21061325}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6344691104737615021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   focused: 0
   puzzleInRange: {fileID: 0}
   turbineSpin: 0
-  moveSpeed: 8000
+  moveSpeed: 4000
   maxSpeed: 6
   whatIsGround:
     serializedVersion: 2

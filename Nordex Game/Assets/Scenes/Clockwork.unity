@@ -785,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bfe1156e5c6c7f44a55b9e9db475e35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0700002
+      value: 2.217
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bfe1156e5c6c7f44a55b9e9db475e35, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1649,9 +1649,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
-      propertyPath: hasToolbox
-      value: 1
+    - target: {fileID: 6200492997605898170, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
+      propertyPath: near clip plane
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7637790959645374788, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2618,6 +2618,7 @@ SceneRoots:
   - {fileID: 683920720}
   - {fileID: 1596462718}
   - {fileID: 417351727}
+  - {fileID: 1432391490}
   - {fileID: 3064178932078695243}
   - {fileID: 92036699}
   - {fileID: 745992798}
@@ -2625,7 +2626,6 @@ SceneRoots:
   - {fileID: 1124842993}
   - {fileID: 716656161}
   - {fileID: 85996037}
-  - {fileID: 1432391490}
   - {fileID: 483510278}
   - {fileID: 992453419}
   - {fileID: 1477179568}
