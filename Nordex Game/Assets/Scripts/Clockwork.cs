@@ -74,7 +74,12 @@ public class Clockwork : Puzzle
         Player.instance.rb.isKinematic = Player.instance.focused;
         Player.instance.rb.velocity = Vector3.zero;
 
-        if (!timeActive) timeLeft = baseTimeLeft; // Reset time
+        // Reset time
+        if (!Player.instance.focused)
+        {
+            timeActive = false;
+            timeLeft = baseTimeLeft;
+        }
 
         for (int i = 0; i < cogs.Length; i++)
             if (!cogs[i].placed)

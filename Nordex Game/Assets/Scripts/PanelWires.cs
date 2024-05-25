@@ -17,6 +17,7 @@ public class PanelWires : Puzzle
     public BoxCollider panelCollider;
     public CanvasGroup canvas;
     public Lever lever;
+    public BoxCollider blockingCollider;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class PanelWires : Puzzle
         else StartCoroutine(FadeCanvas(0));
 
         Player.instance.coreCollider.enabled = !Player.instance.focused;
+        blockingCollider.enabled = !Player.instance.focused;
         Player.instance.rb.useGravity = !Player.instance.focused;
         Player.instance.rb.isKinematic = Player.instance.focused;
         Player.instance.rb.velocity = Vector3.zero;

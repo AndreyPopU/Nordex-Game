@@ -3021,7 +3021,8 @@ MonoBehaviour:
   rusted: 0
   clockwise: 0
   running: 0
-  frontNeighbours: []
+  frontNeighbours:
+  - {fileID: 8535345522922634893}
   backNeighbours: []
 --- !u!54 &4365068512401848099
 Rigidbody:
@@ -6298,7 +6299,8 @@ MonoBehaviour:
   rusted: 1
   clockwise: 0
   running: 0
-  frontNeighbours: []
+  frontNeighbours:
+  - {fileID: 7344338110678744760}
   backNeighbours: []
 --- !u!54 &2675928992988371294
 Rigidbody:
@@ -10942,7 +10944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2269485693742852002
 Transform:
   m_ObjectHideFlags: 0

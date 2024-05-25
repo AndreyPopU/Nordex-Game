@@ -207,6 +207,8 @@ public class Cog : MonoBehaviour
             CogSocket currentSocket = socket.head;
             while (currentSocket != null && currentSocket.full)
             {
+                if (currentSocket.frontNeighbours.Length <= 0) return;
+
                 currentSocket = currentSocket.frontNeighbours[0];
 
                 if (currentSocket.rusted) return;
@@ -231,19 +233,19 @@ public class Cog : MonoBehaviour
         Clockwork.instance.PlayRandomClip();
         float duration = .1f;
         float force = .01f;
-        Vector3 originalPos = transform.position;
         Vector3 shakePos;
+        Transform gfx = transform.GetChild(0);
 
         while (duration > 0)
         {
             duration -= Time.deltaTime;
-            float randomX = Random.Range(originalPos.x - 1 * force, originalPos.x + 1 * force);
-            float randomY = Random.Range(originalPos.y - 1 * force, originalPos.y + 1 * force);
-            shakePos = new Vector3(randomX, randomY, transform.position.z);
-            transform.position = shakePos;
+            float randomX = Random.Range(-1 * force, 1 * force);
+            float randomY = Random.Range(-1 * force, 1 * force);
+            shakePos = new Vector3(randomX, randomY, 0);
+            gfx.localPosition = shakePos;
             yield return waitForFixedUpdate;
         }
 
-        transform.position = originalPos;
+        gfx.localPosition = Vector3.zero;
     }
 }

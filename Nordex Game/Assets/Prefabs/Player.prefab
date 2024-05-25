@@ -111,11 +111,11 @@ MonoBehaviour:
   haskey: 0
   coreCollider: {fileID: 0}
   rb: {fileID: 0}
-  hasToolbox: 0
+  hasToolbox: 1
   focused: 0
   puzzleInRange: {fileID: 0}
   turbineSpin: 0
-  moveSpeed: 4000
+  moveSpeed: 8000
   maxSpeed: 6
   whatIsGround:
     serializedVersion: 2

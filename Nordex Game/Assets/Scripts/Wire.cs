@@ -45,7 +45,8 @@ public class Wire : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        int layerMask = 1 << 10;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             Vector3 targetPosition = hit.point;
 

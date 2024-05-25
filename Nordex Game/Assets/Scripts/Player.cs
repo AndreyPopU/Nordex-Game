@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
         //Some multipliers
         float multiplier = 1f, multiplierV = 1f;
 
-        if (!grounded) moveSpeed = baseSpeed / 4;
+        if (!grounded) moveSpeed = baseSpeed / 8;
         else moveSpeed = baseSpeed;
 
         //Apply forces to move player

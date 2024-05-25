@@ -49,7 +49,6 @@ public class Tool : MonoBehaviour
         startPosition = transform.position;
 
         // Enable Overlay
-        //GFX.SetActive(false);
         overlay.SetActive(true);
     }
 
