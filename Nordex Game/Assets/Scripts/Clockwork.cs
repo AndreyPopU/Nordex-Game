@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,10 @@ public class Clockwork : Puzzle
     public SocketVariant[] variants;
     public int index;
 
+    [Header("Variants")]
+    public AudioClip[] clips;
+    private AudioSource audioSource;
+
     private Vector3 panelPosition;
     private float baseTimeLeft;
     public BoxCollider panelCollider;
@@ -31,6 +36,7 @@ public class Clockwork : Puzzle
         instance = this;
         panelPosition = panel.transform.position;
         baseTimeLeft = timeLeft;
+        audioSource = GetComponent<AudioSource>();
 
         variants[index].gameObject.SetActive(true);
     }
@@ -123,5 +129,11 @@ public class Clockwork : Puzzle
         variants[index].gameObject.SetActive(true);
 
         sockets = variants[index].correctSockets;
+    }
+
+    public void PlayRandomClip()
+    {
+        audioSource.clip = clips[Random.Range(0, clips.Length)];
+        audioSource.Play();
     }
 }

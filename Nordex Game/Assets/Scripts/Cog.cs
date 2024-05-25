@@ -189,6 +189,7 @@ public class Cog : MonoBehaviour
                 {
                     socket.head.running = true;
                     socket.head.CheckFront();
+                    Clockwork.instance.PlayRandomClip();
                 }
             }
 
@@ -198,6 +199,7 @@ public class Cog : MonoBehaviour
                 {
                     socket.head.running = true;
                     socket.head.CheckFront();
+                    Clockwork.instance.PlayRandomClip();
                 }
             }
 
@@ -226,6 +228,7 @@ public class Cog : MonoBehaviour
     {
         YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
 
+        Clockwork.instance.PlayRandomClip();
         float duration = .1f;
         float force = .01f;
         Vector3 originalPos = transform.position;
