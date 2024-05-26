@@ -103,18 +103,14 @@ public class Puzzle2StarterScript : MonoBehaviour
 
                 foreach (Puzzle2ScaleObjectSmoothlyXScript scaleObjectX in scaleObjectsX)
                 {
-                    scaleObjectX.StopAllCoroutines();
                     scaleObjectX.ResetToOriginalScale();
-                    scaleObjectX.StartCoroutine(scaleObjectX.ScaleAfterDelay());
                 }
 
                 Puzzle2ScaleObjectSmoothlyYScript[] scaleObjectsY = parentGameObject.GetComponentsInChildren<Puzzle2ScaleObjectSmoothlyYScript>();
 
                 foreach (Puzzle2ScaleObjectSmoothlyYScript scaleObjectY in scaleObjectsY)
                 {
-                    scaleObjectY.StopAllCoroutines();
                     scaleObjectY.ResetToOriginalScale();
-                    scaleObjectY.StartCoroutine(scaleObjectY.ScaleAfterDelay());
                 }
             }
 
@@ -205,6 +201,20 @@ public class Puzzle2StarterScript : MonoBehaviour
         playerCollider.enabled = false;
 
         isPuzzleActive = true;
+
+        Puzzle2ScaleObjectSmoothlyXScript[] scaleObjectsX = parentGameObject.GetComponentsInChildren<Puzzle2ScaleObjectSmoothlyXScript>();
+
+        foreach (Puzzle2ScaleObjectSmoothlyXScript scaleObjectX in scaleObjectsX)
+        {
+            scaleObjectX.StartCoroutine(scaleObjectX.ScaleAfterDelay());
+        }
+
+        Puzzle2ScaleObjectSmoothlyYScript[] scaleObjectsY = parentGameObject.GetComponentsInChildren<Puzzle2ScaleObjectSmoothlyYScript>();
+
+        foreach (Puzzle2ScaleObjectSmoothlyYScript scaleObjectY in scaleObjectsY)
+        {
+            scaleObjectY.StartCoroutine(scaleObjectY.ScaleAfterDelay());
+        }
     }
 
     private System.Collections.IEnumerator SmoothTransitionCamera(Vector3 startPos, Quaternion startRot, Vector3 endPos, Quaternion endRot)
