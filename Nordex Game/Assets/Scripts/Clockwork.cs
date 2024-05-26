@@ -34,6 +34,7 @@ public class Clockwork : Puzzle
 
     private void Awake()
     {
+        // Singleton
         if (instance == null)
         {
             instance = this;
@@ -41,6 +42,7 @@ public class Clockwork : Puzzle
         }
         else Destroy(gameObject);
 
+        // Setup
         panelPosition = panel.transform.position;
         baseTimeLeft = timeLeft;
         audioSource = GetComponent<AudioSource>();
@@ -50,10 +52,12 @@ public class Clockwork : Puzzle
 
     private void Update()
     {
+        // Deal with panel
         panel.transform.position = Vector3.MoveTowards(panel.transform.position, panelPosition, 6 * Time.deltaTime);
 
         if (!timeActive) return;
 
+        // Slider countdown
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
@@ -75,7 +79,8 @@ public class Clockwork : Puzzle
     {
         base.Focus(focus);
 
-        if (Camera.main.transform.GetChild(0) != null)
+        // If player has toolbox on him - place it to the side
+        if (Camera.main.transform.childCount > 0 && Camera.main.transform.GetChild(0) != null)
         {
             Transform toolbox = Camera.main.transform.GetChild(0);
             toolbox.SetParent(toolboxTransform);
@@ -98,10 +103,12 @@ public class Clockwork : Puzzle
             timeLeft = baseTimeLeft;
         }
 
+        // Setup Cogs
         for (int i = 0; i < cogs.Length; i++)
             if (!cogs[i].placed)
                 cogs[i].interactable = Player.instance.focused;
 
+        // Setup Screws
         for (int i = 0; i < screws.Length; i++)
         {
             if (!Player.instance.focused && !screws[i].screwed)
@@ -113,14 +120,17 @@ public class Clockwork : Puzzle
             screws[i].interactable = Player.instance.focused;
         }
 
+        // Setup Panel
         if (panel.transform.localPosition.x < -1) panelPosition += panel.transform.right * 4 + panel.transform.up * .2f;
     }
 
     private void OnMouseDown()
     {
+        // If not all screws are unscrewed return;
         for (int i = 0; i < screws.Length; i++)
             if (screws[i].screwed) return;
 
+        // Activate time and move panel out of the way
         timeActive = true;
         panelPosition += -panel.transform.right * 4 - panel.transform.up * .2f;
         panelCollider.enabled = false;
@@ -128,6 +138,7 @@ public class Clockwork : Puzzle
 
     public void CheckComplete()
     {
+        // If all sockets are full and mechanism is running - consider it complete
         for (int i = 0; i < sockets.Length; i++)
         {
             if (!sockets[i].full || !sockets[i].running) return;
@@ -144,6 +155,7 @@ public class Clockwork : Puzzle
 
     public void ActivateVariant()
     {
+        // Update variant
         variants[index].gameObject.SetActive(false);
 
         index++;
@@ -155,6 +167,7 @@ public class Clockwork : Puzzle
 
     public void PlayRandomClip()
     {
+        // Player random sound when clockwork gets jammed
         audioSource.clip = clips[Random.Range(0, clips.Length)];
         audioSource.Play();
     }

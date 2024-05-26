@@ -20,10 +20,11 @@ public class CogSocket : PlacementBox
 
     private void FixedUpdate()
     {
+        // Rotate
         if (running) transform.Rotate(transform.forward, spinningForce * Time.fixedDeltaTime);
     }
 
-    public void Run()
+    public void Run() // Check if socket is running
     {
         if (!full && !head) running = false; // Stop running if empty
 

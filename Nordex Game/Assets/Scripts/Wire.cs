@@ -68,6 +68,7 @@ public class Wire : MonoBehaviour
     {
         dragged = false;
 
+        // Check overlapping colliders
         Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, mask);
 
         if (colliders.Length == 0)

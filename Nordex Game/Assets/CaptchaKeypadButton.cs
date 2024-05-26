@@ -23,10 +23,10 @@ public class CaptchaKeypadButton : MonoBehaviour
         //11 = Enter
         else if (number == 11)
         {
+            // If code is correct - ask for captcha
             if (Textbox.text == "6874")
             {
                 Textbox.text = "Correct";
-                //making sounds and lights play
                 CaptchaKeypad.instance.interactable = false;
                 Invoke("AskForCaptcha", 2);
             }

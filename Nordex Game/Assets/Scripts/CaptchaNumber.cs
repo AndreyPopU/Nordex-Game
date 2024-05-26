@@ -21,6 +21,7 @@ public class CaptchaNumber : MonoBehaviour
 
     void Start()
     {
+        // Setup
         gfx = transform.GetChild(0).gameObject;
         text = GetComponentInChildren<TextMeshProUGUI>();
         if (value>= 0) text.text = value.ToString();
@@ -31,6 +32,7 @@ public class CaptchaNumber : MonoBehaviour
 
     private void Update()
     {
+        // Update position and scale as desired
         transform.position = Vector3.Lerp(transform.position, desiredPosition, .1f);
         gfx.transform.localScale = Vector3.Lerp(gfx.transform.localScale, desiredScale, .1f);
     }
@@ -52,36 +54,24 @@ public class CaptchaNumber : MonoBehaviour
 
     public void Lock()
     {
+        // Lock number
         SmartCoroutine(SpinCO());
         interactable = false;
         transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
-
     }
 
     public void ResetNumber()
     {
+        // Reset number
         text.color = Color.white;
         desiredPosition = startPos;
         interactable = true;
         transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
-        Highlight(false);
-        HighlightNeighbours(false);
     }
 
-    public void Highlight(bool highlight)
+    public void SmartCoroutine(IEnumerator coroutine) 
     {
-        //desiredPosition = highlight ? startPos - transform.forward * .1f : startPos;
-        //transform.GetChild(0).GetComponent<MeshRenderer>().material.color = highlight ? Color.blue : Color.gray;
-    }
-
-    public void HighlightNeighbours(bool highlight)
-    {
-        foreach (CaptchaNumber neighbour in neighbours)
-            neighbour.Highlight(highlight);
-    }
-
-    public void SmartCoroutine(IEnumerator coroutine)
-    {
+        // Make sure only one coroutine is running
         if (runningCo == null) runningCo = StartCoroutine(coroutine);
         else
         {
@@ -90,7 +80,7 @@ public class CaptchaNumber : MonoBehaviour
         }
     }
 
-    public IEnumerator ShakeCO()
+    public IEnumerator ShakeCO() // Shake
     {
         YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
         float elapsed = 0;
@@ -109,7 +99,7 @@ public class CaptchaNumber : MonoBehaviour
         runningCo = null;
     }
 
-    public IEnumerator SpinCO()
+    public IEnumerator SpinCO() // Spin
     {
         YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
 

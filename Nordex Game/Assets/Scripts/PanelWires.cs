@@ -21,6 +21,7 @@ public class PanelWires : Puzzle
 
     private void Awake()
     {
+        // Singleton
         if (instance == null)
         {
             instance = this;
@@ -34,6 +35,7 @@ public class PanelWires : Puzzle
 
     private void Update()
     {
+        // Move panel to desired position
         panel.transform.position = Vector3.MoveTowards(panel.transform.position, panelPosition, 6 * Time.deltaTime);
     }
 
@@ -50,10 +52,12 @@ public class PanelWires : Puzzle
         Player.instance.rb.isKinematic = Player.instance.focused;
         Player.instance.rb.velocity = Vector3.zero;
 
+        // Update wires
         for (int i = 0; i < wires.Length; i++)
             if (!wires[i].placed)
                 wires[i].interactable = Player.instance.focused;
 
+        // Update screws
         for (int i = 0; i < screws.Length; i++)
         {
             if (!Player.instance.focused && !screws[i].screwed)
@@ -71,6 +75,7 @@ public class PanelWires : Puzzle
 
     private void OnMouseDown()
     {
+        // If all screws are unscrewed, take off the panel
         for (int i = 0; i < screws.Length; i++)
             if (screws[i].screwed) return;
 
@@ -80,6 +85,7 @@ public class PanelWires : Puzzle
 
     public void CheckComplete()
     {
+        // If all wires are connected to the correct socket, complete the puzzle
         for (int i = 0; i < wires.Length; i++)
         {
             if (wires[i].connectedIndex != wires[i].index) return;
@@ -93,7 +99,7 @@ public class PanelWires : Puzzle
         lever.boxCollider.enabled = true;
     }
 
-    private IEnumerator FadeCanvas(float desire)
+    private IEnumerator FadeCanvas(float desire) // UI smooth appear
     {
         YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
 

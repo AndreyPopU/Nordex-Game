@@ -18,6 +18,7 @@ public class CaptchaKeypad : Puzzle
 
     private void Awake()
     {
+        // Singleton
         if (instance == null)
         {
             instance = this;
@@ -36,6 +37,7 @@ public class CaptchaKeypad : Puzzle
 
     private void DisableCaptcha()
     {
+        // Disable captcha at first
         foreach (CaptchaNumber number in Captcha.instance.numbers)
             number.enabled = false;
 
@@ -48,6 +50,7 @@ public class CaptchaKeypad : Puzzle
 
     public override void Focus(Transform focus)
     {
+        // If captcha is required - focus to that instead
         if (Captcha.instance.gameObject.activeInHierarchy)
         {
             if (!Player.instance.focused) return;
@@ -65,10 +68,10 @@ public class CaptchaKeypad : Puzzle
     {
         if (reachedPosition) return;
 
+        // Transition to captcha
         if (captchaPanel.transform.localScale.x < 1 && captchaPanel.activeInHierarchy)
             captchaPanel.transform.localScale = new Vector3(captchaPanel.transform.localScale.x + 2 * Time.deltaTime, 1, 1);
 
-        // Transition to captcha
         if (captchaPanel.activeInHierarchy)
         {
             if (Vector3.Distance(captchaPanel.transform.position, desiredPosition) > 0.02f)
@@ -88,7 +91,7 @@ public class CaptchaKeypad : Puzzle
 
     public void Shake() => StartCoroutine(ShakeCO());
 
-    private IEnumerator ShakeCO()
+    private IEnumerator ShakeCO() // Shake
     {
         YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
         float elapsed = 0;
