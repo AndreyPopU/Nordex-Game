@@ -3,7 +3,7 @@ using UnityEngine;
 public class Puzzle2StarterScript : MonoBehaviour
 {
     public PuzzleTrackerAnalytics puzzleTrackerAnalytics;
-    
+
     public GameObject parentGameObject;
     public GameObject puzzle2;
     public GameObject puzzle2FAKE;
@@ -15,12 +15,15 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     public Collider playerCollider;
 
-    public float cameraTransitionSpeed = 2.0f;
+    private float cameraTransitionSpeed = 2.0f;
+    private float reEntryCooldown = 2.0f; 
 
     public Camera mainCamera;
 
     private bool isPlayerInArea = false;
     private bool isPuzzleActive = false;
+
+    private float lastExitTime = 0.0f;  
 
     private Puzzle2StarterScript puzzle2StarterScript;
 
@@ -61,7 +64,7 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerInArea && Input.GetKeyUp(KeyCode.E) && !isPuzzleActive)
+        if (isPlayerInArea && Input.GetKeyUp(KeyCode.E) && !isPuzzleActive && Time.time >= lastExitTime + reEntryCooldown)
         {
             // Store the current positions before starting the puzzle
             storedCameraPosition = mainCamera.transform.position;
@@ -158,7 +161,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
             playerCollider.enabled = true;
 
-            puzzle2StarterScript.enabled = false;
+            // Record the time when the puzzle was exited
+            lastExitTime = Time.time;
         }
     }
 
