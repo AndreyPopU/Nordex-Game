@@ -18,8 +18,12 @@ public class CaptchaKeypad : Puzzle
 
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(transform.parent.gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(transform.parent.gameObject);
+        }
+        else Destroy(transform.parent.gameObject);
     }
 
     public override void Start()

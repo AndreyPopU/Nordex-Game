@@ -21,8 +21,13 @@ public class PanelWires : Puzzle
 
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+
         panelPosition = panel.transform.position;
         canvas.alpha = 0;
     }

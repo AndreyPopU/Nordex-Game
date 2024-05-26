@@ -17,8 +17,13 @@ public class Toolbox : Puzzle
 
     void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+
         completeCollider = GetComponents<BoxCollider>()[1];
         tools = GetComponentsInChildren<Tool>();
         placements = GetComponentsInChildren<PlacementBox>();
@@ -44,7 +49,7 @@ public class Toolbox : Puzzle
     }
     public void PickUp()
     {
-        if (!interactable)
+        if (!interactable && transform.parent == null)
         {
             if (Input.GetButtonDown("Interact"))
             {

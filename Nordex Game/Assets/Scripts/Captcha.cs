@@ -29,8 +29,6 @@ public class Captcha : Puzzle
 
                 if (transform.parent.localScale.x > 0)
                     transform.parent.localScale = new Vector3(transform.parent.localScale.x - 1 * Time.deltaTime, 1, 1);
-
-                
             }
             else
             {

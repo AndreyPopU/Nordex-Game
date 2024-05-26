@@ -431,6 +431,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &327438011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327438012}
+  m_Layer: 0
+  m_Name: ToolboxTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327438012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327438011}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6780845, y: -0.20050304, z: -0.20050304, w: 0.6780845}
+  m_LocalPosition: {x: -2.582, y: 0.328, z: -1.235}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -32.945}
 --- !u!1 &378405234 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5bfe1156e5c6c7f44a55b9e9db475e35, type: 3}
@@ -2526,6 +2557,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.95283014
       objectReference: {fileID: 0}
+    - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolboxTransform
+      value: 
+      objectReference: {fileID: 327438012}
     - target: {fileID: 6831918325676369541, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: m_Color.b
       value: 0.61960787
@@ -2642,3 +2677,4 @@ SceneRoots:
   - {fileID: 910404781}
   - {fileID: 1529667047}
   - {fileID: 1838867028}
+  - {fileID: 327438012}

@@ -10252,6 +10252,7 @@ MonoBehaviour:
   opened: 0
   inrange: 0
   locked: 1
+  needKey: 0
   animator: {fileID: 0}
 --- !u!65 &466562894
 BoxCollider:
@@ -12018,6 +12019,7 @@ MonoBehaviour:
   opened: 1
   inrange: 0
   locked: 1
+  needKey: 1
   animator: {fileID: 0}
 --- !u!65 &518481443
 BoxCollider:
@@ -48296,6 +48298,7 @@ GameObject:
   - component: {fileID: 3469287837657870023}
   - component: {fileID: 3469287837657870022}
   - component: {fileID: 3469287837657870025}
+  - component: {fileID: 3469287837657870026}
   m_Layer: 0
   m_Name: LadderUp
   m_TagString: Untagged
@@ -49592,6 +49595,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &3469287837657870026
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148006484954}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.14067255, y: 0.02025947, z: 0.12}
+  m_Center: {x: 0.060336277, y: -1.1368684e-14, z: 0.05}
 --- !u!1 &3486837912926943222
 GameObject:
   m_ObjectHideFlags: 0

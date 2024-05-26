@@ -7,6 +7,7 @@ public class LockedDoor : MonoBehaviour
     public bool opened;
     public bool inrange;
     public bool locked;
+    public bool needKey;
     public  Animator animator;
     private void Start()
     {
@@ -18,7 +19,7 @@ public class LockedDoor : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (!locked || locked && Player.instance.haskey) //key = open door
+                if (!locked || locked && Player.instance.haskey && needKey) //key = open door
                 {
                     if(GameObject.Find("HoldTransform")) GameObject.Find("HoldTransform").SetActive(false);
                     animator.SetBool("Open", opened);

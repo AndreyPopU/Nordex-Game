@@ -8,6 +8,7 @@ public class Clockwork : Puzzle
 {
     public static Clockwork instance;
 
+    public Transform toolboxTransform;
     [Header("Time")]
     public float timeLeft = 30;
     public bool timeActive;
@@ -33,7 +34,13 @@ public class Clockwork : Puzzle
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+
         panelPosition = panel.transform.position;
         baseTimeLeft = timeLeft;
         audioSource = GetComponent<AudioSource>();
@@ -67,6 +74,16 @@ public class Clockwork : Puzzle
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
+
+        if (Camera.main.transform.GetChild(0) != null)
+        {
+            Transform toolbox = Camera.main.transform.GetChild(0);
+            toolbox.SetParent(toolboxTransform);
+            toolbox.transform.localPosition = Vector3.zero;
+            toolbox.transform.localRotation = Quaternion.identity;
+            toolbox.GetComponent<Toolbox>().collision.enabled = false;
+            toolbox.GetComponent<Toolbox>().enabled = false;
+        }
 
         coreCollider.enabled = !Player.instance.focused;
         Player.instance.coreCollider.enabled = !Player.instance.focused;

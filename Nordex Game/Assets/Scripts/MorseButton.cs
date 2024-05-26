@@ -14,11 +14,9 @@ public class MorseButton : MonoBehaviour
     public float speed;
 
     private Vector3 desiredPos;
-    private Puzzle morsePuzzle;
-
+    
     void Start()
     {
-        morsePuzzle = GetComponentInParent<Puzzle>();
         desiredPos = transform.position;
     }
 
