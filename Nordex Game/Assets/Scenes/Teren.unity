@@ -8859,6 +8859,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60692004db628424480fa12daaf7912b, type: 3}
+--- !u!1 &418392061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1919310251330479829, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+  m_PrefabInstance: {fileID: 1705166709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &422294009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60692004db628424480fa12daaf7912b, type: 3}
@@ -37768,6 +37773,10 @@ PrefabInstance:
       propertyPath: puzzle2Collider
       value: 
       objectReference: {fileID: 1249613630}
+    - target: {fileID: 6291056256184360667, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: parentGameObject
+      value: 
+      objectReference: {fileID: 418392061}
     - target: {fileID: 6291056256184360667, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: cameraZoomOutPosition
       value: 

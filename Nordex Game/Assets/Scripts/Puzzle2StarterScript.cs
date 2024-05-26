@@ -3,7 +3,8 @@ using UnityEngine;
 public class Puzzle2StarterScript : MonoBehaviour
 {
     public PuzzleTrackerAnalytics puzzleTrackerAnalytics;
-
+    
+    public GameObject parentGameObject;
     public GameObject puzzle2;
     public GameObject puzzle2FAKE;
     public GameObject player;
@@ -75,6 +76,89 @@ public class Puzzle2StarterScript : MonoBehaviour
         {
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraTargetPosition.position, Time.deltaTime * cameraTransitionSpeed);
             mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, cameraTargetPosition.rotation, Time.deltaTime * cameraTransitionSpeed);
+        }
+
+        if (isPuzzleActive && Input.GetKeyDown(KeyCode.E))
+        {
+            // Reset Forms and Blockers
+            if (puzzle2 != null)
+            {
+                puzzle2.SetActive(false);
+                puzzle2.SetActive(true);
+            }
+
+            if (parentGameObject != null)
+            {
+                Puzzle2FormsControllerScript[] cubeControllers = parentGameObject.GetComponentsInChildren<Puzzle2FormsControllerScript>();
+
+                foreach (Puzzle2FormsControllerScript cubeController in cubeControllers)
+                {
+                    cubeController.ResetCube();
+                }
+
+                Puzzle2ScaleObjectSmoothlyXScript[] scaleObjectsX = parentGameObject.GetComponentsInChildren<Puzzle2ScaleObjectSmoothlyXScript>();
+
+                foreach (Puzzle2ScaleObjectSmoothlyXScript scaleObjectX in scaleObjectsX)
+                {
+                    scaleObjectX.StopAllCoroutines();
+                    scaleObjectX.ResetToOriginalScale();
+                    scaleObjectX.StartCoroutine(scaleObjectX.ScaleAfterDelay());
+                }
+
+                Puzzle2ScaleObjectSmoothlyYScript[] scaleObjectsY = parentGameObject.GetComponentsInChildren<Puzzle2ScaleObjectSmoothlyYScript>();
+
+                foreach (Puzzle2ScaleObjectSmoothlyYScript scaleObjectY in scaleObjectsY)
+                {
+                    scaleObjectY.StopAllCoroutines();
+                    scaleObjectY.ResetToOriginalScale();
+                    scaleObjectY.StartCoroutine(scaleObjectY.ScaleAfterDelay());
+                }
+            }
+
+            // Reset Camera and Player
+            if (mainCamera != null)
+            {
+                StartCoroutine(SmoothTransitionCamera(mainCamera.transform.position, mainCamera.transform.rotation, storedCameraPosition, storedCameraRotation));
+            }
+
+            if (player != null)
+            {
+                StartCoroutine(SmoothTransitionPlayer(player.transform.position, storedPlayerPosition));
+            }
+
+            if (playerRigidbody != null)
+            {
+                playerRigidbody.constraints = originalConstraints;
+            }
+
+            if (playerScript != null)
+            {
+                playerScript.focused = false;
+            }
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            isPuzzleActive = false;
+
+            if (puzzle2 != null)
+            {
+                puzzle2.SetActive(false);
+            }
+
+            if (restartButton != null)
+            {
+                restartButton.SetActive(false);
+            }
+
+            if (puzzle2FAKE != null)
+            {
+                puzzle2FAKE.SetActive(true);
+            }
+
+            playerCollider.enabled = true;
+
+            puzzle2StarterScript.enabled = false;
         }
     }
 
