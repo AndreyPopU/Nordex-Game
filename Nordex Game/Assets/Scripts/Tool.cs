@@ -26,10 +26,12 @@ public class Tool : MonoBehaviour
 
     private void Start()
     {
+        // Find all colliders
         colliders = GetComponents<Collider>();
         cam = Camera.main;
         startPosition = transform.position;
 
+        // Choose axis to be dragged along
         switch (lockAxis)
         {
             case LockAxis.X: lockPos = transform.position + Vector3.right * bonusAxis; break;
@@ -37,6 +39,7 @@ public class Tool : MonoBehaviour
             case LockAxis.Z: lockPos = transform.position + Vector3.forward * bonusAxis; break;
         }
 
+        // Find graphics and overlay gameobject
         GFX = transform.GetChild(0).gameObject;
         overlay = transform.GetChild(1).gameObject;
     }
@@ -102,7 +105,7 @@ public class Tool : MonoBehaviour
 
                         return;
                     }
-                    else if (overlapingColliders[j].gameObject.name == "OutsideCollider")
+                    else if (overlapingColliders[j].gameObject.name == "OutsideCollider") // If outside of toolbox, activate red overlay
                     {
                         // Red Overlay
                         foreach (Material mat in overlay.GetComponent<MeshRenderer>().materials)

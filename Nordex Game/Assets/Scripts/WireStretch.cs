@@ -19,7 +19,7 @@ public class WireStretch : MonoBehaviour
         if (endPivot.transform.hasChanged) UpdateScale();
     }
 
-    void UpdateScale()
+    void UpdateScale() // Update scale based on start and end point
     {
         float distance = Vector3.Distance(startPivot.position, endPivot.position); 
         transform.localScale = new Vector3(initialScale.x, distance * 2.2f, initialScale.z);

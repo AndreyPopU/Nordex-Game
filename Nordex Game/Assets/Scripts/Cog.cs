@@ -26,10 +26,12 @@ public class Cog : MonoBehaviour
 
     private void Start()
     {
+        // Setup
         cam = Camera.main;
         coreCollider = GetComponent<BoxCollider>();
         startPosition = transform.position;
 
+        // Select axis to lock to when dragged by mouse
         switch (lockAxis)
         {
             case LockAxis.X: lockPos = transform.position + Vector3.right * bonusAxis; break;
@@ -45,6 +47,7 @@ public class Cog : MonoBehaviour
         // Remove from parent socket
         transform.SetParent(Clockwork.instance.transform);
 
+        // If not attached
         if (socket != null)
         {
             // Enable socket logic
@@ -64,6 +67,7 @@ public class Cog : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
+        // Send Raycast from screen to world position
         if (Physics.Raycast(ray, out hit))
         {
             Vector3 targetPosition = hit.point;
@@ -87,6 +91,7 @@ public class Cog : MonoBehaviour
         if (!interactable) return;
         dragged = false;
 
+        // Check all sockets in range of Cog
         Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, mask);
 
         // If no sockets were in range, reset the position
@@ -143,7 +148,7 @@ public class Cog : MonoBehaviour
 
         if (socket != null) ResetSocket();
 
-        // Snap
+        // Snap to Socket
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = closestSocket.transform.position;
         closestSocket.GetComponent<BoxCollider>().enabled = false;
@@ -157,7 +162,7 @@ public class Cog : MonoBehaviour
         return;
     }
 
-    public void ResetPos()
+    public void ResetPos() // Reset position and socket
     {
         if (transform.parent != null) transform.SetParent(null);
         transform.position = startPosition;
@@ -168,6 +173,7 @@ public class Cog : MonoBehaviour
     {
         if (socket != null)
         {
+            // Enable socket again
             socket.GetComponent<BoxCollider>().enabled = true;
             socket.full = false;
 
@@ -179,6 +185,7 @@ public class Cog : MonoBehaviour
                 return;
             }
 
+            // Update chain
             socket.running = false;
             socket.Run();
 
@@ -219,6 +226,7 @@ public class Cog : MonoBehaviour
             Clockwork.instance.CheckComplete();
         }
 
+        // Final updates to socket
         transform.rotation = Quaternion.identity;
         placed = false;
         socket = null;
@@ -226,7 +234,7 @@ public class Cog : MonoBehaviour
 
     public void Shake() => StartCoroutine(ShakeCO());
 
-    private IEnumerator ShakeCO()
+    private IEnumerator ShakeCO() // Shake
     {
         YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
 

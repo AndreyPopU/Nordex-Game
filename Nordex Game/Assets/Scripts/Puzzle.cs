@@ -25,6 +25,7 @@ public class Puzzle : MonoBehaviour
     {
         if (!interactable) return;
 
+        // Setup player, cursor and camera
         finishedFocusing = false;
         Player.instance.focused = !Player.instance.focused;
         coreCollider.enabled = !Player.instance.focused;
@@ -36,12 +37,11 @@ public class Puzzle : MonoBehaviour
         StartCoroutine(FocusCO(focus));
     }
 
-    private IEnumerator FocusCO(Transform focus)
+    private IEnumerator FocusCO(Transform focus) // Gradually move and rotate the camera so it matches the focus point of the puzzle
     {
         YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
 
         cam = Camera.main;
-        //cam.transform.SetParent(null);
 
         float focusTime = 1;
         while (focusTime > 0)

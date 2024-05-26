@@ -17,6 +17,7 @@ public class Toolbox : Puzzle
 
     void Awake()
     {
+        // Singleton
         if (instance == null)
         {
             instance = this;
@@ -24,6 +25,7 @@ public class Toolbox : Puzzle
         }
         else Destroy(gameObject);
 
+        // Setup puzzle
         completeCollider = GetComponents<BoxCollider>()[1];
         tools = GetComponentsInChildren<Tool>();
         placements = GetComponentsInChildren<PlacementBox>();
@@ -31,11 +33,13 @@ public class Toolbox : Puzzle
 
     public void CheckComplete()
     {
+        // Find all overlaping colliders in toolbox
         completeCollider.enabled = true;
         Collider[] overlapingColliders = Physics.OverlapBox(completeCollider.bounds.center, completeCollider.bounds.size / 2, Quaternion.identity, mask);
 
         print(overlapingColliders.Length);
 
+        // If all 61 colliders of tools are inside of puzzle it is complete
         if (overlapingColliders.Length != 61) return;
 
         // Completed
@@ -49,6 +53,7 @@ public class Toolbox : Puzzle
     }
     public void PickUp()
     {
+        // If puzzle is complete you can pick it up and move it to the next puzzle
         if (!interactable && transform.parent == null)
         {
             if (Input.GetButtonDown("Interact"))
@@ -68,6 +73,7 @@ public class Toolbox : Puzzle
     {
         base.Focus(focus);
 
+        // Setup tools
         coreCollider.enabled = !Player.instance.focused;
         for (int i = 0; i < tools.Length; i++)
             if (!tools[i].placed)
