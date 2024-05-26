@@ -10,16 +10,38 @@ public class Captcha : Puzzle
     public int target;
     public int current;
     public CaptchaNumber[] numbers;
+    public CaptchaNumber resetNumber;
     public List<CaptchaNumber> selected;
     public LockedDoor door;
 
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
-public override void Focus(Transform focus)
+    private void Update()
+    {
+        if (!interactable)
+        {
+            if (Vector3.Distance(transform.parent.localPosition, Vector3.zero) > 0.02f)
+            {
+                transform.parent.localPosition = Vector3.Lerp(transform.parent.localPosition, Vector3.zero, 4 * Time.deltaTime);
+
+                if (transform.parent.localScale.x > 0)
+                    transform.parent.localScale = new Vector3(transform.parent.localScale.x - 1 * Time.deltaTime, 1, 1);
+
+                
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                FindObjectOfType<CaptchaKeypadButton>().Textbox.text = string.Empty;
+                CaptchaKeypad.instance.coreCollider.enabled = false;
+            }
+        }
+    }
+
+    public override void Focus(Transform focus)
     {
         base.Focus(focus);
 
@@ -103,5 +125,23 @@ public override void Focus(Transform focus)
         Focus(Player.instance.playerCam);
         interactable = false;
         door.locked = false;
+
+        foreach (CaptchaNumber number in numbers)
+            number.enabled = false;
+
+        resetNumber.enabled = false;
+    }
+
+    public void EnableNumbers()
+    {
+        foreach (CaptchaNumber number in numbers)
+            number.enabled = true;
+
+        resetNumber.enabled = true;
+        coreCollider.enabled = false;
+        collision.enabled = false;
+        CaptchaKeypad.instance.coreCollider.enabled = false;
+        CaptchaKeypad.instance.collision.enabled = false;
+        Invoke("RestartMinigame", .1f);
     }
 }

@@ -55,6 +55,7 @@ public class CaptchaNumber : MonoBehaviour
         SmartCoroutine(SpinCO());
         interactable = false;
         transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
+
     }
 
     public void ResetNumber()

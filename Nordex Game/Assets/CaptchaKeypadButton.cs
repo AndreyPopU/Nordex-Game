@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class KeypadButtons : MonoBehaviour
+public class CaptchaKeypadButton : MonoBehaviour
 {
     public TextMeshProUGUI Textbox;
     public int number;
@@ -11,8 +11,6 @@ public class KeypadButtons : MonoBehaviour
     public void GetPressedNumber()
     {
         if (Player.instance.focused == false) return;
-
-        if (Keypad.instance.time > 0) return;
 
         GetComponent<Animator>().SetTrigger("Pressed");
 
@@ -25,20 +23,18 @@ public class KeypadButtons : MonoBehaviour
         //11 = Enter
         else if (number == 11)
         {
-            if (Textbox.text == "34")
+            if (Textbox.text == "6874")
             {
                 Textbox.text = "Correct";
                 //making sounds and lights play
-                Keypad.instance.light1.enabled = true;
-                Keypad.instance.light2.enabled = true;
-                Chronometer.instance.loop();
+                CaptchaKeypad.instance.interactable = false;
+                Invoke("AskForCaptcha", 2);
             }
-            else 
+            else
             {
                 Textbox.text = "Wrong";
                 Invoke("ResetField", 5);
-                Keypad.instance.time = 3f;
-                Keypad.instance.Shake();
+                CaptchaKeypad.instance.Shake();
             }
 
             return;
@@ -57,5 +53,12 @@ public class KeypadButtons : MonoBehaviour
     private void ResetField()
     {
         Textbox.text = string.Empty;
+    }
+
+    private void AskForCaptcha()
+    {
+        Textbox.enableAutoSizing = true;
+        Textbox.text = "Prove you are not a robot";
+        CaptchaKeypad.instance.ActivateCaptcha();
     }
 }
