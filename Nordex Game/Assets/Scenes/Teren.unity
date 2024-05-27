@@ -38025,6 +38025,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.97
       objectReference: {fileID: 0}
+    - target: {fileID: 587367012627774608, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.646
+      objectReference: {fileID: 0}
+    - target: {fileID: 587367012627774608, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.202
+      objectReference: {fileID: 0}
     - target: {fileID: 1074091272343585866, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -38036,6 +38044,10 @@ PrefabInstance:
     - target: {fileID: 1919310251330479829, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074122175521415824, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4057222375809532262, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_Pivot.x
@@ -38173,6 +38185,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6537597996221648902, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597996221648902, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 801983abffccc33429adb6467077c03b, type: 3}
+    - target: {fileID: 6537597996221648902, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662695608612865855, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7993792628052577292, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: cameraToShake
       value: 
@@ -38180,6 +38208,10 @@ PrefabInstance:
     - target: {fileID: 7993792628052577292, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: shakeInterval
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535512671894583983, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8840019783859255193, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: m_AnchoredPosition.x
