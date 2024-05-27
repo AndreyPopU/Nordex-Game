@@ -21,6 +21,11 @@ public class Tool : MonoBehaviour
     private GameObject overlay;
     private GameObject GFX;
 
+    //sounds
+    public AudioClip canBePlaced, cantBePlaced;
+    public AudioSource source;
+
+
     Vector3 dir;
     float dist;
 
@@ -38,6 +43,9 @@ public class Tool : MonoBehaviour
             case LockAxis.Y: lockPos = transform.position + Vector3.up * bonusAxis; break;
             case LockAxis.Z: lockPos = transform.position + Vector3.forward * bonusAxis; break;
         }
+
+        source = GetComponent<AudioSource>();
+
 
         // Find graphics and overlay gameobject
         GFX = transform.GetChild(0).gameObject;
@@ -148,15 +156,23 @@ public class Tool : MonoBehaviour
                     overlapingColliders[j], overlapingColliders[j].transform.position, overlapingColliders[j].transform.rotation, out dir, out dist))
                 {
                     transform.position = startPosition;
+                    //sounds
+                    source.clip = cantBePlaced;
+                    source.Play();    
                     return;
                 }
                 else if (overlapingColliders[j].gameObject.name == "OutsideCollider")
                 {
                     transform.position = startPosition;
+                    source.clip = cantBePlaced;
+                    source.Play();
                     return;
                 }
             }
         }
+
+        source.clip = canBePlaced;
+        source.Play();
 
         Toolbox.instance.CheckComplete();
     }

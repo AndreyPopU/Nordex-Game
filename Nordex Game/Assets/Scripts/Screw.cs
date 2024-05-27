@@ -17,6 +17,10 @@ public class Screw : MonoBehaviour
     private Clockwork clockwork;
     private PanelWires wires;
 
+
+    public AudioSource source;
+    public AudioClip unscrew;
+
     void Start()
     {
         GFX = transform.GetChild(0).gameObject;
@@ -24,6 +28,9 @@ public class Screw : MonoBehaviour
         wires = PanelWires.instance;
         animator = GetComponent<Animator>();
         desiredPosition = transform.position;
+
+        //sounds
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -76,6 +83,9 @@ public class Screw : MonoBehaviour
             Shake();
             return;
         }
+        //sounds
+        source.clip = unscrew;
+        source.Play();
 
         animator.SetTrigger("Screw");
         screwed = !screwed;

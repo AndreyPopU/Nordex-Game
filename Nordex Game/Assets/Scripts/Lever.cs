@@ -8,20 +8,30 @@ public class Lever : MonoBehaviour
     private Animator animator;
     public bool inrange;
     public BoxCollider boxCollider;
+    public AudioClip PullSound, JamSound;
+
+    private AudioSource source;
+    public bool Pulled;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (inrange)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && Pulled == false)
             {
                 animator.SetTrigger("Pull");
+                
+                //adding Pull sound
+                source.clip = PullSound;
+                source.Play();
+                Pulled = true; 
                 ladder.GetComponent<Animator>().SetTrigger("GoDown");
             }
         }

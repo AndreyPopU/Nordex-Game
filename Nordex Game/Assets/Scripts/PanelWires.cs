@@ -19,6 +19,7 @@ public class PanelWires : Puzzle
     public Lever lever;
     public BoxCollider blockingCollider;
 
+
     private void Awake()
     {
         // Singleton
