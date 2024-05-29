@@ -55,7 +55,7 @@ public class Captcha : Puzzle
             RestartMinigame();
             return;
         }
-
+        _number.GetComponent<AudioSource>().Play();
         // If you already contain the number, unselect it
         if (selected.Contains(_number))
         {

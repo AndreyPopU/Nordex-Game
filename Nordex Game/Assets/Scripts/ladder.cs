@@ -11,6 +11,7 @@ public class ladder : MonoBehaviour
     public bool inrange;
     public bool interacted;
     private AudioSource audioSource;
+    public AudioClip godown, climb;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class ladder : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact") && !interacted)
             {
+                audioSource.clip = climb;
                 audioSource.Play();
                 FadePanel.instance.LoadScene(scene, spawnPosition);
                 interacted = true;
@@ -41,5 +43,12 @@ public class ladder : MonoBehaviour
     {
         if (other.GetComponent<Player>())
             inrange = false;
+
+    }
+    public void GoDown ()
+    {
+        audioSource.clip = godown;
+        audioSource.Play();
     }
 }
+

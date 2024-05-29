@@ -41,6 +41,10 @@ public class Clockwork : Puzzle
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
+        foreach (Cog c in cogs)
+        {
+            c.AddComponent<AudioSource>();  
+        }
 
         // Setup
         panelPosition = panel.transform.position;

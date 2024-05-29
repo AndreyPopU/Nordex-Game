@@ -9,8 +9,12 @@ public class LockedDoor : MonoBehaviour
     public bool locked;
     public bool needKey;
     public  Animator animator;
+    public AudioClip open, close, locksound;
+    private AudioSource source;
+
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
     private void Update()
@@ -27,7 +31,13 @@ public class LockedDoor : MonoBehaviour
                     opened = !opened;
                     locked = false;
                     Player.instance.haskey = false;
-
+                    source.clip = opened ? open : close;
+                    source.Play();
+                }
+                else
+                {
+                    source.clip = locksound;
+                    source.Play();
                 }
             }
         }

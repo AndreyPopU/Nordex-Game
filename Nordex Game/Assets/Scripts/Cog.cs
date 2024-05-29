@@ -23,9 +23,12 @@ public class Cog : MonoBehaviour
 
     private Vector3 lockPos;
     private Vector3 startPosition;
+    private AudioSource source;
+    public AudioClip canplace, cantplace;
 
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         // Setup
         cam = Camera.main;
         coreCollider = GetComponent<BoxCollider>();
@@ -159,11 +162,17 @@ public class Cog : MonoBehaviour
         transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
         closestSocket.Run();
         Clockwork.instance.CheckComplete();
+        source.clip = canplace;
+        source.Play();
         return;
+
+
     }
 
     public void ResetPos() // Reset position and socket
     {
+        source.clip = cantplace;
+        source.Play();
         if (transform.parent != null) transform.SetParent(null);
         transform.position = startPosition;
         ResetSocket();

@@ -18,10 +18,12 @@ public class CaptchaNumber : MonoBehaviour
     private GameObject gfx;
     private Coroutine runningCo;
     private Vector3 desiredScale;
+    private AudioSource source;
 
     void Start()
     {
         // Setup
+        source = GetComponent<AudioSource>();
         gfx = transform.GetChild(0).gameObject;
         text = GetComponentInChildren<TextMeshProUGUI>();
         if (value>= 0) text.text = value.ToString();
@@ -40,6 +42,7 @@ public class CaptchaNumber : MonoBehaviour
     private void OnMouseDown()
     {
         if (interactable) Captcha.instance.SelectNumber(this);
+        
     }
 
     private void OnMouseEnter()
