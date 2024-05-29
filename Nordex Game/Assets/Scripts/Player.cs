@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    //check players gender and add sound
+    public bool man;
+    public AudioSource source;
+    public AudioClip clipW, clipM;
+
     private CharacterController controller;
 
     void Awake()
@@ -68,6 +73,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        //set source
+        source = GetComponent<AudioSource>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -219,6 +227,12 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+        }
+        if (collision.gameObject.tag == "Bounds" && !source.isPlaying)
+        {
+            if (man) source.clip = clipM;
+            else source.clip = clipW;
+            source.Play();
         }
     }
 

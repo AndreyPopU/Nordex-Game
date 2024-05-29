@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Puzzle2FormsControllerScript : MonoBehaviour
@@ -20,8 +21,14 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
 
     private Puzzle2StarterScript puzzleStarterScript;
 
+
+    //adding soounds
+    public AudioClip drag;
+    public AudioSource source;
+
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         initialPosition = transform.position;
         puzzleStarterScript = FindObjectOfType<Puzzle2StarterScript>();
     }
@@ -56,6 +63,9 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         if (canDrag)
         {
             isDragging = true;
+
+            //play sound
+            source.Play();
         }
     }
 
@@ -95,6 +105,13 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
             {
                 ParticleSystem particleSystemInstance = Instantiate(particleSystemPrefab, newPosition, Quaternion.identity);
                 particleSystems.Add(particleSystemInstance);
+
+                //play on if dragging
+                if (Vector3.Distance(transform.position, newPosition) > 0)
+                {
+                    source.volume = 1; 
+                }
+                else { source.volume = 0; }
 
                 // Move the cube to the new position
                 transform.position = newPosition;
@@ -137,6 +154,9 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
                 return;
             }
         }
+
+        //stop sound
+        source.Stop();
 
         // If not overlapping with any other cube - snap back to initial position and clear particle systems
         transform.position = initialPosition;
