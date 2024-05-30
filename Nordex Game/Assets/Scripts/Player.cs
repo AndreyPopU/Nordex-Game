@@ -48,11 +48,9 @@ public class Player : MonoBehaviour
     #endregion
 
     //check players gender and add sound
-    public bool man;
     public AudioSource source;
     public AudioClip clipW, clipM;
-
-    private CharacterController controller;
+    public bool canMove;
 
     void Awake()
     {
@@ -67,7 +65,6 @@ public class Player : MonoBehaviour
 
         coreCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
-        controller = GetComponent<CharacterController>();
         baseSpeed = moveSpeed;
     }
 
@@ -82,6 +79,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canMove) return;
+
         Movement();
 
         Jump();
@@ -89,6 +88,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove) return;
+
         if (Input.GetButtonDown("Interact")) FocusPuzzle();
 
         if (focused) return;
@@ -98,11 +99,7 @@ public class Player : MonoBehaviour
 
         Look();
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            transform.position = new Vector3(0, 2, -2);
-        }
-
+        if (Input.GetKeyDown(KeyCode.T)) transform.position = new Vector3(0, 2, -2);
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -230,7 +227,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bounds" && !source.isPlaying)
         {
-            if (man) source.clip = clipM;
+            if (GameManager.instance.man) source.clip = clipM;
             else source.clip = clipW;
             source.Play();
         }

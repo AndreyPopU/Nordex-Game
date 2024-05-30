@@ -27,7 +27,7 @@ public class FadePanel : MonoBehaviour
     {
         YieldInstruction wait = new WaitForFixedUpdate();
 
-        Player.instance.rb.isKinematic = true;
+        if (Player.instance != null) Player.instance.rb.isKinematic = true;
 
         // Fade out
         while (group.alpha < 1)
@@ -46,8 +46,11 @@ public class FadePanel : MonoBehaviour
         }
 
         // Setup player
-        Player.instance.transform.position = spawnPos;
-        Player.instance.rb.isKinematic = false;
+        if (Player.instance != null)
+        {
+            Player.instance.transform.position = spawnPos;
+            Player.instance.rb.isKinematic = false;
+        }
 
         while (group.alpha > 0)
         {
