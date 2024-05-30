@@ -14,6 +14,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
     private bool isBlueDone = false;
     private bool isRedDone = false;
     private bool isPurpleDone = false;
+    private Lever lever;
 
     private Vector3 initialPosition;
 
@@ -28,6 +29,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
 
     private void Start()
     {
+        lever = FindObjectOfType<Lever>();
         source = GetComponent<AudioSource>();
         initialPosition = transform.position;
         puzzleStarterScript = FindObjectOfType<Puzzle2StarterScript>();
@@ -289,10 +291,14 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         isBlueDone = AreCubesConnected("Blue");
         isGreenDone = AreCubesConnected("Green");
         isPurpleDone = AreCubesConnected("Purple");
+        source.Stop();
 
         if (isRedDone && isYellowDone && isBlueDone && isGreenDone && isPurpleDone)
         {
             Debug.Log("All cubes are connected");
+
+            lever.jammed = false;
+            lever.GetComponent <Animator>().SetBool("Jamed",false);
 
             // Reverse the E press camera logic here
             if (puzzleStarterScript != null)
