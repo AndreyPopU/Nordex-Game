@@ -15,10 +15,10 @@ public class CaptchaNumber : MonoBehaviour
     [HideInInspector] public Vector3 startPos;
     [HideInInspector] public Vector3 desiredPosition;
     [HideInInspector] public TextMeshProUGUI text;
+    [HideInInspector] public AudioSource source;
     private GameObject gfx;
     private Coroutine runningCo;
     private Vector3 desiredScale;
-    private AudioSource source;
 
     void Start()
     {
@@ -42,7 +42,6 @@ public class CaptchaNumber : MonoBehaviour
     private void OnMouseDown()
     {
         if (interactable) Captcha.instance.SelectNumber(this);
-        
     }
 
     private void OnMouseEnter()

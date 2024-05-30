@@ -25,7 +25,6 @@ public class Tool : MonoBehaviour
     public AudioClip canBePlaced, cantBePlaced;
     public AudioSource source;
 
-
     Vector3 dir;
     float dist;
 
@@ -60,6 +59,7 @@ public class Tool : MonoBehaviour
         startPosition = transform.position;
 
         // Enable Overlay
+        GFX.SetActive(false);
         overlay.SetActive(true);
     }
 

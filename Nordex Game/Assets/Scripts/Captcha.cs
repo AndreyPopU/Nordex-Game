@@ -55,11 +55,13 @@ public class Captcha : Puzzle
             RestartMinigame();
             return;
         }
-        _number.GetComponent<AudioSource>().Play();
+
         // If you already contain the number, unselect it
         if (selected.Contains(_number))
         {
             _number.ResetNumber();
+            _number.source.pitch = 1 + selected.Count * .25f - .25f;
+            _number.source.Play();
             selected.Remove(_number);
             current -= _number.value;
             return;
@@ -67,7 +69,9 @@ public class Captcha : Puzzle
 
         // If last selected square doesn't contain the newly selected square as one of it's neighbours, return
         if (selected.Count > 0 && !selected[selected.Count - 1].neighbours.Contains(_number)) return;
-        
+
+        _number.source.pitch = 1 + selected.Count * .25f;
+        _number.source.Play();
         _number.text.color = Color.black;
         _number.desiredPosition = _number.startPos + _number.transform.forward * .05f;
         selected.Add(_number);
