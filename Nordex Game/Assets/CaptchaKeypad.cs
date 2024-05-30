@@ -10,6 +10,7 @@ public class CaptchaKeypad : Puzzle
 {
     public static CaptchaKeypad instance;
 
+    public TextMeshProUGUI Textbox;
     public GameObject captchaPanel;
 
     private Vector3 desiredPosition;
@@ -111,6 +112,11 @@ public class CaptchaKeypad : Puzzle
 
     public void ActivateCaptcha()
     {
+        foreach (CaptchaKeypadButton button in FindObjectsOfType<CaptchaKeypadButton>())
+            Destroy(button);
+
+        Invoke("ShowInstructions", 2);
+
         // Pull out captcha
         captchaPanel.gameObject.SetActive(true);
         desiredPosition = transform.position + transform.right * .7f;
@@ -120,5 +126,10 @@ public class CaptchaKeypad : Puzzle
         colliders[0].enabled = false;
         colliders[1].enabled = false;
         finishedFocusing = false;
+    }
+
+    private void ShowInstructions()
+    {
+        Textbox.text = "Connect neighbouring cubes so their numbers sum up to 100";
     }
 }

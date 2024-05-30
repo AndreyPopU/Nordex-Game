@@ -33,7 +33,7 @@ public class Captcha : Puzzle
             else
             {
                 gameObject.SetActive(false);
-                FindObjectOfType<CaptchaKeypadButton>().Textbox.text = string.Empty;
+                //FindObjectOfType<CaptchaKeypadButton>().Textbox.text = string.Empty;
                 CaptchaKeypad.instance.coreCollider.enabled = false;
             }
         }

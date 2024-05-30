@@ -11,6 +11,7 @@ public class MessageManager : MonoBehaviour
 
     public GameObject chatBubble;
     public GameObject voiceBubble;
+    public GameObject promptBubble;
     private AudioSource source;
 
     public AudioClip[] voiceMessages;
@@ -29,7 +30,6 @@ public class MessageManager : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
     }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -57,8 +57,6 @@ public class MessageManager : MonoBehaviour
             chatBubble.GetComponentInChildren<TextMeshProUGUI>().text = chatMessages[chatIndex++];
             Invoke("HideNotification", 5);
         }
-
-        
     }
 
     public void PlayVoiceClip()

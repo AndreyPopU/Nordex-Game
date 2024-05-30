@@ -2574,7 +2574,7 @@ PrefabInstance:
     - target: {fileID: 291905035232951239, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
-      objectReference: {fileID: 8300000, guid: a552580f73f85904f87e3eff7df75da3, type: 3}
+      objectReference: {fileID: 8300000, guid: f278dfb09daed4248bfcfe65bf8d6dd7, type: 3}
     - target: {fileID: 614198474592729697, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: m_Name
       value: SocketHexagon2
@@ -2614,7 +2614,7 @@ PrefabInstance:
     - target: {fileID: 1522472860091897281, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
-      objectReference: {fileID: 8300000, guid: a552580f73f85904f87e3eff7df75da3, type: 3}
+      objectReference: {fileID: 8300000, guid: f278dfb09daed4248bfcfe65bf8d6dd7, type: 3}
     - target: {fileID: 1685534188720171726, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2630,7 +2630,7 @@ PrefabInstance:
     - target: {fileID: 2632123258218079354, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
-      objectReference: {fileID: 8300000, guid: a552580f73f85904f87e3eff7df75da3, type: 3}
+      objectReference: {fileID: 8300000, guid: f278dfb09daed4248bfcfe65bf8d6dd7, type: 3}
     - target: {fileID: 2799906044872830452, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: canplace
       value: 
@@ -2738,7 +2738,7 @@ PrefabInstance:
     - target: {fileID: 6317168139977570028, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
-      objectReference: {fileID: 8300000, guid: a552580f73f85904f87e3eff7df75da3, type: 3}
+      objectReference: {fileID: 8300000, guid: f278dfb09daed4248bfcfe65bf8d6dd7, type: 3}
     - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: toolboxTransform
       value: 
@@ -2883,6 +2883,10 @@ PrefabInstance:
       propertyPath: cantplace
       value: 
       objectReference: {fileID: 8300000, guid: 711e020d019e86e469ea43f44c37019c, type: 3}
+    - target: {fileID: 9202708607826243084, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
