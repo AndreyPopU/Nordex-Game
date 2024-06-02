@@ -48,8 +48,6 @@ public class Toolbox : Puzzle
         Focus(Player.instance.playerCam.transform);
         interactable = false;
         completeCollider.enabled = false;
-
-
     }
     public void PickUp()
     {
@@ -78,5 +76,7 @@ public class Toolbox : Puzzle
         for (int i = 0; i < tools.Length; i++)
             if (!tools[i].placed)
                 tools[i].interactable = Player.instance.focused;
+
+        GameManager.instance.rotatePrompt.desiredPosition = Player.instance.focused ? new Vector3(-800, 390, 0) : new Vector3(-1200, 390, 0);
     }
 }

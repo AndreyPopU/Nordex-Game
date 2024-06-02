@@ -45,6 +45,7 @@ public class MessageManager : MonoBehaviour
         if (voice)
         {
             // Show Chat message
+            GameManager.instance.voicePrompt.desiredPosition = new Vector3(720, 260, 0);
             voiceBubble.SetActive(true);
             Invoke("HideNotification", 5);
             // Play voice message
@@ -53,6 +54,7 @@ public class MessageManager : MonoBehaviour
         else
         {
             // Show Chat message
+            GameManager.instance.messagePrompt.desiredPosition = new Vector3(720, 260, 0);
             chatBubble.SetActive(true);
             chatBubble.GetComponentInChildren<TextMeshProUGUI>().text = chatMessages[chatIndex++];
             Invoke("HideNotification", 5);
@@ -69,7 +71,7 @@ public class MessageManager : MonoBehaviour
 
     private void HideNotification()
     {
-        voiceBubble.SetActive(false);
-        chatBubble.SetActive(false);
+        GameManager.instance.voicePrompt.desiredPosition = new Vector3(1200, 260, 0);
+        GameManager.instance.messagePrompt.desiredPosition = new Vector3(1200, 260, 0);
     }
 }
