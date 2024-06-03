@@ -34,11 +34,10 @@ public class Lever : MonoBehaviour
                 {
                     source.clip = PullSound;
                     Pulled = true;
+                    source.Play();
+                    ladder.GetComponent<Animator>().SetTrigger("GoDown");
                 }
                 else source.clip = JamSound;
-                
-                source.Play();
-                ladder.GetComponent<Animator>().SetTrigger("GoDown");
             }
         }
     }

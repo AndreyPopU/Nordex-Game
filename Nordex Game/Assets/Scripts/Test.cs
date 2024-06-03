@@ -1,15 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    public Transform target;
+    public EventSystem eventSystem;
+    public GraphicRaycaster graphicRaycaster;
+
     void Start()
     {
-        foreach (Transform child in transform.GetComponentsInChildren<Transform>())
+        // Get the required components if they are not set
+        if (eventSystem == null)
+            eventSystem = FindObjectOfType<EventSystem>();
+
+        if (graphicRaycaster == null)
+            graphicRaycaster = FindObjectOfType<GraphicRaycaster>();
+    }
+
+    void Update()
+    {
+        GameObject uiElement = GetUIElementUnderPointer();
+
+        if (uiElement != null)
         {
-            child.position = new Vector3(child.position.x * 100, child.position.y * 100, child.position.z * 100);
+            Debug.Log("Mouse is over UI element: " + uiElement.name);
         }
+        else
+        {
+            Debug.Log("Mouse is not over any UI element.");
+        }
+    }
+
+    private GameObject GetUIElementUnderPointer()
+    {
+        PointerEventData eventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(eventData, results);
+
+        if (results.Count > 0)
+        {
+            // Return the first result's GameObject
+            return results[0].gameObject;
+        }
+
+        return null;
     }
 }

@@ -78,6 +78,7 @@ public class MyButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        print("Over");
         mouseOver = true;
         SmartCoroutine(Enter());
     }

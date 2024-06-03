@@ -30,7 +30,7 @@ public class Puzzle : MonoBehaviour
         Player.instance.focused = !Player.instance.focused;
         coreCollider.enabled = !Player.instance.focused;
         collision.enabled = !Player.instance.focused;
-        MessageManager.instance.promptBubble.SetActive(!Player.instance.focused);
+        Tablet.instance.promptBubble.SetActive(!Player.instance.focused);
         Player.instance.coreCollider.enabled = !Player.instance.focused;
         Player.instance.rb.isKinematic = Player.instance.focused;
         Cursor.lockState = Player.instance.focused ? CursorLockMode.None : CursorLockMode.Locked;
