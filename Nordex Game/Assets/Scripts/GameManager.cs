@@ -46,14 +46,14 @@ public class GameManager : MonoBehaviour
 
     private void PromptTablet()
     {
-        tabletPrompt.desiredPosition = new Vector3(-740, 370, 0);
+        tabletPrompt.desiredPosition = new Vector3(-800, 475, 0);
         Invoke("HideTabletPrompt", 5);
         Destroy(tabletPrompt.gameObject, 10);
     }
 
     private void HideTabletPrompt()
     {
-        tabletPrompt.desiredPosition = new Vector3(-1300, 370, 0);
+        tabletPrompt.desiredPosition = new Vector3(-1300, 475, 0);
     }
 
     public void SetGender(int gender)

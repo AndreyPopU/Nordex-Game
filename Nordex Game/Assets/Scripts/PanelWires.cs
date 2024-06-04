@@ -18,6 +18,7 @@ public class PanelWires : Puzzle
     public CanvasGroup canvas;
     public Lever lever;
     public BoxCollider blockingCollider;
+    public GameObject light1, light2;
 
 
     private void Awake()
@@ -94,6 +95,7 @@ public class PanelWires : Puzzle
 
         // Complete
         print("Completed");
+        light1.SetActive(true); light2.SetActive(true);
         Chronometer.instance.loop();
         Focus(Player.instance.playerCam.transform);
         interactable = false;

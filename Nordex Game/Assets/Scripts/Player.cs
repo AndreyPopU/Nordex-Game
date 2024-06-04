@@ -1,15 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public static Player instance;
 
+    public enum Surface { grass,concrete, metal}
+    public Surface surface;
     public bool grounded;
     public float Jumpforce;
     public bool jumping;
+    public AudioClip[] grassfootsteps;
+    public AudioClip[] concretefootsteps;
+    public AudioClip[] metalfootsteps;
+    public float footstepinterval = 0.2f;
 
     //Assingables
     public Transform playerCam;
@@ -93,6 +100,13 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Interact")) FocusPuzzle();
 
         if (focused) return;
+        if (footstepinterval > 0 && rb.velocity.magnitude >0 && grounded) footstepinterval -= Time.deltaTime;
+        else
+        {
+            source.clip = GetClip();
+            source.Play();
+            footstepinterval = 0.8f;
+        }
 
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
@@ -106,6 +120,21 @@ public class Player : MonoBehaviour
             grounded = false;
             jumping = true;
         }
+    }
+    public AudioClip GetClip()
+    {
+        AudioClip clip = null;
+        if (grounded)
+        {
+
+            if (surface == Surface.grass)
+                clip = grassfootsteps[UnityEngine.Random.Range(0, grassfootsteps.Length)];
+            else if (surface == Surface.concrete)
+                clip = concretefootsteps[UnityEngine.Random.Range(0, concretefootsteps.Length)];
+            else
+                clip = metalfootsteps[UnityEngine.Random.Range(0, metalfootsteps.Length)];
+        }
+        return clip;
     }
 
      public void Jump()
@@ -143,6 +172,7 @@ public class Player : MonoBehaviour
 
         //Set max speed
         float maxSpeed = this.maxSpeed;
+        
 
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (x > 0 && xMag > maxSpeed) x = 0;
@@ -163,6 +193,10 @@ public class Player : MonoBehaviour
 
 
     private float desiredX;
+    public void footstep()
+    {
+
+    }
     private void Look()
     {
         if (focused) return;
