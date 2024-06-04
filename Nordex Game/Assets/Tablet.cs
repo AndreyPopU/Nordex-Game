@@ -35,7 +35,7 @@ public class Tablet : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) Pause();
+        if (Input.GetKeyDown(KeyCode.Escape) && !Player.instance.focused) Pause();
 
         if (Input.GetKeyDown(KeyCode.F)) DisplayMessage(testMessage);
         if (Input.GetKeyDown(KeyCode.G)) DisplayVoice(testVoice);

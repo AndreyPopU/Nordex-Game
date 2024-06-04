@@ -8,6 +8,7 @@ public class MainMenuManager : MonoBehaviour
     public static MainMenuManager instance;
     public bool waitForInput = true;
     public GameObject genderPanel;
+    public bool man;
 
     private void Awake()
     {
@@ -29,4 +30,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame() => Application.Quit();
 
+    public void SetGender(bool gender)
+    {
+        man = gender;
+    }
 }

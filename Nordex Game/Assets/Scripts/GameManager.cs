@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        MainMenuManager manager = FindObjectOfType<MainMenuManager>();
+        if (manager)
+        {
+            man = FindObjectOfType<MainMenuManager>().man;
+            Destroy(FindObjectOfType<MainMenuManager>().gameObject);
+        }
         tutorialPrompt.desiredPosition = new Vector3(-740, 370, 0);
         Invoke("HideTutorial", 5);
     }
