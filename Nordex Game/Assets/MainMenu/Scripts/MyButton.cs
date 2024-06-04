@@ -8,8 +8,8 @@ public class MyButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 {
     public bool disableOnClick;
     private bool mouseOver;
-    Vector3 clickScale = new Vector2(1.8f, 1.8f);
-    Vector3 enterScale = new Vector2(1.4f, 1.4f);
+    Vector3 clickScale = new Vector2(1.4f, 1.4f);
+    Vector3 enterScale = new Vector2(1.2f, 1.2f);
     Vector3 exitScale = new Vector2(1f, 1f);
     private Coroutine runningCo;
 

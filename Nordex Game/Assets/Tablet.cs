@@ -85,5 +85,4 @@ public class Tablet : MonoBehaviour
         GameManager.instance.voicePrompt.desiredPosition = new Vector3(1200, 260, 0);
         GameManager.instance.messagePrompt.desiredPosition = new Vector3(1200, 260, 0);
     }
-
 }
