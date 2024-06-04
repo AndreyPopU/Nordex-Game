@@ -1980,7 +1980,7 @@ GameObject:
   - component: {fileID: 1596462718}
   - component: {fileID: 1596462719}
   m_Layer: 6
-  m_Name: GroundObject
+  m_Name: GroundObjectMetal
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

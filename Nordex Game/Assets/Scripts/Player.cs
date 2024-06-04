@@ -258,7 +258,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            //if (collision.gameObject.name == "")
         }
+
         if (collision.gameObject.tag == "Bounds" && !source.isPlaying)
         {
             if (GameManager.instance.man) source.clip = clipM;
