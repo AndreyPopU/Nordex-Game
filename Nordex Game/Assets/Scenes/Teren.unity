@@ -11612,7 +11612,7 @@ GameObject:
   - component: {fileID: 468599909}
   - component: {fileID: 468599908}
   m_Layer: 6
-  m_Name: Terrain
+  m_Name: TerrainGrass
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28706,7 +28706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1166864043
 RectTransform:
   m_ObjectHideFlags: 0
