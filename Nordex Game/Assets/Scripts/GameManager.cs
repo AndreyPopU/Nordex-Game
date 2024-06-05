@@ -8,12 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public bool man;
+    public AudioClip bossMessage1;
+
+    [Header("Prompts")]
     public Prompt tutorialPrompt;
     public Prompt rotatePrompt;
     public Prompt messagePrompt;
     public Prompt voicePrompt;
     public Prompt tabletPrompt;
-    public bool man;
 
     private void Awake()
     {
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
     private void HideTabletPrompt()
     {
         tabletPrompt.desiredPosition = new Vector3(-1300, 475, 0);
+
+        Tablet.instance.DisplayVoice(bossMessage1);
     }
 
     public void SetGender(int gender)

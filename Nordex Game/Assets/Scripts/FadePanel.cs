@@ -57,5 +57,8 @@ public class FadePanel : MonoBehaviour
             group.alpha -= .1f;
             yield return wait;
         }
+
+        foreach (ladder lad in FindObjectsOfType<ladder>())
+            lad.interacted = false;
     }
 }

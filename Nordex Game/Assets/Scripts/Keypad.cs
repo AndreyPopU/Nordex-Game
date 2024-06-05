@@ -26,7 +26,6 @@ public class Keypad : Puzzle
     public lamp light1, light2;
     public AudioSource sound1, sound2;
 
-
     private void Awake()
     {
         if (instance == null)

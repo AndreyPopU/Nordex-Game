@@ -173,7 +173,6 @@ public class Player : MonoBehaviour
         //Set max speed
         float maxSpeed = this.maxSpeed;
         
-
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (x > 0 && xMag > maxSpeed) x = 0;
         if (x < 0 && xMag < -maxSpeed) x = 0;

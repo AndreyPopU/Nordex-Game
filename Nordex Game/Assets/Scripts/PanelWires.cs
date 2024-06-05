@@ -19,7 +19,7 @@ public class PanelWires : Puzzle
     public Lever lever;
     public BoxCollider blockingCollider;
     public GameObject light1, light2;
-
+    public bool mechanismWorks;
 
     private void Awake()
     {
@@ -99,7 +99,13 @@ public class PanelWires : Puzzle
         Chronometer.instance.loop();
         Focus(Player.instance.playerCam.transform);
         interactable = false;
-        lever.boxCollider.enabled = true;
+
+        if (mechanismWorks)
+        {
+            lever.jammed = false;
+            lever.GetComponent<Animator>().SetBool("Jamed", false);
+            lever.boxCollider.enabled = true;
+        }
     }
 
     private IEnumerator FadeCanvas(float desire) // UI smooth appear

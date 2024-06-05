@@ -31,6 +31,8 @@ public class KeypadButtons : MonoBehaviour
                 //making sounds and lights play
                 Keypad.instance.light1.enabled = true;
                 Keypad.instance.light2.enabled = true;
+                Keypad.instance.sound1.Play();
+                Keypad.instance.sound2.Play();
                 Chronometer.instance.loop();
             }
             else 

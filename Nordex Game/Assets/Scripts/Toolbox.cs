@@ -77,6 +77,6 @@ public class Toolbox : Puzzle
             if (!tools[i].placed)
                 tools[i].interactable = Player.instance.focused;
 
-        GameManager.instance.rotatePrompt.desiredPosition = Player.instance.focused ? new Vector3(-800, 390, 0) : new Vector3(-1200, 390, 0);
+        GameManager.instance.rotatePrompt.desiredPosition = Player.instance.focused ? new Vector3(-800, 475, 0) : new Vector3(-1200, 475, 0);
     }
 }

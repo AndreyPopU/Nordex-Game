@@ -16,7 +16,7 @@ public class Captcha : Puzzle
 
     void Awake()
     {
-        instance = this;
+        if (instance == null) instance = this;
     }
 
     private void Update()
@@ -131,6 +131,7 @@ public class Captcha : Puzzle
             number.enabled = false;
 
         resetNumber.enabled = false;
+        CaptchaKeypad.instance.interactable = false;
     }
 
     public void EnableNumbers()
@@ -138,8 +139,8 @@ public class Captcha : Puzzle
         // Enable numbers after correct code is put in the keypad
         foreach (CaptchaNumber number in numbers)
             number.enabled = true;
-
         resetNumber.enabled = true;
+
         coreCollider.enabled = false;
         collision.enabled = false;
         CaptchaKeypad.instance.coreCollider.enabled = false;

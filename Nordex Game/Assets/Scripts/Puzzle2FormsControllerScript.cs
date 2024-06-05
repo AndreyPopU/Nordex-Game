@@ -296,13 +296,18 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         {
             Debug.Log("All cubes are connected");
 
-            lever.jammed = false;
-            lever.GetComponent <Animator>().SetBool("Jamed",false);
+            if (!PanelWires.instance.interactable)
+            {
+                lever.jammed = false;
+                lever.GetComponent<Animator>().SetBool("Jamed", false);
+                lever.boxCollider.enabled = true;
+            }
 
             // Reverse the E press camera logic here
             if (puzzleStarterScript != null)
             {
                 puzzleStarterScript.ResetCameraAndPlayer();
+                PanelWires.instance.mechanismWorks = true;
             }
         }
     }
