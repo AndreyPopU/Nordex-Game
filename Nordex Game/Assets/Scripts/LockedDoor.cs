@@ -9,7 +9,7 @@ public class LockedDoor : MonoBehaviour
     public bool locked;
     public bool needKey;
     public  Animator animator;
-    public AudioClip open, close, locksound;
+    public AudioClip open, close, locksound, unlock;
     private AudioSource source;
 
     private void Start()
@@ -23,6 +23,14 @@ public class LockedDoor : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (locked && Player.instance.haskey)
+                {
+                    source.clip = unlock;
+                    source.Play();
+
+                    locked = false;
+                }
+
                 if (!locked || locked && Player.instance.haskey && needKey) //key = open door
                 {
                     if(GameObject.Find("HoldTransform")) GameObject.Find("HoldTransform").SetActive(false);

@@ -34,6 +34,7 @@ public class KeypadButtons : MonoBehaviour
                 Keypad.instance.sound1.Play();
                 Keypad.instance.sound2.Play();
                 Chronometer.instance.loop();
+                Keypad.instance.completeSound.Play();
             }
             else 
             {

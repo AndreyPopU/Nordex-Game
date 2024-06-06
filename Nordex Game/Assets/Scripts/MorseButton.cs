@@ -81,7 +81,7 @@ public class MorseButton : MonoBehaviour
             {
                 morseText.text = "Correct";
                 Chronometer.instance.loop();
-
+                MorsePuzzle.instance.completeSound.Play();
             }
             else morseText.text = "Wrong";
 

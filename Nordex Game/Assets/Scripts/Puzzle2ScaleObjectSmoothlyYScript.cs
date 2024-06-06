@@ -9,6 +9,8 @@ public class Puzzle2ScaleObjectSmoothlyYScript : MonoBehaviour
 
     private Vector3 originalScale;
 
+    public AudioSource rumbleSound;
+
     void Start()
     {
         originalScale = transform.localScale; 
@@ -21,6 +23,7 @@ public class Puzzle2ScaleObjectSmoothlyYScript : MonoBehaviour
 
         Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * scaleFactor, originalScale.z);
         float elapsedTime = 0.0f;
+        rumbleSound.Play();
 
         while (elapsedTime < scalingDuration)
         {

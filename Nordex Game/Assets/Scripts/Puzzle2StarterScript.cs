@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Puzzle2StarterScript : MonoBehaviour
 {
+    public AudioSource completePuzzleSound;
+
     public PuzzleTrackerAnalytics puzzleTrackerAnalytics;
 
     public GameObject parentGameObject;
@@ -296,6 +298,8 @@ public class Puzzle2StarterScript : MonoBehaviour
         playerCollider.enabled = true;
 
         puzzle2StarterScript.enabled = false;
+
+        completePuzzleSound.Play();
     }
 
     private void OnTriggerEnter(Collider other)

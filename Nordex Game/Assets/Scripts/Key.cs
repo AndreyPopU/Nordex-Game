@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Key: MonoBehaviour
 {
+    public AudioSource keyReceivedSound;
+
     public Transform holdtransform;
     
     public void PickUp()
@@ -13,5 +15,6 @@ public class Key: MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         Player.instance.haskey = true;
+        keyReceivedSound.Play();
     }
 }

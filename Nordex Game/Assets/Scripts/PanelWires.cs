@@ -21,6 +21,8 @@ public class PanelWires : Puzzle
     public GameObject light1, light2;
     public bool mechanismWorks;
 
+    public AudioClip electricityOnSound;
+
     private void Awake()
     {
         // Singleton
@@ -99,6 +101,8 @@ public class PanelWires : Puzzle
         Chronometer.instance.loop();
         Focus(Player.instance.playerCam.transform);
         interactable = false;
+        AudioSource.PlayClipAtPoint(electricityOnSound, transform.position);
+        completeSound.Play();
 
         if (mechanismWorks)
         {

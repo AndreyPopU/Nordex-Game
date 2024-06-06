@@ -48,6 +48,7 @@ public class Toolbox : Puzzle
         Focus(Player.instance.playerCam.transform);
         interactable = false;
         completeCollider.enabled = false;
+        completeSound.Play();
     }
     public void PickUp()
     {
