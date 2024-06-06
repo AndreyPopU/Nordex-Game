@@ -22,14 +22,11 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
     private Puzzle2StarterScript puzzleStarterScript;
 
 
-    //adding soounds
-    public AudioClip drag;
-    public AudioSource source;
+    public AudioSource dragSound;
 
     private void Start()
     {
         lever = FindObjectOfType<Lever>();
-        source = GetComponent<AudioSource>();
         initialPosition = transform.position;
         puzzleStarterScript = FindObjectOfType<Puzzle2StarterScript>();
     }
@@ -64,9 +61,6 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         if (canDrag)
         {
             isDragging = true;
-
-            //play sound
-            source.Play();
         }
     }
 
@@ -77,6 +71,12 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
             // Get the new position of the cube based on mouse position
             Vector3 newPosition = GetMouseWorldPosition();
             newPosition.z = transform.position.z;
+
+            if (!dragSound.isPlaying)
+            {
+                dragSound.Play();
+            }
+
 
             // Check if the cube can cross other particle systems or cubes based on its tag
             bool canCrossParticleSystemsOrOtherCubes = true;
@@ -107,12 +107,12 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
                 ParticleSystem particleSystemInstance = Instantiate(particleSystemPrefab, newPosition, Quaternion.identity);
                 particleSystems.Add(particleSystemInstance);
 
-                //play on if dragging
-                if (Vector3.Distance(transform.position, newPosition) > 0)
-                {
-                    source.volume = 1; 
-                }
-                else { source.volume = 0; }
+                ////play on if dragging
+                //if (Vector3.Distance(transform.position, newPosition) > 0)
+                //{
+                //    source.volume = 1; 
+                //}
+                //else { source.volume = 0; }
 
                 // Move the cube to the new position
                 transform.position = newPosition;
@@ -156,8 +156,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
             }
         }
 
-        //stop sound
-        source.Stop();
+        dragSound.Stop(); 
 
         // If not overlapping with any other cube - snap back to initial position and clear particle systems
         transform.position = initialPosition;
@@ -290,11 +289,11 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
         isBlueDone = AreCubesConnected("Blue");
         isGreenDone = AreCubesConnected("Green");
         isPurpleDone = AreCubesConnected("Purple");
-        source.Stop();
 
         if (isRedDone && isYellowDone && isBlueDone && isGreenDone && isPurpleDone)
         {
             Debug.Log("All cubes are connected");
+            dragSound.Stop();
 
             if (!PanelWires.instance.interactable)
             {
