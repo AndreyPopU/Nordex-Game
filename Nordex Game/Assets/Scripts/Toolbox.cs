@@ -57,6 +57,7 @@ public class Toolbox : Puzzle
         {
             if (Input.GetButtonDown("Interact"))
             {
+                Tablet.instance.UpdateTask("Climb the ladder and fix the wind turbine spin mechanism.", "Put the cogs in their places, be careful with rusted sockets.");
                 Player.instance.hasToolbox = true;
                 transform.SetParent(Camera.main.transform);
                 transform.localPosition = new Vector3(0.4f, -0.3f, 0.3f);

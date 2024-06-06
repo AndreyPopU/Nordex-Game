@@ -37,6 +37,13 @@ public class PanelWires : Puzzle
         canvas.alpha = 0;
     }
 
+    public override void Start()
+    {
+        base.Start();
+
+        Tablet.instance.UpdateTask("The light seems to be off. Figure out what is wrong with the switch. Check the wiring.", "The lights are off. Take a look at the wires");
+    }
+
     private void Update()
     {
         // Move panel to desired position
@@ -103,6 +110,7 @@ public class PanelWires : Puzzle
         interactable = false;
         AudioSource.PlayClipAtPoint(electricityOnSound, transform.position);
         completeSound.Play();
+        Tablet.instance.UpdateTask("The lever is stuck, take a look at the lever mechanism. Think of a way to fix it.", "Find the correct pattern. Beware of malfunctions.");
 
         if (mechanismWorks)
         {

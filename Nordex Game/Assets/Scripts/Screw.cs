@@ -81,14 +81,19 @@ public class Screw : MonoBehaviour
         if (puzzle == Puzzle.clockwork && !Player.instance.hasToolbox) 
         {
             Shake();
+            Tablet.instance.UpdateTask("The turbine spin mechanism panel requires better tools for the screws.", "Get your toolbox from the shed.");
             return;
         }
-        //sounds
-        source.clip = unscrew;
-        source.Play();
 
         animator.SetTrigger("Screw");
         screwed = !screwed;
+
+        //sounds
+        if (!screwed)
+        {
+            source.clip = unscrew;
+            source.Play();
+        }
 
         if (puzzle == Puzzle.wires)
         {

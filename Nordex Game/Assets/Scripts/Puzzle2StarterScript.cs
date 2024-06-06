@@ -300,6 +300,7 @@ public class Puzzle2StarterScript : MonoBehaviour
         puzzle2StarterScript.enabled = false;
 
         completePuzzleSound.Play();
+        Tablet.instance.UpdateTask("Climb the ladder and fix the wind turbine spin mechanism.", "Put the cogs in their places, be careful with rusted sockets.");
     }
 
     private void OnTriggerEnter(Collider other)

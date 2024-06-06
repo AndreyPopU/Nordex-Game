@@ -10,7 +10,7 @@ public class Tablet : MonoBehaviour
 
     public GameObject tabletPanel;
     public bool paused;
-
+    public TextMeshProUGUI taskText, descriptionText;
     [Header("Messages")]
     public GameObject chatBubble;
     public GameObject voiceBubble;
@@ -39,7 +39,6 @@ public class Tablet : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F)) DisplayMessage(testMessage);
         if (Input.GetKeyDown(KeyCode.G)) DisplayVoice(testVoice);
-
     }
 
     public void Pause()
@@ -84,5 +83,11 @@ public class Tablet : MonoBehaviour
     {
         GameManager.instance.voicePrompt.desiredPosition = new Vector3(1200, 260, 0);
         GameManager.instance.messagePrompt.desiredPosition = new Vector3(1200, 260, 0);
+    }
+
+    public void UpdateTask(string task, string descrition)
+    {
+        taskText.text = task;
+        descriptionText.text = descrition;
     }
 }

@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         else
         {
             source.clip = GetClip();
-            source.Play();
+            //source.Play();
             footstepinterval = 0.8f;
         }
 

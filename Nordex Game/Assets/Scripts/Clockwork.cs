@@ -155,6 +155,7 @@ public class Clockwork : Puzzle
         Focus(Player.instance.playerCam.transform);
         interactable = false;
         Player.instance.turbineSpin = true;
+        Tablet.instance.UpdateTask("Go back to the company building", "Return to the pick up truck.");
     }
 
     public void ActivateVariant()
