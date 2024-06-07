@@ -5,6 +5,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 {
     public AudioSource completePuzzleSound;
 
+    public GameObject TurbineDetection;
+
     public PuzzleTrackerAnalytics puzzleTrackerAnalytics;
 
     public GameObject parentGameObject;
@@ -170,7 +172,11 @@ public class Puzzle2StarterScript : MonoBehaviour
     private void StartPuzzle()
     {
         puzzleTrackerAnalytics.AnalyticsStartPuzzle("Puzzle 2");
-        FindObjectOfType<TurbineDetection>().gameObject.SetActive(false);
+
+        if (TurbineDetection != null)
+        {
+            TurbineDetection.SetActive(false);
+        }
 
         if (puzzleCenter != null && mainCamera != null)
         {
@@ -328,7 +334,7 @@ public class Puzzle2StarterScript : MonoBehaviour
     private IEnumerator FixCameraBug()
     {
         playerScript.enabled = false;
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.5f);
         playerScript.enabled = true;
     }
 }

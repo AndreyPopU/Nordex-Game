@@ -44357,6 +44357,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1249613630}
     - target: {fileID: 6291056256184360667, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
+      propertyPath: TurbineDetection
+      value: 
+      objectReference: {fileID: 874268933}
+    - target: {fileID: 6291056256184360667, guid: 3e2dbb1fb3389fe40ac20d59c5bddb37, type: 3}
       propertyPath: parentGameObject
       value: 
       objectReference: {fileID: 418392061}
