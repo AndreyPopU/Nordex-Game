@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Puzzle2StarterScript : MonoBehaviour
@@ -85,6 +86,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
         if (isPuzzleActive && Input.GetKeyDown(KeyCode.E))
         {
+            StartCoroutine(FixCameraBug());
+
             // Reset Forms and Blockers
             if (puzzle2 != null)
             {
@@ -254,6 +257,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     public void ResetCameraAndPlayer()
     {
+        StartCoroutine(FixCameraBug());
+
         puzzleTrackerAnalytics.AnalyticsEndPuzzle();
 
         if (mainCamera != null)
@@ -318,5 +323,12 @@ public class Puzzle2StarterScript : MonoBehaviour
         {
             isPlayerInArea = false;
         }
+    }
+
+    private IEnumerator FixCameraBug()
+    {
+        playerScript.enabled = false;
+        yield return new WaitForSeconds(1.6f);
+        playerScript.enabled = true;
     }
 }
