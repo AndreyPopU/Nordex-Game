@@ -19,7 +19,7 @@ public class Screw : MonoBehaviour
 
 
     public AudioSource source;
-    public AudioClip unscrew;
+    public AudioClip unscrew, toolsM, toolsF;
 
     void Start()
     {
@@ -81,6 +81,11 @@ public class Screw : MonoBehaviour
         if (puzzle == Puzzle.clockwork && !Player.instance.hasToolbox) 
         {
             Shake();
+            if (clockwork.voiceCD <= 0)
+            {
+                GameManager.instance.PlayVoice(toolsM, toolsF, 1);
+                clockwork.voiceCD = 5;
+            }
             Tablet.instance.UpdateTask("The turbine spin mechanism panel requires better tools for the screws.", "Get your toolbox from the shed.");
             return;
         }

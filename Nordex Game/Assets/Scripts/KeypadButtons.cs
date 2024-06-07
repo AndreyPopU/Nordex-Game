@@ -33,8 +33,10 @@ public class KeypadButtons : MonoBehaviour
                 Keypad.instance.light2.enabled = true;
                 Keypad.instance.sound1.Play();
                 Keypad.instance.sound2.Play();
-                Keypad.instance.completeSound.Play();
                 Tablet.instance.UpdateTask("Go in the shed and calibrate the panels. Use the code 6874 to enter the room", "Enter the correct pattern.");
+                Keypad.instance.source.Play();
+                GameManager.instance.PlayVoice(Keypad.instance.bossClear, Keypad.instance.bossClear, 4);
+                GameManager.instance.PlayVoice(Player.instance.calibrateM, Player.instance.calibrateF, 16);
                 Chronometer.instance.loop();
             }
             else 

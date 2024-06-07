@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         tabletPrompt.desiredPosition = new Vector3(-1300, 475, 0);
 
-        Tablet.instance.DisplayVoice(bossMessage1);
+        GameManager.instance.PlayVoice(bossMessage1, bossMessage1, 0);
     }
 
     public void SetGender(int gender)
@@ -69,5 +69,27 @@ public class GameManager : MonoBehaviour
             case 1: man = false; break;
             case 2: Application.Quit(); print("Kicked"); break;
         }
+    }
+
+    public void PlayVoice(AudioClip clipM, AudioClip clipF, float delay)
+    {
+        StartCoroutine(PlayVoiceCO(clipM, clipF, delay));
+    }
+
+    private IEnumerator PlayVoiceCO(AudioClip clipM, AudioClip clipF, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // If boss message
+        if (clipM == clipF) Tablet.instance.DisplayVoice();
+
+        GameObject holder = new GameObject();
+        holder.AddComponent<AudioSource>();
+        if (man) holder.GetComponent<AudioSource>().clip = clipM;
+        else holder.GetComponent<AudioSource>().clip = clipF;
+        holder.GetComponent<AudioSource>().Play();
+        holder.transform.SetParent(Player.instance.transform);
+
+        Destroy(holder, 20);
     }
 }

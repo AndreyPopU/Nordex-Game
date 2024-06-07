@@ -15,6 +15,7 @@ public class Keypad : Puzzle
     public float hintTime = 0f;
     public int hintIndex;
     public HintManager hintInstance;
+    public AudioClip bossClear;
 
     [Header("UI")]
     public CanvasGroup canvas;
@@ -25,6 +26,8 @@ public class Keypad : Puzzle
     //adding sound and light
     public lamp light1, light2;
     public AudioSource sound1, sound2;
+    public AudioClip nothingM, nothingF;
+    private float voiceCD;
 
     private void Awake()
     {
@@ -45,6 +48,8 @@ public class Keypad : Puzzle
 
     public void Update()
     {
+        if (voiceCD > 0) voiceCD -= Time.deltaTime;
+
         if (Player.instance.focused && Player.instance.puzzleInRange == this)
         {
             if (time > 0f) time -= Time.deltaTime;
@@ -84,6 +89,12 @@ public class Keypad : Puzzle
         //if (Player.instance.focused && selectedGameObject == guessField.gameObject) return; 
 
         base.Focus(focus);
+
+        if (!interactable && voiceCD <= 0)
+        {
+            GameManager.instance.PlayVoice(nothingM, nothingF, 0);
+            voiceCD = 5;
+        }
 
         if (Player.instance.focused) StartCoroutine(FadeCanvas(1));
         else StartCoroutine(FadeCanvas(0));

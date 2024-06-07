@@ -2736,6 +2736,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 711e020d019e86e469ea43f44c37019c, type: 3}
     - target: {fileID: 291905035232951239, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsF
+      value: 
+      objectReference: {fileID: 8300000, guid: e906c19c077a01b439b0bd40aaccba59, type: 3}
+    - target: {fileID: 291905035232951239, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsM
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b5e9db75495d084ba323e144795a31a, type: 3}
+    - target: {fileID: 291905035232951239, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
       objectReference: {fileID: 8300000, guid: f278dfb09daed4248bfcfe65bf8d6dd7, type: 3}
@@ -2776,6 +2784,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 711e020d019e86e469ea43f44c37019c, type: 3}
     - target: {fileID: 1522472860091897281, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsF
+      value: 
+      objectReference: {fileID: 8300000, guid: e906c19c077a01b439b0bd40aaccba59, type: 3}
+    - target: {fileID: 1522472860091897281, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsM
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b5e9db75495d084ba323e144795a31a, type: 3}
+    - target: {fileID: 1522472860091897281, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
       objectReference: {fileID: 8300000, guid: f278dfb09daed4248bfcfe65bf8d6dd7, type: 3}
@@ -2791,6 +2807,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2632123258218079354, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsF
+      value: 
+      objectReference: {fileID: 8300000, guid: e906c19c077a01b439b0bd40aaccba59, type: 3}
+    - target: {fileID: 2632123258218079354, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsM
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b5e9db75495d084ba323e144795a31a, type: 3}
     - target: {fileID: 2632123258218079354, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
@@ -2900,9 +2924,25 @@ PrefabInstance:
       value: 0.95283014
       objectReference: {fileID: 0}
     - target: {fileID: 6317168139977570028, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsF
+      value: 
+      objectReference: {fileID: 8300000, guid: e906c19c077a01b439b0bd40aaccba59, type: 3}
+    - target: {fileID: 6317168139977570028, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: toolsM
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b5e9db75495d084ba323e144795a31a, type: 3}
+    - target: {fileID: 6317168139977570028, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: unscrew
       value: 
       objectReference: {fileID: 8300000, guid: f278dfb09daed4248bfcfe65bf8d6dd7, type: 3}
+    - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: jobDoneF
+      value: 
+      objectReference: {fileID: 8300000, guid: 237c0c059373ee7498a833398484f9bf, type: 3}
+    - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: jobDoneM
+      value: 
+      objectReference: {fileID: 8300000, guid: f516f5c3856fe754ca11aa72548adf16, type: 3}
     - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: toolboxTransform
       value: 

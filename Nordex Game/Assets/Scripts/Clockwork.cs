@@ -31,6 +31,8 @@ public class Clockwork : Puzzle
     private Vector3 panelPosition;
     private float baseTimeLeft;
     public BoxCollider panelCollider;
+    public float voiceCD;
+    public AudioClip jobDoneM, jobDoneF;
 
     private void Awake()
     {
@@ -56,6 +58,8 @@ public class Clockwork : Puzzle
 
     private void Update()
     {
+        if (voiceCD > 0) voiceCD -= Time.deltaTime;
+
         // Deal with panel
         panel.transform.position = Vector3.MoveTowards(panel.transform.position, panelPosition, 6 * Time.deltaTime);
 
@@ -156,6 +160,7 @@ public class Clockwork : Puzzle
         interactable = false;
         Player.instance.turbineSpin = true;
         Tablet.instance.UpdateTask("Go back to the company building", "Return to the pick up truck.");
+        GameManager.instance.PlayVoice(jobDoneM, jobDoneF, 2);
     }
 
     public void ActivateVariant()

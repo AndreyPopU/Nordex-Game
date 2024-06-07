@@ -167,6 +167,7 @@ public class Puzzle2StarterScript : MonoBehaviour
     private void StartPuzzle()
     {
         puzzleTrackerAnalytics.AnalyticsStartPuzzle("Puzzle 2");
+        FindObjectOfType<TurbineDetection>().gameObject.SetActive(false);
 
         if (puzzleCenter != null && mainCamera != null)
         {

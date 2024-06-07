@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public Transform playerCam;
     public Transform orientation;
     public bool haskey;
+    public AudioClip calibrateM, calibrateF;
 
     //Other
     [HideInInspector] public CapsuleCollider coreCollider;

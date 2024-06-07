@@ -14,6 +14,7 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
     private bool isRedDone = false;
     private bool isPurpleDone = false;
     private Lever lever;
+    public TurbineDetection turbineDetection;
 
     private Vector3 initialPosition;
 
@@ -301,6 +302,8 @@ public class Puzzle2FormsControllerScript : MonoBehaviour
                 lever.GetComponent<Animator>().SetBool("Jamed", false);
                 lever.boxCollider.enabled = true;
             }
+
+            turbineDetection.gameObject.SetActive(true);
 
             // Reverse the E press camera logic here
             if (puzzleStarterScript != null)

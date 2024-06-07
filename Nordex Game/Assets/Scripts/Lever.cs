@@ -8,9 +8,10 @@ public class Lever : MonoBehaviour
     private Animator animator;
     public bool inrange;
     public BoxCollider boxCollider;
-    public AudioClip PullSound, JamSound;
+    public AudioClip PullSound, JamSound, stuckM, stuckF;
     public bool jammed;
 
+    private float voiceCD;
     private AudioSource source;
     public bool Pulled;
 
@@ -23,6 +24,8 @@ public class Lever : MonoBehaviour
 
     void Update()
     {
+        if (voiceCD > 0) voiceCD -= Time.deltaTime;
+
         if (inrange)
         {
             if (Input.GetButtonDown("Interact") && Pulled == false)
@@ -37,7 +40,16 @@ public class Lever : MonoBehaviour
                     source.Play();
                     ladder.GetComponent<Animator>().SetTrigger("GoDown");
                 }
-                else source.clip = JamSound;
+                else
+                {
+                    source.clip = JamSound;
+                    if (voiceCD <= 0)
+                    {
+                        Tablet.instance.UpdateTask("The lever is stuck, take a look at the lever mechanism and think of a way to fix it.", "Find the correct pattern. Beware of malfunctions.");
+                        GameManager.instance.PlayVoice(stuckM, stuckF, 1);
+                        voiceCD = 5;
+                    }
+                }
             }
         }
     }

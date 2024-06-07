@@ -36,9 +36,6 @@ public class Tablet : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !Player.instance.focused) Pause();
-
-        if (Input.GetKeyDown(KeyCode.F)) DisplayMessage(testMessage);
-        if (Input.GetKeyDown(KeyCode.G)) DisplayVoice(testVoice);
     }
 
     public void Pause()
@@ -47,9 +44,8 @@ public class Tablet : MonoBehaviour
         Player.instance.canMove = !paused;
         Player.instance.rb.isKinematic = paused;
         tabletPanel.SetActive(paused);
-        Cursor.lockState = CursorLockMode.None;
-        //Cursor.lockState = paused ? CursorLockMode.Locked : CursorLockMode.None;
-        //Cursor.visible = paused;
+        Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = paused;
     }
 
     public void DisplayMessage(string chatMessage)
@@ -62,16 +58,13 @@ public class Tablet : MonoBehaviour
         Invoke("HideNotification", 5);
     }
 
-    public void DisplayVoice(AudioClip clip)
+    public void DisplayVoice()
     {
         if (source.isPlaying || voiceBubble.activeInHierarchy)
         {
             CancelInvoke("HideNotification");
             source.Stop();
         }
-
-        source.clip = clip;
-        source.Play();
 
         // Show Voice message
         GameManager.instance.voicePrompt.desiredPosition = new Vector3(720, 260, 0);

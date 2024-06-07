@@ -41,7 +41,7 @@ public class PanelWires : Puzzle
     {
         base.Start();
 
-        Tablet.instance.UpdateTask("The light seems to be off. Figure out what is wrong with the switch. Check the wiring.", "The lights are off. Take a look at the wires");
+        Tablet.instance.UpdateTask("Enter the turbine and figure out what is wrong.", "Search for problems that require fixing in the turbine.");
     }
 
     private void Update()
@@ -109,8 +109,7 @@ public class PanelWires : Puzzle
         Focus(Player.instance.playerCam.transform);
         interactable = false;
         AudioSource.PlayClipAtPoint(electricityOnSound, transform.position);
-        completeSound.Play();
-        Tablet.instance.UpdateTask("The lever is stuck, take a look at the lever mechanism. Think of a way to fix it.", "Find the correct pattern. Beware of malfunctions.");
+        source.Play();
 
         if (mechanismWorks)
         {

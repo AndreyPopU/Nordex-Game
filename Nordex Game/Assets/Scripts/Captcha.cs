@@ -132,7 +132,7 @@ public class Captcha : Puzzle
 
         resetNumber.enabled = false;
         CaptchaKeypad.instance.interactable = false;
-        completeSound.Play();
+        source.Play();
     }
 
     public void EnableNumbers()

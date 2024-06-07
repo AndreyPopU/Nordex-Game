@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Puzzle : MonoBehaviour
 {
-    public AudioSource completeSound;
-    public AudioClip eachPuzzleCompleteSound;
+    [HideInInspector] public AudioSource source;
+    public AudioClip completeClip;
 
     [Header("Camera Focus")]
     public Transform focusTransform;
@@ -23,8 +23,8 @@ public class Puzzle : MonoBehaviour
         coreCollider = GetComponent<BoxCollider>();
         collision = GetComponents<BoxCollider>()[1];
 
-        completeSound = GetComponent<AudioSource>();
-        completeSound.clip = eachPuzzleCompleteSound;
+        source = GetComponent<AudioSource>();
+        source.clip = completeClip;
     }
 
     public virtual void Focus(Transform focus)

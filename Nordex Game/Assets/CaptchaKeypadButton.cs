@@ -26,7 +26,6 @@ public class CaptchaKeypadButton : MonoBehaviour
             // If code is correct - ask for captcha
             if (Textbox.text == "6874")
             {
-                CaptchaKeypad.instance.completeSound.Play();
                 Textbox.text = "Correct";
                 CaptchaKeypad.instance.interactable = false;
                 Invoke("AskForCaptcha", 2);
@@ -61,5 +60,6 @@ public class CaptchaKeypadButton : MonoBehaviour
         Textbox.enableAutoSizing = true;
         Textbox.text = "Prove you are not a robot";
         CaptchaKeypad.instance.ActivateCaptcha();
+        CaptchaKeypad.instance.source.clip = null;
     }
 }

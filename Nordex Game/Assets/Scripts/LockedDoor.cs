@@ -23,11 +23,11 @@ public class LockedDoor : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (locked && Player.instance.haskey)
+                if (locked && Player.instance.haskey && needKey)
                 {
                     source.clip = unlock;
                     source.Play();
-
+                    AudioSource.PlayClipAtPoint(open, transform.position);
                     locked = false;
                 }
 

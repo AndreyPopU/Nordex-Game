@@ -10,11 +10,12 @@ public class MorseButton : MonoBehaviour
     public bool holding;
     public float holdTime;
     public float resetTime = 5;
+    public AudioClip bossLast;
 
     public float speed;
 
     private Vector3 desiredPos;
-    
+
     void Start()
     {
         desiredPos = transform.position;
@@ -81,7 +82,9 @@ public class MorseButton : MonoBehaviour
             {
                 morseText.text = "Correct";
                 Chronometer.instance.loop();
-                MorsePuzzle.instance.completeSound.Play();
+                MorsePuzzle.instance.source.Play();
+                GameManager.instance.PlayVoice(bossLast, bossLast, 1);
+
             }
             else morseText.text = "Wrong";
 
