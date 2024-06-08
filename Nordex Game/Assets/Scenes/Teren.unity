@@ -60878,7 +60878,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 09fb4b1231d659b45b9580dd891dee93, type: 3}
     - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: hasToolbox
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: holdTransform
