@@ -16,4 +16,13 @@ public class MorsePuzzle : Puzzle
         else Destroy(gameObject);
 
     }
+
+    public override void Focus(Transform focus)
+    {
+        base.Focus(focus);
+
+        // Now start morse because it is already in play 
+        MultiPuzzleTimerScript.Instance.StartTimer(6);
+        Debug.Log("Started");
+    }
 }

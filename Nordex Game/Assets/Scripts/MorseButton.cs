@@ -89,7 +89,7 @@ public class MorseButton : MonoBehaviour
                 MorsePuzzle.instance.source.Play();
                 GameManager.instance.PlayVoice(bossLast, bossLast, 1);
 
-                multiPuzzleTimerScript.StopTimer(6);
+                MultiPuzzleTimerScript.Instance.StopTimer(6);
                 Debug.Log("Stopped");
 
                 playerLeavingScript.enabled = true;

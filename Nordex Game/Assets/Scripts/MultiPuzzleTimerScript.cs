@@ -33,8 +33,11 @@ public class MultiPuzzleTimerScript : MonoBehaviour
             return;
         }
 
-        startTimes[puzzleIndex] = Time.time;
-        isTiming[puzzleIndex] = true;
+        if (!isTiming[puzzleIndex])
+        {
+            startTimes[puzzleIndex] = Time.time;
+            isTiming[puzzleIndex] = true;
+        }
     }
 
     // Stop the timer for a specific puzzle and display the result

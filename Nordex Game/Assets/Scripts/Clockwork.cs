@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Clockwork : Puzzle
 {
-    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+    private MultiPuzzleTimerScript multiPuzzleTimerScript;
 
     public static Clockwork instance;
 
@@ -38,6 +38,8 @@ public class Clockwork : Puzzle
 
     private void Awake()
     {
+        multiPuzzleTimerScript = FindObjectOfType<MultiPuzzleTimerScript>();
+
         // Singleton
         if (instance == null)
         {

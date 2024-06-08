@@ -92,7 +92,7 @@ public class Keypad : Puzzle
 
         base.Focus(focus);
 
-        multiPuzzleTimerScript.StartTimer(4);
+        MultiPuzzleTimerScript.Instance.StartTimer(4);
         Debug.Log("Started");
 
         if (!interactable && voiceCD <= 0)

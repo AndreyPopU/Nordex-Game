@@ -19,7 +19,7 @@ public class PlayerLeavingScript : MonoBehaviour
         playerLeavingScript = GetComponent<PlayerLeavingScript>();
         playerScript = GetComponent<Player>();
         
-        //playerLeavingScript.enabled = false;
+        playerLeavingScript.enabled = false;
     }
 
     void Update()

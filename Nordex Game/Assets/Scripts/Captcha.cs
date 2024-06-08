@@ -45,9 +45,6 @@ public class Captcha : Puzzle
     {
         base.Focus(focus);
 
-        multiPuzzleTimerScript.StartTimer(5);
-        Debug.Log("Started");
-
         foreach (CaptchaNumber number in numbers)
             number.interactable = Player.instance.focused;
     }
@@ -139,13 +136,9 @@ public class Captcha : Puzzle
         CaptchaKeypad.instance.interactable = false;
         source.Play();
 
-        multiPuzzleTimerScript.StopTimer(5);
+        MultiPuzzleTimerScript.Instance.StopTimer(5);
         Debug.Log("Stopped");
 
-
-        // Now start morse because it is already in play 
-        multiPuzzleTimerScript.StartTimer(6);
-        Debug.Log("Started");
     }
 
     public void EnableNumbers()
@@ -154,6 +147,9 @@ public class Captcha : Puzzle
         foreach (CaptchaNumber number in numbers)
             number.enabled = true;
         resetNumber.enabled = true;
+
+        MultiPuzzleTimerScript.Instance.StartTimer(5);
+        Debug.Log("Started");
 
         coreCollider.enabled = false;
         collision.enabled = false;

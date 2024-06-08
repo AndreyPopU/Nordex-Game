@@ -31,7 +31,7 @@ public class KeypadButtons : MonoBehaviour
             {
                 Textbox.text = "Correct";
 
-                multiPuzzleTimerScript.StopTimer(4);
+                MultiPuzzleTimerScript.Instance.StopTimer(4);
                 Debug.Log("Stopped");
 
                 //making sounds and lights play
