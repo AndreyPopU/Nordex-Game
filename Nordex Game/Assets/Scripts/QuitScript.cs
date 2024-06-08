@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class QuitScript : MonoBehaviour
 {
-    private void QuitApplication()
+    public void QuitApplication()
     {
         Application.Quit();
+        Debug.Log("Quit");
     }
 }

@@ -41,6 +41,9 @@ public class PlayerLeavingScript : MonoBehaviour
                 playerScript.enabled = false;
                 tabletScript.enabled = false;
             }
+
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
     }
 

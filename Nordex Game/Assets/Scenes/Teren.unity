@@ -16384,7 +16384,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 34d95a00b9ab0dd49b3207020dcba7dc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 35aa9ade04210be4b88b0950f6740216, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -28000,7 +28000,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052008007}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -34987,6 +34987,7 @@ GameObject:
   - component: {fileID: 1361381065}
   - component: {fileID: 1361381064}
   - component: {fileID: 1361381063}
+  - component: {fileID: 1361381066}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -35057,7 +35058,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1361381064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1361381066}
+        m_TargetAssemblyTypeName: QuitScript, Assembly-CSharp
+        m_MethodName: QuitApplication
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1361381064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35096,6 +35109,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361381061}
   m_CullTransparentMesh: 1
+--- !u!114 &1361381066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361381061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba41c559070624443ae4be543d799292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1362608660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60692004db628424480fa12daaf7912b, type: 3}
