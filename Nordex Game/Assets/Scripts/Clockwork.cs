@@ -90,7 +90,7 @@ public class Clockwork : Puzzle
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
-
+        // if hastoolbox or toolboxdone or something else
         multiPuzzleTimerScript.StartTimer(3);
         Debug.Log("Started");
 
