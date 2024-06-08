@@ -16,6 +16,8 @@ public class MorseButton : MonoBehaviour
 
     private Vector3 desiredPos;
 
+    public PlayerLeavingScript playerLeavingScript;
+
     void Start()
     {
         desiredPos = transform.position;
@@ -85,6 +87,7 @@ public class MorseButton : MonoBehaviour
                 MorsePuzzle.instance.source.Play();
                 GameManager.instance.PlayVoice(bossLast, bossLast, 1);
 
+                playerLeavingScript.enabled = true;
             }
             else morseText.text = "Wrong";
 
