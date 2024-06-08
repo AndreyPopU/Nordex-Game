@@ -2944,6 +2944,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f516f5c3856fe754ca11aa72548adf16, type: 3}
     - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: completeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 34d95a00b9ab0dd49b3207020dcba7dc, type: 3}
+    - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: toolboxTransform
       value: 
       objectReference: {fileID: 327438012}

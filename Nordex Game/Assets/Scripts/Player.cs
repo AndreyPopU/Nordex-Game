@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public AudioClip[] concretefootsteps;
     public AudioClip[] metalfootsteps;
     public float footstepinterval = 0.2f;
+    public Transform holdTransform;
 
     //Assingables
     public Transform playerCam;

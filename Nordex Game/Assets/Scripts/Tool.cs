@@ -18,6 +18,7 @@ public class Tool : MonoBehaviour
 
     private Vector3 lockPos;
     private Vector3 startPosition;
+    private Quaternion startRotation;
     private GameObject overlay;
     private GameObject GFX;
 
@@ -34,6 +35,7 @@ public class Tool : MonoBehaviour
         colliders = GetComponents<Collider>();
         cam = Camera.main;
         startPosition = transform.position;
+        startRotation = transform.rotation;
 
         // Choose axis to be dragged along
         switch (lockAxis)
@@ -57,6 +59,7 @@ public class Tool : MonoBehaviour
 
         // Save start Pos
         startPosition = transform.position;
+        startRotation = transform.rotation;
 
         // Enable Overlay
         GFX.SetActive(false);
@@ -156,6 +159,7 @@ public class Tool : MonoBehaviour
                     overlapingColliders[j], overlapingColliders[j].transform.position, overlapingColliders[j].transform.rotation, out dir, out dist))
                 {
                     transform.position = startPosition;
+                    transform.rotation = startRotation;
                     //sounds
                     source.clip = cantBePlaced;
                     source.Play();    
@@ -164,6 +168,7 @@ public class Tool : MonoBehaviour
                 else if (overlapingColliders[j].gameObject.name == "OutsideCollider")
                 {
                     transform.position = startPosition;
+                    transform.rotation = startRotation;
                     source.clip = cantBePlaced;
                     source.Play();
                     return;

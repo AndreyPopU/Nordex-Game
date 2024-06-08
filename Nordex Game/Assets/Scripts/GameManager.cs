@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        PlayVoice(bossMessage1, bossMessage1, 0);
+
         MainMenuManager manager = FindObjectOfType<MainMenuManager>();
         if (manager)
         {
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
             Destroy(FindObjectOfType<MainMenuManager>().gameObject);
         }
         tutorialPrompt.desiredPosition = new Vector3(-740, 370, 0);
-        Invoke("HideTutorial", 5);
+        Invoke("HideTutorial", 10);
     }
 
     public void StartGame() => FadePanel.instance.LoadScene("Teren", new Vector3(0, 2, -25));
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
     private void HideTutorial()
     {
         tutorialPrompt.desiredPosition = new Vector3(-1300, 370, 0);
-        Destroy(tutorialPrompt.gameObject, 10);
+        Destroy(tutorialPrompt.gameObject, 20);
 
         Invoke("PromptTablet", 1);
     }
@@ -50,15 +52,13 @@ public class GameManager : MonoBehaviour
     private void PromptTablet()
     {
         tabletPrompt.desiredPosition = new Vector3(-800, 475, 0);
-        Invoke("HideTabletPrompt", 5);
-        Destroy(tabletPrompt.gameObject, 10);
+        Invoke("HideTabletPrompt", 10);
+        Destroy(tabletPrompt.gameObject, 20);
     }
 
     private void HideTabletPrompt()
     {
         tabletPrompt.desiredPosition = new Vector3(-1300, 475, 0);
-
-        GameManager.instance.PlayVoice(bossMessage1, bossMessage1, 0);
     }
 
     public void SetGender(int gender)

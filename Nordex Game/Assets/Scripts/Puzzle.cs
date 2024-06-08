@@ -41,6 +41,7 @@ public class Puzzle : MonoBehaviour
         Player.instance.rb.isKinematic = Player.instance.focused;
         Cursor.lockState = Player.instance.focused ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = Player.instance.focused ? true : false;
+        if (Player.instance.holdTransform.childCount > 0) Player.instance.holdTransform.GetChild(0).gameObject.SetActive(!Player.instance.focused);
         StartCoroutine(FocusCO(focus));
     }
 
