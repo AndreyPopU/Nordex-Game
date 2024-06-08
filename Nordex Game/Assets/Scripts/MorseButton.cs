@@ -5,6 +5,8 @@ using TMPro;
 
 public class MorseButton : MonoBehaviour
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public string morseInput;
     public TextMeshProUGUI morseText;
     public bool holding;
@@ -86,6 +88,9 @@ public class MorseButton : MonoBehaviour
                 Chronometer.instance.loop();
                 MorsePuzzle.instance.source.Play();
                 GameManager.instance.PlayVoice(bossLast, bossLast, 1);
+
+                multiPuzzleTimerScript.StopTimer(6);
+                Debug.Log("Stopped");
 
                 playerLeavingScript.enabled = true;
             }

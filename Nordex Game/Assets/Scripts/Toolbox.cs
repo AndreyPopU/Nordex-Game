@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Toolbox : Puzzle
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public static Toolbox instance;
 
     public LayerMask mask;
@@ -43,6 +45,9 @@ public class Toolbox : Puzzle
         if (overlapingColliders.Length != 61) return;
 
         // Completed
+        multiPuzzleTimerScript.StopTimer(2);
+        Debug.Log("Stopped");
+
         Chronometer.instance.loop();
         animator.enabled = true;
         Focus(Player.instance.playerCam.transform);
@@ -72,6 +77,9 @@ public class Toolbox : Puzzle
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
+
+        multiPuzzleTimerScript.StartTimer(2);
+        Debug.Log("Started");
 
         // Setup tools
         coreCollider.enabled = !Player.instance.focused;

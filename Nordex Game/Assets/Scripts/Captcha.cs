@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Captcha : Puzzle
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public static Captcha instance;
 
     public int target;
@@ -42,6 +44,9 @@ public class Captcha : Puzzle
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
+
+        multiPuzzleTimerScript.StartTimer(5);
+        Debug.Log("Started");
 
         foreach (CaptchaNumber number in numbers)
             number.interactable = Player.instance.focused;
@@ -133,6 +138,14 @@ public class Captcha : Puzzle
         resetNumber.enabled = false;
         CaptchaKeypad.instance.interactable = false;
         source.Play();
+
+        multiPuzzleTimerScript.StopTimer(5);
+        Debug.Log("Stopped");
+
+
+        // Now start morse because it is already in play 
+        multiPuzzleTimerScript.StartTimer(6);
+        Debug.Log("Started");
     }
 
     public void EnableNumbers()

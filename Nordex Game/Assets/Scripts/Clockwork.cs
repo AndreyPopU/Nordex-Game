@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Clockwork : Puzzle
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public static Clockwork instance;
 
     public Transform toolboxTransform;
@@ -87,6 +89,9 @@ public class Clockwork : Puzzle
     {
         base.Focus(focus);
 
+        multiPuzzleTimerScript.StartTimer(3);
+        Debug.Log("Started");
+
         // If player has toolbox on him - place it to the side
         if (Camera.main.transform.childCount > 0 && Camera.main.transform.GetChild(0) != null)
         {
@@ -153,6 +158,9 @@ public class Clockwork : Puzzle
         }
 
         // Complete
+        multiPuzzleTimerScript.StopTimer(3);
+        Debug.Log("Stopped");
+
         print("Completed");
         Chronometer.instance.loop();
         timeLeft = 999999;

@@ -6,6 +6,8 @@ using UnityEngine.Device;
 
 public class PanelWires : Puzzle
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public static PanelWires instance;
 
     public GameObject panel;
@@ -53,6 +55,9 @@ public class PanelWires : Puzzle
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
+
+        multiPuzzleTimerScript.StartTimer(0);
+        Debug.Log("Started");
 
         if (Player.instance.focused) StartCoroutine(FadeCanvas(1));
         else StartCoroutine(FadeCanvas(0));
@@ -103,6 +108,9 @@ public class PanelWires : Puzzle
         }
 
         // Complete
+        multiPuzzleTimerScript.StopTimer(0);
+        Debug.Log("Stopped");
+
         print("Completed");
         light1.SetActive(true); light2.SetActive(true);
         Chronometer.instance.loop();

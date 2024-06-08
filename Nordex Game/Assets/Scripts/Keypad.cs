@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Keypad : Puzzle
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public static Keypad instance;
     public TextMeshProUGUI timerText;
     public Button[] hintButtons;
@@ -89,6 +91,9 @@ public class Keypad : Puzzle
         //if (Player.instance.focused && selectedGameObject == guessField.gameObject) return; 
 
         base.Focus(focus);
+
+        multiPuzzleTimerScript.StartTimer(4);
+        Debug.Log("Started");
 
         if (!interactable && voiceCD <= 0)
         {

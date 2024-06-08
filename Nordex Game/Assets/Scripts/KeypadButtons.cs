@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class KeypadButtons : MonoBehaviour
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public TextMeshProUGUI Textbox;
     public int number;
 
@@ -28,6 +30,10 @@ public class KeypadButtons : MonoBehaviour
             if (Textbox.text == "34")
             {
                 Textbox.text = "Correct";
+
+                multiPuzzleTimerScript.StopTimer(4);
+                Debug.Log("Stopped");
+
                 //making sounds and lights play
                 Keypad.instance.light1.enabled = true;
                 Keypad.instance.light2.enabled = true;

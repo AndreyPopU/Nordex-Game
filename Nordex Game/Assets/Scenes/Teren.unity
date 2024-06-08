@@ -26809,6 +26809,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 96259454686148381, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
+    - target: {fileID: 96259454686148381, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
       propertyPath: eachPuzzleCompleteSound
       value: 
       objectReference: {fileID: 8300000, guid: 34d95a00b9ab0dd49b3207020dcba7dc, type: 3}
@@ -26828,6 +26832,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 555468375051603669, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 1106033500740239066, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -26860,6 +26868,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2253512657605861096, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
+    - target: {fileID: 2857218876056273845, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 3069786932649022187, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -26872,6 +26888,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrequencyKeypad
       objectReference: {fileID: 0}
+    - target: {fileID: 3712038892549368942, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
+    - target: {fileID: 3810077295057025812, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
+    - target: {fileID: 3879997090862674173, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 3960037374534328705, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -26888,6 +26916,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4875138962380890833, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
+    - target: {fileID: 5237937160477250630, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 5479919230546480772, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -26900,6 +26936,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 228
       objectReference: {fileID: 0}
+    - target: {fileID: 5842092650902311858, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 5852288020921815041, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -26937,6 +26977,10 @@ PrefabInstance:
         In case you were wondering, the clock in this puzzle
         displays time on a 12-hour scale, not on military time. (12AM-12PM)'
       objectReference: {fileID: 0}
+    - target: {fileID: 8210569823878227673, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 8357146964963861956, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.689
@@ -26977,6 +27021,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8578919019371382771, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
+    - target: {fileID: 9093096118380679170, guid: c4d5a0928b4975046b77baa55c1f1ff4, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27923,6 +27975,10 @@ PrefabInstance:
       propertyPath: playerLeavingScript
       value: 
       objectReference: {fileID: 604428995}
+    - target: {fileID: 6575488151074166144, guid: 10e17c2968753df42b53b20ca3c3a90c, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29686,6 +29742,10 @@ PrefabInstance:
       propertyPath: electricityOnSound
       value: 
       objectReference: {fileID: 8300000, guid: 36f7a722128d7c34d90f8b2c8a20d301, type: 3}
+    - target: {fileID: 7979894122078623905, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 7979894122078623905, guid: 96905f7f8bd524749bea45a17ffdbe67, type: 3}
       propertyPath: eachPuzzleCompleteSound
       value: 
@@ -37978,6 +38038,10 @@ PrefabInstance:
       propertyPath: completeClip
       value: 
       objectReference: {fileID: 8300000, guid: 34d95a00b9ab0dd49b3207020dcba7dc, type: 3}
+    - target: {fileID: 1802564082256752390, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 1802564082256752390, guid: 7581af67f3ce8bb4a9304565022f045d, type: 3}
       propertyPath: eachPuzzleCompleteSound
       value: 
@@ -56681,6 +56745,10 @@ PrefabInstance:
       propertyPath: completeClip
       value: 
       objectReference: {fileID: 8300000, guid: 34d95a00b9ab0dd49b3207020dcba7dc, type: 3}
+    - target: {fileID: 266914335667716125, guid: 1774e60db70fadf4caa22838e5c16deb, type: 3}
+      propertyPath: multiPuzzleTimerScript
+      value: 
+      objectReference: {fileID: 1903012003}
     - target: {fileID: 266914335667716125, guid: 1774e60db70fadf4caa22838e5c16deb, type: 3}
       propertyPath: eachPuzzleCompleteSound
       value: 
