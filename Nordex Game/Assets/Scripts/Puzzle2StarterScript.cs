@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Puzzle2StarterScript : MonoBehaviour
 {
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public AudioSource completePuzzleSound;
 
     public GameObject TurbineDetection;
@@ -171,6 +173,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     private void StartPuzzle()
     {
+        multiPuzzleTimerScript.StartTimer(1);
+
         puzzleTrackerAnalytics.AnalyticsStartPuzzle("Puzzle 2");
 
         if (TurbineDetection != null)
@@ -263,6 +267,8 @@ public class Puzzle2StarterScript : MonoBehaviour
 
     public void ResetCameraAndPlayer()
     {
+        multiPuzzleTimerScript.StopTimer(1);
+
         StartCoroutine(FixCameraBug());
 
         puzzleTrackerAnalytics.AnalyticsEndPuzzle();
