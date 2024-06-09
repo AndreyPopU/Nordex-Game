@@ -55,6 +55,14 @@ public class PlayerLeavingScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "pickup_truck_unwrapped")
+        {
+            isPlayerInTrigger = false;
+        }
+    }
+
     private IEnumerator PlayTruckLeavingSound()
     {
         truckLeavingSound.Play();
