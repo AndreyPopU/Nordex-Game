@@ -54,17 +54,19 @@ public class PlayerLeavingScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "pickup_truck_unwrapped")
+        if (other.gameObject.name == "pickup_truck_unwrapped_10")
         {
             isPlayerInTrigger = true;
+            GameManager.instance.InteractPrompt();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "pickup_truck_unwrapped")
+        if (other.gameObject.name == "pickup_truck_unwrapped_10")
         {
             isPlayerInTrigger = false;
+            GameManager.instance.Hide();
         }
     }
 

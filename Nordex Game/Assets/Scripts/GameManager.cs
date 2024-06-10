@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Prompt messagePrompt;
     public Prompt voicePrompt;
     public Prompt tabletPrompt;
+    public Prompt interactPrompt;
 
     private void Awake()
     {
@@ -56,6 +58,16 @@ public class GameManager : MonoBehaviour
         Destroy(tabletPrompt.gameObject, 20);
     }
 
+    public void InteractPrompt ()
+    {
+        interactPrompt.desiredPosition = new Vector3(-800, 350, 0);
+
+    }
+
+    public void Hide ()
+    {
+        interactPrompt.desiredPosition = new Vector3(-1280, 350, 0);
+    }
     public void SetGender(int gender)
     {
         switch (gender)

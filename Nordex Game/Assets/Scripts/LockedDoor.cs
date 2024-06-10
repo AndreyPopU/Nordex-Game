@@ -55,6 +55,7 @@ public class LockedDoor : MonoBehaviour
         if (other.GetComponent<Player>())
         {
             inrange = true;
+            GameManager.instance.InteractPrompt();
         }
     }
     void OnTriggerExit(Collider other)
@@ -62,6 +63,8 @@ public class LockedDoor : MonoBehaviour
         if (other.GetComponent<Player>())
         {
             inrange = false;
+            GameManager.instance.Hide();
+
         }
     }
 }

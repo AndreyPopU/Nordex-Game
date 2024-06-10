@@ -287,12 +287,20 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Puzzle puzzle)) puzzleInRange = puzzle;
+        if (other.TryGetComponent(out Puzzle puzzle))
+        {
+            puzzleInRange = puzzle;
+            GameManager.instance.InteractPrompt();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Puzzle puzzle) && puzzleInRange == puzzle) puzzleInRange = null;
+        if (other.TryGetComponent(out Puzzle puzzle) && puzzleInRange == puzzle)
+        {
+            puzzleInRange = null;
+            GameManager.instance.Hide();
+        }
     }
 
     private void OnDrawGizmos()

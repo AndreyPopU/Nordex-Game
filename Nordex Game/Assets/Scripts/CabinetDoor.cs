@@ -35,11 +35,17 @@ public class CabinetDoor : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
+        {
             inRange = true;
+            GameManager.instance.InteractPrompt();
+        }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<Player>())
+        {
             inRange = false;
+            GameManager.instance.Hide();
+        }
     }
 }
