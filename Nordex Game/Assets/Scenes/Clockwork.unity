@@ -401,7 +401,7 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: 5bfe1156e5c6c7f44a55b9e9db475e35, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 8691780276856062721, guid: 1d1774ca6d460e248861263fe8d72399, type: 3}
+      objectReference: {fileID: -4411361228764603502, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
     - target: {fileID: 919132149155446097, guid: 5bfe1156e5c6c7f44a55b9e9db475e35, type: 3}
       propertyPath: m_Name
       value: ladder_unwrapped
@@ -622,6 +622,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &238999855
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.1400733
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7396961
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.020544052
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2ec982b67ff96514ca609e86044d2737, type: 2}
+    - target: {fileID: 919132149155446097, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
+      propertyPath: m_Name
+      value: finalLADDDDDER
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
 --- !u!1 &243200868
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +711,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.6509434, g: 0.6443208, b: 0.63047343, a: 1}
+  m_Color: {r: 0.5764706, g: 0.53333336, b: 0.44313726, a: 1}
   m_Intensity: 2.93
   m_Range: 10.524729
   m_SpotAngle: 170.9034
@@ -690,7 +751,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1063,7 +1124,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.6320754, g: 0.62270504, b: 0.59927905, a: 1}
   m_Intensity: 1.3
   m_Range: 10
   m_SpotAngle: 30
@@ -3979,7 +4040,7 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: 5bfe1156e5c6c7f44a55b9e9db475e35, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 8691780276856062721, guid: 1d1774ca6d460e248861263fe8d72399, type: 3}
+      objectReference: {fileID: -4411361228764603502, guid: 53e59010e13186244a73ec06a13c27af, type: 3}
     - target: {fileID: 919132149155446097, guid: 5bfe1156e5c6c7f44a55b9e9db475e35, type: 3}
       propertyPath: m_Name
       value: ladder_unwrapped (1)
@@ -4546,9 +4607,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f516f5c3856fe754ca11aa72548adf16, type: 3}
     - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: stressMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 131969a35f06ae94ca050bfee97ea867, type: 3}
+    - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: completeClip
       value: 
       objectReference: {fileID: 8300000, guid: 34d95a00b9ab0dd49b3207020dcba7dc, type: 3}
+    - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
+      propertyPath: defaultMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 299e9499dc843e54bad626a66c614c27, type: 3}
     - target: {fileID: 6456791447750421560, guid: 78cbdfaf7a7cd274c9d77832a3009c64, type: 3}
       propertyPath: toolboxTransform
       value: 
@@ -5159,3 +5228,4 @@ SceneRoots:
   - {fileID: 85996037}
   - {fileID: 636053307}
   - {fileID: 1886476727}
+  - {fileID: 238999855}

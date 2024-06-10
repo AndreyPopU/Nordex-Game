@@ -16,6 +16,8 @@ public class Clockwork : Puzzle
     public bool timeActive;
     public Slider timeSlider;
 
+    public AudioClip stressMusic;
+    public AudioClip defaultMusic;
     [Header("Puzzle")]
     public GameObject panel;
     public CogSocket[] sockets;
@@ -112,9 +114,11 @@ public class Clockwork : Puzzle
         Player.instance.rb.isKinematic = Player.instance.focused;
         Player.instance.rb.velocity = Vector3.zero;
 
+       
         // Reset time
         if (!Player.instance.focused)
         {
+            FadePanel.instance.GetComponent<AudioSource>().clip = defaultMusic;
             timeActive = false;
             timeLeft = baseTimeLeft;
         }
@@ -150,6 +154,7 @@ public class Clockwork : Puzzle
         timeActive = true;
         panelPosition += -panel.transform.right * 4 - panel.transform.up * .2f;
         panelCollider.enabled = false;
+        FadePanel.instance.GetComponent<AudioSource>().clip = stressMusic;
     }
 
     public void CheckComplete()
