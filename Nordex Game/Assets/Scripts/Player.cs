@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     public AudioClip[] metalfootsteps;
     public float footstepinterval = 0.2f;
     public Transform holdTransform;
+    private float timeSinceLastFootstep;
 
     //Assingables
     public Transform playerCam;
@@ -60,6 +62,7 @@ public class Player : MonoBehaviour
     public AudioSource source;
     public AudioClip clipW, clipM;
     public bool canMove;
+    private float bounceCD;
 
     void Awake()
     {
@@ -102,16 +105,25 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Interact")) FocusPuzzle();
 
         if (focused) return;
-        if (footstepinterval > 0 && rb.velocity.magnitude >0 && grounded) footstepinterval -= Time.deltaTime;
-        else
-        {
-            source.clip = GetClip();
-            //source.Play();
-            footstepinterval = 0.8f;
-        }
 
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
+
+        Vector2 movement = new Vector2(x, y);
+
+       if (bounceCD >0 ) bounceCD -= Time.deltaTime;
+
+        if (movement.magnitude > 0 && grounded)
+        {
+            if (Time.time - timeSinceLastFootstep >= .3f)
+            {
+                // Play a random footstep sound from the array
+                AudioClip footstepSound = GetClip();
+                source.PlayOneShot(footstepSound);
+
+                timeSinceLastFootstep = Time.time; // Update the time since the last footstep sound
+            }
+        }
 
         Look();
 
@@ -123,12 +135,12 @@ public class Player : MonoBehaviour
             jumping = true;
         }
     }
+
     public AudioClip GetClip()
     {
         AudioClip clip = null;
         if (grounded)
         {
-
             if (surface == Surface.grass)
                 clip = grassfootsteps[UnityEngine.Random.Range(0, grassfootsteps.Length)];
             else if (surface == Surface.concrete)
@@ -194,10 +206,7 @@ public class Player : MonoBehaviour
 
 
     private float desiredX;
-    public void footstep()
-    {
 
-    }
     private void Look()
     {
         if (focused) return;
@@ -259,14 +268,20 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            if (collision.gameObject.name.Contains("Grass")) surface = Surface.grass;
+            else if (collision.gameObject.name.Contains("Metal")) surface = Surface.metal;
+            else if (collision.gameObject.name.Contains("Concrete")) surface = Surface.concrete;
+            
+
             //if (collision.gameObject.name == "")
         }
 
-        if (collision.gameObject.tag == "Bounds" && !source.isPlaying)
+        if (collision.gameObject.tag == "Bounds" && !source.isPlaying && bounceCD <= 0)
         {
-            if (GameManager.instance.man) source.clip = clipM;
-            else source.clip = clipW;
-            source.Play();
+            if (GameManager.instance.man)
+                AudioSource.PlayClipAtPoint(clipM, transform.position);
+            else AudioSource.PlayClipAtPoint(clipW, transform.position);
+            bounceCD = 5;
         }
     }
 

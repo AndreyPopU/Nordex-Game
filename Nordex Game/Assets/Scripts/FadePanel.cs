@@ -12,7 +12,7 @@ public class FadePanel : MonoBehaviour
     void Awake()
     {
         if (instance == null) instance = this;
-        else Destroy(gameObject);
+        else Destroy(transform.parent.gameObject);
         DontDestroyOnLoad(transform.parent.gameObject);
 
         group = GetComponent<CanvasGroup>();

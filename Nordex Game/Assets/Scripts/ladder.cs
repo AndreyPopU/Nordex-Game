@@ -45,7 +45,7 @@ public class ladder : MonoBehaviour
             inrange = false;
 
     }
-    public void GoDown ()
+    public void GoDown()
     {
         audioSource.clip = godown;
         audioSource.Play();
