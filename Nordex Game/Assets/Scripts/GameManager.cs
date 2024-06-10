@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -51,11 +52,9 @@ public class GameManager : MonoBehaviour
         Invoke("PromptTablet", 1);
     }
 
-    private void PromptTablet()
+    public void PromptTablet()
     {
         tabletPrompt.desiredPosition = new Vector3(-800, 475, 0);
-        Invoke("HideTabletPrompt", 10);
-        Destroy(tabletPrompt.gameObject, 20);
     }
 
     public void InteractPrompt ()
@@ -76,6 +75,10 @@ public class GameManager : MonoBehaviour
             case 1: man = false; break;
             case 2: Application.Quit(); print("Kicked"); break;
         }
+    }
+    public void TabletHidePrompt()
+    {
+        tabletPrompt.desiredPosition = new Vector3(-1280,475,0);
     }
 
     public void PlayVoice(AudioClip clipM, AudioClip clipF, float delay)

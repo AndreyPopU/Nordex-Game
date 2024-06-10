@@ -43,6 +43,16 @@ public class Puzzle : MonoBehaviour
         Cursor.visible = Player.instance.focused ? true : false;
         if (Player.instance.holdTransform.childCount > 0) Player.instance.holdTransform.GetChild(0).gameObject.SetActive(!Player.instance.focused);
         StartCoroutine(FocusCO(focus));
+        if (!Player.instance.focused)
+        {
+            GameManager.instance.InteractPrompt();
+            GameManager.instance.PromptTablet();
+        }
+        else
+        {
+            GameManager.instance.Hide();
+            GameManager.instance.TabletHidePrompt();
+        }
     }
 
     private IEnumerator FocusCO(Transform focus) // Gradually move and rotate the camera so it matches the focus point of the puzzle
