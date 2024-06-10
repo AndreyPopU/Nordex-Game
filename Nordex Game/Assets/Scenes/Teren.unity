@@ -34953,7 +34953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6044515709863652754, guid: 700a241cc96b1814d9d70f6c11b6c939, type: 3}
       propertyPath: jammed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6044515709863652754, guid: 700a241cc96b1814d9d70f6c11b6c939, type: 3}
       propertyPath: ladder
@@ -57323,7 +57323,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 299e9499dc843e54bad626a66c614c27, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -63491,7 +63491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: haskey
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: calibrateF
@@ -63503,7 +63503,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 09fb4b1231d659b45b9580dd891dee93, type: 3}
     - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: hasToolbox
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344691104737615021, guid: b638661badfffdf4789c264e3fd3b03d, type: 3}
       propertyPath: holdTransform
