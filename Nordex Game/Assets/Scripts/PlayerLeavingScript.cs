@@ -8,6 +8,8 @@ public class PlayerLeavingScript : MonoBehaviour
 
     public Tablet tabletScript;
 
+    public MultiPuzzleTimerScript multiPuzzleTimerScript;
+
     public Canvas analyticsCanvas;
 
     public AudioSource truckLeavingSound;
@@ -18,7 +20,7 @@ public class PlayerLeavingScript : MonoBehaviour
     {
         playerLeavingScript = GetComponent<PlayerLeavingScript>();
         playerScript = GetComponent<Player>();
-        
+
         playerLeavingScript.enabled = false;
     }
 
@@ -35,7 +37,7 @@ public class PlayerLeavingScript : MonoBehaviour
             {
                 StartCoroutine(PlayTruckLeavingSound());
             }
-            
+
             if (playerScript.enabled && tabletScript.enabled)
             {
                 playerScript.enabled = false;
@@ -44,6 +46,9 @@ public class PlayerLeavingScript : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+
+            // Called to send data to Unity Cloud Save
+            StartCoroutine(SendDataToCloud());
         }
     }
 
@@ -55,10 +60,24 @@ public class PlayerLeavingScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "pickup_truck_unwrapped")
+        {
+            isPlayerInTrigger = false;
+        }
+    }
+
     private IEnumerator PlayTruckLeavingSound()
     {
         truckLeavingSound.Play();
         yield return new WaitForSeconds(truckLeavingSound.clip.length);
         truckLeavingSound.enabled = false;
+    }
+
+    // Coroutine for the send method
+    private IEnumerator SendDataToCloud()
+    {
+        yield return multiPuzzleTimerScript.SendElapsedTimesToCloud();
     }
 }

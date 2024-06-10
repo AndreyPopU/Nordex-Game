@@ -90,10 +90,7 @@ public class Clockwork : Puzzle
     public override void Focus(Transform focus)
     {
         base.Focus(focus);
-
-        multiPuzzleTimerScript.StartTimer(3);
-        Debug.Log("Started");
-
+        
         // If player has toolbox on him - place it to the side
         if (Camera.main.transform.childCount > 0 && Camera.main.transform.GetChild(0) != null)
         {
@@ -103,6 +100,10 @@ public class Clockwork : Puzzle
             toolbox.transform.localRotation = Quaternion.identity;
             toolbox.GetComponent<Toolbox>().collision.enabled = false;
             toolbox.GetComponent<Toolbox>().enabled = false;
+
+            // fixed
+            multiPuzzleTimerScript.StartTimer(3);
+            Debug.Log("Started");
         }
 
         coreCollider.enabled = !Player.instance.focused;

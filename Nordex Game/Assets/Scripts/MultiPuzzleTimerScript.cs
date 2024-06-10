@@ -1,9 +1,15 @@
 using UnityEngine;
 using TMPro;
+using Unity.Services.Core;
+using Unity.Services.Authentication;
+using Unity.Services.CloudSave;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
 
 public class MultiPuzzleTimerScript : MonoBehaviour
 {
-    public static MultiPuzzleTimerScript Instance; 
+    public static MultiPuzzleTimerScript Instance;
 
     void Awake()
     {
@@ -23,6 +29,29 @@ public class MultiPuzzleTimerScript : MonoBehaviour
 
     private float[] startTimes = new float[7];
     private bool[] isTiming = new bool[7];
+    private float[] elapsedTimes = new float[7];
+
+    private readonly string[] puzzleNames = new string[]
+    {
+        "Wires",
+        "Maze",
+        "Toolbox",
+        "Clockwork",
+        "Frequency",
+        "Captcha",
+        "Morse"
+    };
+
+    async void Start()
+    {
+        // Initialize Unity Gaming Services
+        await UnityServices.InitializeAsync();
+
+        if (!AuthenticationService.Instance.IsSignedIn)
+        {
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+    }
 
     // Start the timer for a specific puzzle
     public void StartTimer(int puzzleIndex)
@@ -53,7 +82,8 @@ public class MultiPuzzleTimerScript : MonoBehaviour
         {
             float endTime = Time.time;
             isTiming[puzzleIndex] = false;
-            DisplayTime(puzzleIndex, endTime - startTimes[puzzleIndex]);
+            elapsedTimes[puzzleIndex] = endTime - startTimes[puzzleIndex];
+            DisplayTime(puzzleIndex, elapsedTimes[puzzleIndex]);
         }
     }
 
@@ -63,29 +93,53 @@ public class MultiPuzzleTimerScript : MonoBehaviour
         switch (puzzleIndex)
         {
             case 0:
-                timerTextPuzzle1.text = $"Wires - {elapsedTime:F2} seconds";
+                timerTextPuzzle1.text = $"{puzzleNames[puzzleIndex]} - {elapsedTime:F2} seconds";
                 break;
             case 1:
-                timerTextPuzzle2.text = $"Maze - {elapsedTime:F2} seconds";
+                timerTextPuzzle2.text = $"{puzzleNames[puzzleIndex]} - {elapsedTime:F2} seconds";
                 break;
             case 2:
-                timerTextPuzzle3.text = $"Toolbox - {elapsedTime:F2} seconds";
+                timerTextPuzzle3.text = $"{puzzleNames[puzzleIndex]} - {elapsedTime:F2} seconds";
                 break;
             case 3:
-                timerTextPuzzle4.text = $"Clockwork - {elapsedTime:F2} seconds";
+                timerTextPuzzle4.text = $"{puzzleNames[puzzleIndex]} - {elapsedTime:F2} seconds";
                 break;
             case 4:
-                timerTextPuzzle5.text = $"Frequency - {elapsedTime:F2} seconds";
+                timerTextPuzzle5.text = $"{puzzleNames[puzzleIndex]} - {elapsedTime:F2} seconds";
                 break;
             case 5:
-                timerTextPuzzle6.text = $"Captcha - {elapsedTime:F2} seconds";
+                timerTextPuzzle6.text = $"{puzzleNames[puzzleIndex]} - {elapsedTime:F2} seconds";
                 break;
             case 6:
-                timerTextPuzzle7.text = $"Morse - {elapsedTime:F2} seconds";
+                timerTextPuzzle7.text = $"{puzzleNames[puzzleIndex]} - {elapsedTime:F2} seconds";
                 break;
             default:
                 Debug.LogError("Invalid puzzle index");
                 break;
+        }
+    }
+
+    // Method after finishing the game to send times to Unity Cloud Save
+    public async Task SendElapsedTimesToCloud()
+    {
+        // Prepare a dictionary to send to Cloud Save
+        Dictionary<string, object> data = new Dictionary<string, object>();
+
+        // Add each elapsed time with descriptive names to the dictionary
+        for (int i = 0; i < elapsedTimes.Length; i++)
+        {
+            data[$"{puzzleNames[i]}_Time"] = elapsedTimes[i];
+        }
+
+        try
+        {
+            // Send the data to Cloud Save
+            await CloudSaveService.Instance.Data.ForceSaveAsync(data);
+            Debug.Log("Elapsed times saved successfully to Unity Cloud.");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error saving data to Unity Cloud: {e.Message}");
         }
     }
 }
