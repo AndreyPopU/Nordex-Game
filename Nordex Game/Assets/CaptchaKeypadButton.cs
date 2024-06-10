@@ -7,12 +7,14 @@ public class CaptchaKeypadButton : MonoBehaviour
 {
     public TextMeshProUGUI Textbox;
     public int number;
+    public AudioClip Correct, Wrong, Pressed;
 
     public void GetPressedNumber()
     {
         if (Player.instance.focused == false) return;
 
         GetComponent<Animator>().SetTrigger("Pressed");
+        AudioSource.PlayClipAtPoint(Pressed, transform.position);
 
         //10 = Clear Text
         if (number == 10)
@@ -27,12 +29,14 @@ public class CaptchaKeypadButton : MonoBehaviour
             if (Textbox.text == "6874")
             {
                 Textbox.text = "Correct";
+                AudioSource.PlayClipAtPoint(Correct, transform.position);
                 CaptchaKeypad.instance.interactable = false;
                 Invoke("AskForCaptcha", 2);
             }
             else
             {
                 Textbox.text = "Wrong";
+                AudioSource.PlayClipAtPoint(Wrong, transform.position);
                 Invoke("ResetField", 5);
                 CaptchaKeypad.instance.Shake();
             }

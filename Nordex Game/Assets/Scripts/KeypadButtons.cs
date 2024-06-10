@@ -9,6 +9,7 @@ public class KeypadButtons : MonoBehaviour
 
     public TextMeshProUGUI Textbox;
     public int number;
+    public AudioClip Correct, Wrong, Pressed;
 
     public void GetPressedNumber()
     {
@@ -17,6 +18,7 @@ public class KeypadButtons : MonoBehaviour
         if (Keypad.instance.time > 0) return;
 
         GetComponent<Animator>().SetTrigger("Pressed");
+        AudioSource.PlayClipAtPoint(Pressed,transform.position);
 
         //10 = Clear Text
         if (number == 10)
@@ -30,6 +32,7 @@ public class KeypadButtons : MonoBehaviour
             if (Textbox.text == "34")
             {
                 Textbox.text = "Correct";
+                AudioSource.PlayClipAtPoint(Correct, transform.position);
 
                 MultiPuzzleTimerScript.Instance.StopTimer(4);
                 Debug.Log("Stopped");
@@ -48,6 +51,7 @@ public class KeypadButtons : MonoBehaviour
             else 
             {
                 Textbox.text = "Wrong";
+                AudioSource.PlayClipAtPoint(Wrong, transform.position);
                 Invoke("ResetField", 5);
                 Keypad.instance.time = 3f;
                 Keypad.instance.Shake();

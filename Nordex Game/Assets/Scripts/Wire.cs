@@ -22,9 +22,10 @@ public class Wire : MonoBehaviour
 
     private Vector3 lockPos;
     private Vector3 startPosition;
-
+    private AudioSource source;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         cam = Camera.main;
         coreCollider = GetComponent<BoxCollider>();
         startPosition = transform.position;
@@ -36,7 +37,6 @@ public class Wire : MonoBehaviour
             case LockAxis.Z: lockPos = transform.position + Vector3.forward * bonusAxis; break;
         }
     }
-
     private void OnMouseDrag()
     {
         if (!interactable) return;
@@ -67,7 +67,6 @@ public class Wire : MonoBehaviour
     private void OnMouseUp()
     {
         dragged = false;
-
         // Check overlapping colliders
         Collider[] colliders = Physics.OverlapBox(transform.position, coreCollider.size, Quaternion.identity, mask);
 
@@ -88,6 +87,7 @@ public class Wire : MonoBehaviour
             {
                 // Snap
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
+                source.Play();
                 // If you disconnect and reconnect with different shape - enable the last connected shape's collider
                 if (connectedIndex >= 0 && connectedIndex != box.index) PanelWires.instance.placements[connectedIndex].GetComponent<BoxCollider>().enabled = true;
                 transform.position = box.transform.position;
