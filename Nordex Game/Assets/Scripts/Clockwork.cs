@@ -30,7 +30,6 @@ public class Clockwork : Puzzle
 
     [Header("Variants")]
     public AudioClip[] clips;
-    private AudioSource audioSource;
 
     private Vector3 panelPosition;
     private float baseTimeLeft;
@@ -57,7 +56,6 @@ public class Clockwork : Puzzle
         // Setup
         panelPosition = panel.transform.position;
         baseTimeLeft = timeLeft;
-        audioSource = GetComponent<AudioSource>();
 
         variants[index].gameObject.SetActive(true);
     }
@@ -116,9 +114,10 @@ public class Clockwork : Puzzle
 
        
         // Reset time
-        if (!Player.instance.focused)
+        if (!Player.instance.focused && interactable)
         {
             FadePanel.instance.GetComponent<AudioSource>().clip = defaultMusic;
+            FadePanel.instance.GetComponent<AudioSource>().Play();
             timeActive = false;
             timeLeft = baseTimeLeft;
         }
@@ -155,6 +154,7 @@ public class Clockwork : Puzzle
         panelPosition += -panel.transform.right * 4 - panel.transform.up * .2f;
         panelCollider.enabled = false;
         FadePanel.instance.GetComponent<AudioSource>().clip = stressMusic;
+        FadePanel.instance.GetComponent<AudioSource>().Play();
     }
 
     public void CheckComplete()
@@ -177,6 +177,7 @@ public class Clockwork : Puzzle
         Player.instance.turbineSpin = true;
         Tablet.instance.UpdateTask("Go back to the company building", "Return to the pick up truck.");
         GameManager.instance.PlayVoice(jobDoneM, jobDoneF, 2);
+        GetComponent<AudioSource>().Play(); ;
     }
 
     public void ActivateVariant()
@@ -194,7 +195,6 @@ public class Clockwork : Puzzle
     public void PlayRandomClip()
     {
         // Player random sound when clockwork gets jammed
-        audioSource.clip = clips[Random.Range(0, clips.Length)];
-        audioSource.Play();
+        AudioSource.PlayClipAtPoint(clips[Random.Range(0, clips.Length)], transform.position);
     }
 }
