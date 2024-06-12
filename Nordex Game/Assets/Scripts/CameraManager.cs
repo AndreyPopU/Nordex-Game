@@ -6,15 +6,9 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
 
-    private void Start()
-    {
-        instance = this;
-    }
+    private void Start() => instance = this;
 
-    public void Shake(float duration, float force)
-    {
-        StartCoroutine(ShakeCO(duration, force));
-    }
+    public void Shake(float duration, float force) => StartCoroutine(ShakeCO(duration, force));
 
     public IEnumerator ShakeCO(float duration, float force)
     {

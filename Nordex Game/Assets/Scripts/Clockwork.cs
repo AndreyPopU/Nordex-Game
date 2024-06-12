@@ -177,7 +177,7 @@ public class Clockwork : Puzzle
         Player.instance.turbineSpin = true;
         Tablet.instance.UpdateTask("Go back to the company building", "Return to the pick up truck.");
         GameManager.instance.PlayVoice(jobDoneM, jobDoneF, 2);
-        GetComponent<AudioSource>().Play(); ;
+        GetComponent<AudioSource>().Play();
     }
 
     public void ActivateVariant()
