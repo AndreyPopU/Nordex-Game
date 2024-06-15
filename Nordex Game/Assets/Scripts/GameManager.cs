@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        // Singleton
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
@@ -52,21 +53,14 @@ public class GameManager : MonoBehaviour
         Invoke("PromptTablet", 1);
     }
 
-    public void PromptTablet()
-    {
-        tabletPrompt.desiredPosition = new Vector3(-800, 475, 0);
-    }
+    public void PromptTablet() => tabletPrompt.desiredPosition = new Vector3(-800, 475, 0);
 
-    public void InteractPrompt ()
-    {
-        interactPrompt.desiredPosition = new Vector3(-800, 350, 0);
+    public void InteractPrompt () => interactPrompt.desiredPosition = new Vector3(-800, 350, 0);
 
-    }
+    public void Hide () => interactPrompt.desiredPosition = new Vector3(-1280, 350, 0);
 
-    public void Hide ()
-    {
-        interactPrompt.desiredPosition = new Vector3(-1280, 350, 0);
-    }
+    public void TabletHidePrompt() => tabletPrompt.desiredPosition = new Vector3(-1280,475,0);
+
     public void SetGender(int gender)
     {
         switch (gender)
@@ -76,15 +70,8 @@ public class GameManager : MonoBehaviour
             case 2: Application.Quit(); print("Kicked"); break;
         }
     }
-    public void TabletHidePrompt()
-    {
-        tabletPrompt.desiredPosition = new Vector3(-1280,475,0);
-    }
 
-    public void PlayVoice(AudioClip clipM, AudioClip clipF, float delay)
-    {
-        StartCoroutine(PlayVoiceCO(clipM, clipF, delay));
-    }
+    public void PlayVoice(AudioClip clipM, AudioClip clipF, float delay) => StartCoroutine(PlayVoiceCO(clipM, clipF, delay));
 
     private IEnumerator PlayVoiceCO(AudioClip clipM, AudioClip clipF, float delay)
     {
